@@ -1,15 +1,15 @@
 import scrollbar from './scrollbar'
 
 const directives = {
-  scrollbar
+  scrollbar,
 }
 
-const name = "ealien"
+const name = 'ealien'
 
 export default {
   install(app) {
     Object.keys(directives).forEach((key) => {
       app.directive(key, directives[key])
     })
-  }
+  },
 }

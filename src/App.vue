@@ -1,8 +1,8 @@
 <script setup>
-  import HelloWorld from './components/HelloWorld.vue'
-  import { userCounterStore } from '@/store'
+import HelloWorld from './components/HelloWorld.vue'
+import { userCounterStore } from '@/store'
 
-  const counterStore = userCounterStore()
+const counterStore = userCounterStore()
 </script>
 
 <template>
@@ -17,8 +17,8 @@
     </a>
   </div>
 
-  <div v-scrollbar class="h400px overflow-auto" >
-    <div class="h1000px"> 1237912379</div>
+  <div v-scrollbar class="h400px overflow-auto">
+    <div class="h1000px">1237912379</div>
   </div>
   <HelloWorld msg="Vite + Vue overlayscrollbars" />
 </template>

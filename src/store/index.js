@@ -1,5 +1,5 @@
 import { createPinia } from 'pinia'
-import userCounterStore  from './modules/counter.js'
+import userCounterStore from './modules/counter.js'
 
 const pinia = createPinia()
 
