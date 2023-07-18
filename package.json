@@ -4,14 +4,18 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "dev": "vite --mode dev",
+    "build:dev": "vite build --mode dev",
+    "build:test": "vite build --mode test",
+    "build:prod": "vite build --mode prod",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@vueuse/core": "^10.2.1",
     "ant-design-vue": "^4.0.0",
     "pinia": "^2.1.4",
-    "vue": "^3.3.4"
+    "vue": "^3.3.4",
+    "vue-router": "^4.2.4"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.2.3",
