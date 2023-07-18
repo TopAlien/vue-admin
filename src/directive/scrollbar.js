@@ -13,5 +13,5 @@ export default {
 
   unmounted(el, binding, vnode, prevVnode) {
     console.log('unmounted')
-  },
+  }
 }
