@@ -10,7 +10,7 @@
 ... package.json scripts 对应 --mode [mode]
 
 ### 技术栈
-- less css预处理器
+- less css预处理器, 变量
 - pinia
 - vite@4
 - vue@3

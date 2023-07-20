@@ -10,7 +10,7 @@
 </script>
 
 <template>
-  <Watermark content="哇咔咔">
+  <Watermark content="哇咔咔" style="height: 100vh; overflow-y: hidden;">
     <div>
       <h1>{{ counterStore.count }}</h1>
       <a-button
@@ -28,12 +28,8 @@
     >
       modal
     </a-button>
-
-    <div
-      v-scrollbar
-      class="h400px overflow-auto"
-    >
-      <div class="h1000px">1237912379</div>
+    <div v-scrollbar class="h400px overflow-auto">
+      <div class="h1000px w9000px">1237912379</div>
     </div>
     <HelloWorld msg="Vite + Vue overlayscrollbars" />
     <a-datePicker />

@@ -9,8 +9,8 @@ import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
 export default defineConfig({
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, 'src'),
-    },
+      '@': path.resolve(__dirname, 'src')
+    }
   },
   plugins: [
     vue(),
@@ -18,9 +18,19 @@ export default defineConfig({
     Components({
       resolvers: [
         AntDesignVueResolver({
-          importStyle: false, // css in js
-        }),
-      ],
-    }),
+          importStyle: false // css in js
+        })
+      ]
+    })
   ],
+  css: {
+    preprocessorOptions: {
+      less: {
+        modifyVars: {
+          hack: `true; @import (reference) "${path.resolve('src/styles/variables.less')}";`
+        },
+        javascriptEnabled: true
+      }
+    }
+  }
 })
