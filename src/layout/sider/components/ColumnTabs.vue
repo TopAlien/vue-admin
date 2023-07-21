@@ -1,8 +1,9 @@
 <script setup>
   import { ref, watch } from 'vue'
   import Logo from './Logo.vue'
-  import { DashboardOutlined } from '@ant-design/icons-vue'
-  import { useSideMenuStore } from '@/store/index.js'
+
+  import { DashboardOutlined, MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons-vue'
+  import { useSettingStore, useSideMenuStore } from '@/store/index.js'
 
   import { useRouter, useRoute } from 'vue-router'
   import { getTabIndex, getTabMenu } from '@/layout/sider/components/util.js'
@@ -26,8 +27,10 @@
     { immediate: true }
   )
 
-  /// init
+  /// init light
   sideMenu.changeSide(tabMenu[curTabIndex.value])
+
+  const setting = useSettingStore()
 </script>
 
 <template>
@@ -49,6 +52,13 @@
         <span class="pt2px">{{ it.meta.title }}</span>
       </div>
     </div>
+    <div
+      class="collapsed_btn"
+      @click="setting.toggleCollapsed"
+    >
+      <MenuUnfoldOutlined v-if="setting.collapsed" />
+      <MenuFoldOutlined v-else />
+    </div>
   </div>
 </template>
 
@@ -61,8 +71,17 @@
     background-color: rgb(35, 39, 45);
   }
 
+  .collapsed_btn {
+    width: 100%;
+    height: 45px;
+    text-align: center;
+    background-color: rgb(35, 39, 45);
+    color: white;
+    cursor: pointer;
+  }
+
   .column_tabs {
-    height: calc(100vh - @header-height);
+    height: calc(100vh - @header-height - 45px);
     width: 64px;
     overflow-y: auto;
     background-color: rgb(35, 39, 45);

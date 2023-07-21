@@ -1,6 +1,6 @@
 <script setup>
   import LayoutSide from './sider/index.vue'
-  import Header from '@/layout/header.vue'
+  import Header from '@/layout/header/index.vue'
 </script>
 
 <template>
