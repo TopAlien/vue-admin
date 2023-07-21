@@ -1,4 +1,4 @@
-import ColumnTabs from '@/layout/sider/column-tabs.vue'
-import Menu from '@/layout/sider/menu.vue'
+import ColumnTabs from '@/layout/sider/components/ColumnTabs.vue'
+import Menu from '@/layout/sider/components/Menu.vue'
 
 export { ColumnTabs, Menu }
