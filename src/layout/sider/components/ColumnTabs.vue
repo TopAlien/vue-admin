@@ -1,8 +1,6 @@
 <script setup>
   import { ref, watch } from 'vue'
   import Logo from './Logo.vue'
-
-  import { DashboardOutlined, MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons-vue'
   import { useSettingStore, useSideMenuStore } from '@/store/index.js'
 
   import { useRouter, useRoute } from 'vue-router'
@@ -51,17 +49,24 @@
         :key="it"
         @click="handleTab(it)"
       >
-        <DashboardOutlined />
+        <i :class="['block', it.meta.icon]" />
         <span class="pt2px">{{ it.meta.title }}</span>
       </div>
     </div>
     <div
-      v-if="sideMenu.menus[0] && sideMenu.menus[0].children && sideMenu.menus[0].children.length"
+      v-if="
+        sideMenu.menus.length > 1 ||
+        (sideMenu.menus[0] && sideMenu.menus[0].children && sideMenu.menus[0].children.length)
+      "
       class="collapsed_btn"
       @click="setting.toggleCollapsed"
     >
-      <MenuUnfoldOutlined v-if="setting.collapsed" />
-      <MenuFoldOutlined v-else />
+      <i
+        :class="[
+          'block ma',
+          setting.collapsed ? 'i-carbon-side-panel-open-filled' : 'i-carbon-side-panel-close-filled'
+        ]"
+      />
     </div>
     <div
       v-else

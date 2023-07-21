@@ -1,15 +1,12 @@
 <script setup>
   import { ref } from 'vue'
-  import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons-vue'
   import { Watermark } from 'ant-design-vue'
   import HelloWorld from '@/components/HelloWorld.vue'
-  import { userCounterStore, useSettingStore } from '@/store'
+  import { userCounterStore } from '@/store'
 
   const counterStore = userCounterStore()
 
   const open = ref(false)
-
-  const setting = useSettingStore()
 </script>
 
 <template>
@@ -39,14 +36,6 @@
     </div>
     <HelloWorld msg="Vite + Vue overlayscrollbars" />
     <a-datePicker />
-    <a-button
-      type="primary"
-      @click="setting.toggleCollapsed()"
-    >
-      13
-      <MenuUnfoldOutlined v-if="setting.collapsed" />
-      <MenuFoldOutlined v-else />
-    </a-button>
     <a-modal
       v-model:open="open"
       title="Basic Modal"

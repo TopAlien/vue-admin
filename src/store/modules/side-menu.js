@@ -1,3 +1,4 @@
+import { h } from 'vue'
 import { defineStore } from 'pinia'
 const transMenuData = (menus) => {
   menus.forEach((it) => {
@@ -7,6 +8,7 @@ const transMenuData = (menus) => {
     }
     it.label = meta.title
     it.key = path
+    it.icon = meta.icon ? h('i', { class: meta.icon }) : ''
   })
   return menus
 }

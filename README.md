@@ -18,7 +18,7 @@
 - unocss
 - vueuse
 - ant-design-vue@4.x - zh-cn
-- overlayscrollbars自定义滚动条（自定义指令）- 未添加- 暂时不支持vue3
+- smooth-scrollbar自定义滚动条（自定义指令
 
 
 ### import.meta.env 访问环境变量，自定义 VITE_ 开头
