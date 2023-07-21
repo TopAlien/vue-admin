@@ -7,12 +7,17 @@
 
   import { useRouter, useRoute } from 'vue-router'
   import { getTabIndex, getTabMenu } from '@/layout/sider/components/util.js'
+  const setting = useSettingStore()
 
   const router = useRouter()
   const sideMenu = useSideMenuStore()
   const handleTab = (it) => {
     sideMenu.changeSide(it)
     router.push({ path: it.path })
+
+    if (setting.collapsed) {
+      setting.toggleCollapsed()
+    }
   }
 
   const tabMenu = getTabMenu(router.getRoutes() || [])
@@ -29,8 +34,6 @@
 
   /// init light
   sideMenu.changeSide(tabMenu[curTabIndex.value])
-
-  const setting = useSettingStore()
 </script>
 
 <template>
@@ -53,12 +56,17 @@
       </div>
     </div>
     <div
+      v-if="sideMenu.menus[0] && sideMenu.menus[0].children && sideMenu.menus[0].children.length"
       class="collapsed_btn"
       @click="setting.toggleCollapsed"
     >
       <MenuUnfoldOutlined v-if="setting.collapsed" />
       <MenuFoldOutlined v-else />
     </div>
+    <div
+      v-else
+      class="collapsed_btn"
+    />
   </div>
 </template>
 
