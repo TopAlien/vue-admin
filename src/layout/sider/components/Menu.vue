@@ -20,7 +20,7 @@
     route,
     (newRoute) => {
       state.openKeys = Array.from(new Set([...state.openKeys, newRoute.matched[1]?.path]))
-      state.selectedKeys = Array.from(new Set([...state.selectedKeys, newRoute.fullPath]))
+      state.selectedKeys = [newRoute.fullPath]
     },
     { immediate: true }
   )

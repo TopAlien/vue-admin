@@ -7,7 +7,7 @@ export default [
     name: 'Other',
     redirect: '/other/list',
     meta: {
-      title: '门户',
+      title: '其他',
       isGroup: true,
       icon: 'i-carbon-location-heart'
     },
@@ -17,7 +17,7 @@ export default [
         name: 'OtherList',
         component: () => import('@/pages/dashboard/index.vue'),
         meta: {
-          title: '门户-2'
+          title: '其他-2'
         }
       },
       {
@@ -25,7 +25,7 @@ export default [
         name: 'OtherList1',
         component: () => import('@/pages/test/test2.vue'),
         meta: {
-          title: '门户-1'
+          title: '其他-1'
         }
       }
     ]
