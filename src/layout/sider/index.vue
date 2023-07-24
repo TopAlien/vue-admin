@@ -8,11 +8,6 @@
 <template>
   <div class="flex">
     <ColumnTabs />
-    <Menu
-      v-if="
-        sideMenu.menus.length > 1 ||
-        (sideMenu.menus[0] && sideMenu.menus[0].children && sideMenu.menus[0].children.length)
-      "
-    />
+    <Menu v-if="sideMenu.onlyMenu" />
   </div>
 </template>

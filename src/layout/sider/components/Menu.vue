@@ -1,14 +1,11 @@
 <script setup>
-  import { reactive, watch } from 'vue'
+  import { watch } from 'vue'
   import { useRoute, useRouter } from 'vue-router'
   import { useSideMenuStore, useSettingStore } from '@/store/index.js'
   import config from '@/config/index.js'
 
+  const setting = useSettingStore()
   const sideMenu = useSideMenuStore()
-  const state = reactive({
-    openKeys: [],
-    selectedKeys: []
-  })
 
   const router = useRouter()
   const handleClickMenu = ({ key }) => {
@@ -19,13 +16,10 @@
   watch(
     route,
     (newRoute) => {
-      state.openKeys = Array.from(new Set([...state.openKeys, newRoute.matched[1]?.path]))
-      state.selectedKeys = [newRoute.fullPath]
+      setting.changeMenu(Array.from(new Set([...setting.openKeys, newRoute.matched[1]?.path])), [newRoute.fullPath])
     },
     { immediate: true }
   )
-
-  const setting = useSettingStore()
 </script>
 
 <template>
@@ -34,11 +28,12 @@
       {{ config.title }}
     </div>
     <a-menu
+      :key="sideMenu.menuKey"
       v-scrollbar
       class="menu_cus"
       mode="inline"
-      v-model:selectedKeys="state.selectedKeys"
-      :open-keys="state.openKeys"
+      v-model:selectedKeys="setting.selectedKeys"
+      :open-keys="setting.openKeys"
       :inline-collapsed="setting.collapsed"
       :items="sideMenu.menus"
       @click="handleClickMenu"

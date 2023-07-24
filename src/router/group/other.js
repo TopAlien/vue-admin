@@ -15,7 +15,7 @@ export default [
       {
         path: '/other/list',
         name: 'OtherList',
-        component: () => import('@/pages/dashboard/index.vue'),
+        component: () => import('@/pages/other/icons/index.vue'),
         meta: {
           title: '其他-2'
         }
@@ -25,7 +25,16 @@ export default [
         name: 'OtherList1',
         component: () => import('@/pages/test/test2.vue'),
         meta: {
-          title: '其他-1'
+          title: '其他-1',
+          hideInMenu: true
+        }
+      },
+      {
+        path: '/other/icons',
+        name: 'Icons',
+        component: () => import('@/pages/other/icons/index.vue'),
+        meta: {
+          title: '图标'
         }
       }
     ]

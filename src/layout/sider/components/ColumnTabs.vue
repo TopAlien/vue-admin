@@ -12,6 +12,7 @@
   const handleTab = (it) => {
     sideMenu.changeSide(it)
     router.push({ path: it.path })
+    setting.changeMenu([], [])
 
     if (setting.collapsed) {
       setting.toggleCollapsed()
@@ -54,10 +55,7 @@
       </div>
     </div>
     <div
-      v-if="
-        sideMenu.menus.length > 1 ||
-        (sideMenu.menus[0] && sideMenu.menus[0].children && sideMenu.menus[0].children.length)
-      "
+      v-if="sideMenu.onlyMenu"
       class="collapsed_btn"
       @click="setting.toggleCollapsed"
     >

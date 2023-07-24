@@ -1,5 +1,7 @@
 import { defineConfig, presetUno } from 'unocss'
 import presetIcons from '@unocss/preset-icons/browser'
+import safelist from './src/components/DynamicIcons/icons.js'
+
 export default defineConfig({
   presets: [
     presetUno(),
@@ -9,5 +11,6 @@ export default defineConfig({
         carbon: () => import('@iconify-json/carbon/icons.json').then((i) => i.default)
       }
     })
-  ]
+  ],
+  safelist
 })

@@ -17,7 +17,7 @@ export default [
         name: 'List',
         meta: {
           title: '列表',
-          icon: 'i-carbon-list'
+          icon: 'i-carbon-list',
         },
         redirect: '/com/list/list2',
         children: [
