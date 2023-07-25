@@ -22,9 +22,6 @@
 
   const tabMenu = getTabMenu(router.getRoutes() || [])
   const curTabIndex = ref(0)
-  /// init light
-  // fix sideMenu某项被整体隐藏时的错误，hideInMenu: true
-  curTabIndex.value >= 0 && sideMenu.changeSide(tabMenu[curTabIndex.value])
 
   watch(
     route,
@@ -33,6 +30,10 @@
     },
     { immediate: true }
   )
+
+  /// init
+  // fix sideMenu某项被整体隐藏时的错误，hideInMenu: true
+  curTabIndex.value >= 0 && sideMenu.changeSide(tabMenu[curTabIndex.value])
 </script>
 
 <template>

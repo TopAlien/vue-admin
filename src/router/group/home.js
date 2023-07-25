@@ -9,7 +9,7 @@ export default [
     meta: {
       title: '首页',
       isGroup: true,
-      icon: 'i-carbon-home'
+      icon: 'i-carbon-cloud-monitoring'
     },
     children: [
       {

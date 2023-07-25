@@ -15,7 +15,7 @@
 - vite@4
 - vue@3
 - vue-router@4
-- unocss
+- unocss - safelist加载动态icon class
 - vueuse
 - ant-design-vue@4.x - zh-cn
 - smooth-scrollbar自定义滚动条（自定义指令
