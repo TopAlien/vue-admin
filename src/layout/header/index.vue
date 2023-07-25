@@ -1,13 +1,12 @@
 <script setup>
   import FullScreen from '@/components/FullScreen/index.vue'
+  import Avatar from './components/Avatar.vue'
 </script>
 
 <template>
   <div class="content_header">
     <FullScreen />
-    <div>
-      header avatar
-    </div>
+    <Avatar />
   </div>
 </template>
 

@@ -6,15 +6,18 @@
 
 <template>
   <div class="cursor-pointer">
-    <a-tooltip v-if="!isFullscreen" title="全屏" color="#1677ff">
-      <i
+    <a-tooltip color="white">
+      <template v-slot:title>
+        <span style="color: black">{{ isFullscreen ? '退出全屏' : '全屏' }}</span>
+      </template>
 
+      <i
+        v-if="!isFullscreen"
         class="i-carbon-intent-request-scale-out block"
         @click="enter"
       />
-    </a-tooltip>
-    <a-tooltip v-else title="退出全屏" color="#1677ff">
       <i
+        v-else
         class="i-carbon-intent-request-scale-in block"
         @click="exit"
       />
