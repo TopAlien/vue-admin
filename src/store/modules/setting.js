@@ -1,10 +1,13 @@
 import { defineStore } from 'pinia'
+import { getLock, setLock } from '@/utils/storage.js'
 
 const useSettingStore = defineStore('setting', {
   state: () => ({
     collapsed: false,
     openKeys: [],
-    selectedKeys: []
+    selectedKeys: [],
+
+    lockScreen: getLock()
   }),
   actions: {
     toggleCollapsed() {
@@ -15,6 +18,11 @@ const useSettingStore = defineStore('setting', {
       this.openKeys = openKeys
       this.selectedKeys = selectedKeys
     },
+
+    toggleLock() {
+      this.lockScreen = !this.lockScreen
+      setLock(this.lockScreen)
+    }
   }
 })
 
