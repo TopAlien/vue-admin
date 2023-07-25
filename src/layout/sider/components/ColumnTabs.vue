@@ -1,14 +1,15 @@
 <script setup>
   import { ref, watch } from 'vue'
   import Logo from './Logo.vue'
-  import { useSettingStore, useSideMenuStore } from '@/store/index.js'
-
   import { useRouter, useRoute } from 'vue-router'
+  import { useSettingStore, useSideMenuStore } from '@/store/index.js'
   import { getTabIndex, getTabMenu } from '@/layout/sider/components/util.js'
-  const setting = useSettingStore()
 
   const router = useRouter()
+  const route = useRoute()
+
   const sideMenu = useSideMenuStore()
+  const setting = useSettingStore()
   const handleTab = (it) => {
     sideMenu.changeSide(it)
     router.push({ path: it.path })
@@ -21,8 +22,10 @@
 
   const tabMenu = getTabMenu(router.getRoutes() || [])
   const curTabIndex = ref(0)
+  /// init light
+  // fix sideMenu某项被整体隐藏时的错误，hideInMenu: true
+  curTabIndex.value >= 0 && sideMenu.changeSide(tabMenu[curTabIndex.value])
 
-  const route = useRoute()
   watch(
     route,
     (newRoute) => {
@@ -30,9 +33,6 @@
     },
     { immediate: true }
   )
-
-  /// init light
-  sideMenu.changeSide(tabMenu[curTabIndex.value])
 </script>
 
 <template>

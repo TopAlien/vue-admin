@@ -25,5 +25,9 @@ const PAGE_NOT_FOUND_ROUTE = [
   }
 ]
 
-// TIP path必须写完整的路径，要做跳转匹配
+/**
+ * meta: { icon, hideInMenu, title }
+ *
+ * TIP path必须写完整的路径，要做跳转匹配
+ */
 export const BASE_ROUTE = [...HomeGroup, ...ComGroup, ...OtherGroup, ...PAGE_NOT_FOUND_ROUTE]

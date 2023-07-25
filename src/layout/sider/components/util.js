@@ -1,7 +1,8 @@
 export const getTabMenu = (routes) => {
   const tabMenu = []
   routes.forEach((it) => {
-    if (it.meta && it.meta.isGroup) {
+    const { isGroup, hideInMenu } = it.meta || {}
+    if (isGroup && !hideInMenu) {
       tabMenu.push(it)
     }
   })

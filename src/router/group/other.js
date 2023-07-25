@@ -17,7 +17,8 @@ export default [
         name: 'OtherList',
         component: () => import('@/pages/other/icons/index.vue'),
         meta: {
-          title: '其他-2'
+          title: '其他-2',
+          icon: 'i-carbon-list-boxes'
         }
       },
       {
@@ -26,7 +27,7 @@ export default [
         component: () => import('@/pages/test/test2.vue'),
         meta: {
           title: '其他-1',
-          hideInMenu: true
+          icon: 'i-carbon-home'
         }
       },
       {
@@ -34,7 +35,8 @@ export default [
         name: 'Icons',
         component: () => import('@/pages/other/icons/index.vue'),
         meta: {
-          title: '图标'
+          title: '图标',
+          icon: 'i-carbon-location-heart'
         }
       }
     ]

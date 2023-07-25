@@ -8,7 +8,7 @@ const generator = (routerMap) => {
     const currentRouter = {
       label: title,
       key: item.path,
-      icon: icon ? h('i', { class: icon }) : ''
+      icon: icon ? h('i', { class: icon }) : null
       // router警告组件是响应式时可使用 shallowRef 包裹
       // https://cn.vuejs.org/api/reactivity-advanced.html#shallowref
     }
