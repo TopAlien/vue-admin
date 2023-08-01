@@ -40,6 +40,7 @@
     -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
     box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.2);
+    animation: zoom_1 0.6s;
 
     &_content {
       width: 500px;
@@ -50,6 +51,13 @@
       left: 50%;
       transform: translate(-250px, -250px);
       border-radius: 6px;
+    }
+  }
+
+  @-webkit-keyframes zoom_1 {
+    0% {
+      transform: scale(2.5);
+      opacity: 0;
     }
   }
 </style>
