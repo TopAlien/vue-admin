@@ -6,16 +6,24 @@
 
 <template>
   <div class="lock">
-    <a-button
-      class="flex items-center"
-      type="primary"
-      @click="setting.toggleLock"
-    >
-      <template v-slot:icon>
-        <i class="i-carbon-unlocked inline-block" />
-      </template>
-      解锁
-    </a-button>
+    <div class="lock_content">
+      <img
+        class="w80px h80px flex ma mt80px"
+        src="/public/vite.svg"
+        alt=""
+      />
+      <h4 class="text-center mt140px">屏幕已锁定</h4>
+      <a-button
+        class="flex ma"
+        type="primary"
+        @click="setting.toggleLock"
+      >
+        <template v-slot:icon>
+          <i class="i-carbon-unlocked inline-block" />
+        </template>
+        解锁
+      </a-button>
+    </div>
   </div>
 </template>
 
@@ -26,7 +34,22 @@
     overflow: hidden;
 
     position: fixed;
-    background-color: #d2e5ff;
     z-index: 9999;
+
+    background: rgba(255, 255, 255, 0.2);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.2);
+
+    &_content {
+      width: 500px;
+      height: 500px;
+      background-color: aliceblue;
+      position: absolute;
+      top: 60%;
+      left: 50%;
+      transform: translate(-250px, -250px);
+      border-radius: 6px;
+    }
   }
 </style>
