@@ -2,6 +2,7 @@ import Layout from '@/layout/index.vue'
 import HomeGroup from './group/home.js'
 import ComGroup from './group/com.js'
 import OtherGroup from './group/other.js'
+import ListGroup from './group/list.js'
 
 // 404 on a page
 const PAGE_NOT_FOUND_ROUTE = [
@@ -30,4 +31,4 @@ const PAGE_NOT_FOUND_ROUTE = [
  *
  * TIP path必须写完整的路径，要做跳转匹配
  */
-export const BASE_ROUTE = [...HomeGroup, ...ComGroup, ...OtherGroup, ...PAGE_NOT_FOUND_ROUTE]
+export const BASE_ROUTE = [...HomeGroup, ...ComGroup, ...OtherGroup, ...ListGroup, ...PAGE_NOT_FOUND_ROUTE]

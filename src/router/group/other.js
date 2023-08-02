@@ -1,11 +1,13 @@
 import Layout from '@/layout/index.vue'
 
+const BASE_URL = '/other'
+
 export default [
   {
-    path: '/other',
+    path: BASE_URL,
     component: Layout,
     name: 'Other',
-    redirect: '/other/list',
+    redirect: `${BASE_URL}/list`,
     meta: {
       title: '其他',
       isGroup: true,
@@ -13,16 +15,16 @@ export default [
     },
     children: [
       {
-        path: '/other/list',
+        path: `${BASE_URL}/list`,
         name: 'OtherList',
         component: () => import('@/pages/other/icons/index.vue'),
         meta: {
-          title: '其他-2',
+          title: 'CheckCard',
           icon: 'i-carbon-list-boxes'
         }
       },
       {
-        path: '/other/list1',
+        path: `${BASE_URL}/list1`,
         name: 'OtherList1',
         component: () => import('@/pages/test/test2.vue'),
         meta: {
@@ -31,7 +33,7 @@ export default [
         }
       },
       {
-        path: '/other/icons',
+        path: `${BASE_URL}/icons`,
         name: 'Icons',
         component: () => import('@/pages/other/icons/index.vue'),
         meta: {

@@ -1,11 +1,13 @@
 import Layout from '@/layout/index.vue'
 
+const BASE_URL = '/com'
+
 export default [
   {
-    path: '/com',
+    path: BASE_URL,
     component: Layout,
     name: 'Com',
-    redirect: '/com/list',
+    redirect: `${BASE_URL}/list-1/list2-1`,
     meta: {
       title: '组件',
       isGroup: true,
@@ -13,43 +15,16 @@ export default [
     },
     children: [
       {
-        path: '/com/list',
-        redirect: '/com/list/list2',
-        name: 'List',
-        meta: {
-          title: '列表',
-          icon: 'i-carbon-list'
-        },
-        children: [
-          {
-            path: '/com/list/list2',
-            name: 'List2',
-            component: () => import('@/pages/test/list.vue'),
-            meta: {
-              title: '列表2'
-            }
-          },
-          {
-            path: '/com/list/list3',
-            name: 'List3',
-            component: () => import('@/pages/test/test2.vue'),
-            meta: {
-              title: '列表3'
-            }
-          }
-        ]
-      },
-      {
-        path: '/com/list-1',
+        path: `${BASE_URL}/list-1`,
+        redirect: `${BASE_URL}/list-1/list2-1`,
         name: 'List-1',
         meta: {
           title: '列表-1',
           icon: 'i-carbon-list-boxes'
         },
-        redirect: '/com/list-1/list2-1',
         children: [
           {
-            path: '/com/list-1/list2-1',
+            path: `${BASE_URL}/list-1/list2-1`,
             name: 'List2-1',
             component: () => import('@/pages/test/test2.vue'),
             meta: {
@@ -57,11 +32,38 @@ export default [
             }
           },
           {
-            path: '/com/list-1/list3-1',
+            path: `${BASE_URL}/list-1/list3-1`,
             name: 'List3-1',
             component: () => import('@/pages/error-page/404.vue'),
             meta: {
               title: '列表3-1'
+            }
+          }
+        ]
+      },
+      {
+        path: `${BASE_URL}/list-5`,
+        redirect: `${BASE_URL}/list-5/list2`,
+        name: 'List-4',
+        meta: {
+          title: '列表',
+          icon: 'i-carbon-list'
+        },
+        children: [
+          {
+            path: `${BASE_URL}/list-5/list2`,
+            name: 'List-5',
+            component: () => import('@/pages/test/list.vue'),
+            meta: {
+              title: '列表2'
+            }
+          },
+          {
+            path: `${BASE_URL}/list-5/list3`,
+            name: 'List-6',
+            component: () => import('@/pages/test/test2.vue'),
+            meta: {
+              title: '列表3'
             }
           }
         ]

@@ -46,4 +46,5 @@ const useSideMenuStore = defineStore('sideMenu', {
     }
   }
 })
+
 export default useSideMenuStore

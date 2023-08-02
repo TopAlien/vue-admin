@@ -4,14 +4,13 @@
 </script>
 
 <template>
+  <Header />
   <div class="flex">
     <div>
       <LayoutSide />
     </div>
 
     <div class="content_wrap">
-      <Header />
-
       <div
         v-scrollbar
         class="scroll_content"
@@ -25,12 +24,13 @@
 <style scoped lang="less">
   .content_wrap {
     flex: 1;
-    height: 100vh;
+    height: calc(100vh - @header-height);
     overflow: auto;
   }
 
   .scroll_content {
     height: calc(100vh - @header-height);
+    min-width: @scroll-content-min-width;
     box-sizing: border-box;
     padding: 16px;
     overflow: auto;

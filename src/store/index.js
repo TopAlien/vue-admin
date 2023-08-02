@@ -6,4 +6,5 @@ import useSettingStore from './modules/setting.js'
 const pinia = createPinia()
 
 export { userCounterStore, useSideMenuStore, useSettingStore }
+
 export default pinia

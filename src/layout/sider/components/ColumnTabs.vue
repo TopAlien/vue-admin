@@ -38,9 +38,6 @@
 
 <template>
   <div class="tabs_wrap">
-    <div class="logo_wrap">
-      <Logo />
-    </div>
     <div
       v-scrollbar
       class="column_tabs"
@@ -75,14 +72,6 @@
 </template>
 
 <style scoped lang="less">
-  .logo_wrap {
-    height: @header-height;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(35, 39, 45);
-  }
-
   .collapsed_btn {
     width: 100%;
     height: 45px;

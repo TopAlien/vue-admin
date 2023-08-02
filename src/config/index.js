@@ -3,5 +3,5 @@ export default {
 
   onlyMenu: true,
 
-  useCustomScrollBar: false
+  useCustomScrollBar: true
 }

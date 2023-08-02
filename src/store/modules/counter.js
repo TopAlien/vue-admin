@@ -11,4 +11,5 @@ const userCounterStore = defineStore('counter', {
     }
   }
 })
+
 export default userCounterStore
