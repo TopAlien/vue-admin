@@ -11,11 +11,15 @@
     router.push({ path: key })
   }
 
+  const openChange = (openKeys) => {
+    setting.changeMenu(openKeys, setting.selectedKeys)
+  }
+
   const route = useRoute()
   watch(
     route,
     (newRoute) => {
-      setting.changeMenu([newRoute.matched[1]?.path], [newRoute.fullPath])
+      setting.changeMenu(Array.from(new Set([...setting.openKeys, newRoute.matched[1]?.path])), [newRoute.fullPath])
     },
     { immediate: true }
   )
@@ -33,6 +37,7 @@
       :inline-collapsed="setting.collapsed"
       :items="sideMenu.menus"
       @click="handleClickMenu"
+      @openChange="openChange"
     />
   </div>
 </template>
