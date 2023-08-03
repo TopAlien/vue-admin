@@ -1,0 +1,85 @@
+<script setup>
+  import { Form } from 'ant-design-vue'
+  const emit = defineEmits(['search'])
+  const slots = defineSlots()
+
+  const props = defineProps({
+    model: {
+      type: Object,
+      default: () => {}
+    }
+  })
+
+  // 使用了v-model必须在:model中初始化，否则Form.useForm 无法resetFields
+  const { resetFields } = Form.useForm(props.model)
+
+  const handleSearch = () => {
+    emit('search')
+  }
+
+  const handleReset = () => {
+    resetFields && resetFields()
+    handleSearch()
+  }
+</script>
+
+<template>
+  <div class="search_box">
+    <div class="search_form">
+      <slot />
+    </div>
+
+    <div class="right_btn">
+      <a-space
+        direction="vertical"
+        :size="16"
+      >
+        <a-button
+          type="primary"
+          @click="handleSearch"
+        >
+          <template #icon>
+            <i class="i-carbon-search inline-block v-sub" />
+          </template>
+          查询
+        </a-button>
+        <a-button @click="handleReset">
+          <template #icon>
+            <i class="i-carbon-reset inline-block v-sub" />
+          </template>
+          重置
+        </a-button>
+      </a-space>
+    </div>
+  </div>
+
+  <div
+    v-if="slots.extraL || slots.extraR"
+    class="flex justify-between mb16px"
+  >
+    <a-space>
+      <slot name="extraL"></slot>
+    </a-space>
+    <a-space>
+      <slot name="extraR"></slot>
+    </a-space>
+  </div>
+</template>
+
+<style>
+  .search_box {
+    display: flex;
+    border-bottom: 1px solid rgb(229, 230, 235);
+    margin-bottom: 16px;
+  }
+
+  .search_box .ant-form-item {
+    margin-bottom: 16px;
+  }
+
+  .right_btn {
+    height: 80px;
+    padding-left: 16px;
+    border-left: 1px solid rgb(229, 230, 235);
+  }
+</style>

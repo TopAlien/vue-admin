@@ -24,6 +24,15 @@ export default [
         }
       },
       {
+        path: `${BASE_URL}/watermark`,
+        name: 'Watermark',
+        component: () => import('@/pages/other/watermark/index.vue'),
+        meta: {
+          title: '水印',
+          icon: 'i-carbon-list-boxes'
+        }
+      },
+      {
         path: `${BASE_URL}/list1`,
         name: 'OtherList1',
         component: () => import('@/pages/test/test2.vue'),

@@ -1,5 +1,6 @@
 <script setup>
   import { ref } from 'vue'
+  import SearchBox from '@/components/SearchBox/index.vue'
 
   const columns = [
     {
@@ -43,9 +44,63 @@
       tags: ['cool', 'teacher']
     }
   ])
+
+  // 必须初始化，否则Form.useForm 无法resetFields
+  const searchForm = ref({ name: null, sex: null, age: null, tag: null, class: null })
+
+  const handleSearch = () => {
+    console.log(searchForm.value)
+  }
 </script>
 
 <template>
+  <SearchBox
+    :model="searchForm"
+    @search="handleSearch"
+  >
+    <a-form layout="inline">
+      <a-form-item label="姓名">
+        <a-input
+          placeholder="请输入..."
+          v-model:value="searchForm.name"
+        />
+      </a-form-item>
+      <a-form-item label="性别">
+        <a-input
+          placeholder="请输入..."
+          v-model:value="searchForm.sex"
+        />
+      </a-form-item>
+      <a-form-item label="年龄">
+        <a-input
+          placeholder="请输入..."
+          v-model:value="searchForm.age"
+        />
+      </a-form-item>
+      <a-form-item label="标签">
+        <a-input
+          placeholder="请输入..."
+          v-model:value="searchForm.tag"
+        />
+      </a-form-item>
+      <a-form-item label="分类">
+        <a-input
+          placeholder="请输入..."
+          v-model:value="searchForm.calss"
+        />
+      </a-form-item>
+    </a-form>
+
+    <template #extraL>
+      <a-button type="primary">新建</a-button>
+      <a-button>批量导入</a-button>
+    </template>
+
+    <template #extraR>
+      <a-button type="primary">导出</a-button>
+    </template>
+  </SearchBox>
+
   <a-table
     size="middle"
     :data-source="list"
