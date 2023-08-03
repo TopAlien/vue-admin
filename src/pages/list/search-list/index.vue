@@ -2,37 +2,49 @@
   import { ref } from 'vue'
   import SearchBox from '@/components/SearchBox/index.vue'
   import ProTable from '@/components/ProTable/index.vue'
+  import { tableData } from '@/mock/data.js'
 
   const columns = [
     {
-      title: '名称',
+      title: '集合编号',
+      dataIndex: 'no',
+      key: 'no'
+    },
+    {
+      title: '集合名称',
       dataIndex: 'name',
       key: 'name'
     },
     {
-      title: '年龄',
-      dataIndex: 'age',
-      key: 'age'
+      title: '内容体裁',
+      dataIndex: 'type',
+      key: 'type'
     },
     {
-      title: '标签',
-      dataIndex: 'tags',
-      key: 'tags'
+      title: '筛选方式',
+      dataIndex: 'fs',
+      key: 'fs'
+    },
+    {
+      title: '内容量',
+      dataIndex: 'num',
+      key: 'num'
+    },
+    {
+      title: '创建时间',
+      dataIndex: 'createTime',
+      key: 'createTime'
+    },
+    {
+      title: '状态',
+      dataIndex: 'status',
+      key: 'status'
     },
     { title: '操作', key: 'action', width: '170px' }
   ]
 
-  const list = ref([])
-  list.value = Array.from({ length: 100 }, (it, index) => ({
-    key: index,
-    name: `John Brown - ${index}`,
-    age: index + 4,
-    address: `New York No. ${index} Lake Park`,
-    tags: index % 2 === 0 ? ['nice', 'developer'] : ['developer']
-  }))
-
   // 必须初始化，否则Form.useForm 无法resetFields
-  const searchForm = ref({ name: null, sex: null, age: null, tag: null, class: null })
+  const searchForm = ref({ no: null, name: null, fs: null, status: null, num: null })
 
   const handleSearch = () => {
     console.log(searchForm.value)
@@ -44,35 +56,38 @@
     :model="searchForm"
     @search="handleSearch"
   >
-    <a-form layout="inline">
-      <a-form-item label="姓名">
+    <a-form
+      layout="inline"
+      :label-col="{ style: { width: '75px' } }"
+    >
+      <a-form-item label="集合编号">
         <a-input
-          placeholder="请输入..."
+          placeholder="请输入集合编号"
+          v-model:value="searchForm.no"
+        />
+      </a-form-item>
+      <a-form-item label="集合名称">
+        <a-input
+          placeholder="请输入集合名称"
           v-model:value="searchForm.name"
         />
       </a-form-item>
-      <a-form-item label="性别">
+      <a-form-item label="筛选方式">
         <a-input
-          placeholder="请输入..."
-          v-model:value="searchForm.sex"
+          placeholder="请输入筛选方式"
+          v-model:value="searchForm.fs"
         />
       </a-form-item>
-      <a-form-item label="年龄">
+      <a-form-item label="状态">
         <a-input
-          placeholder="请输入..."
-          v-model:value="searchForm.age"
+          placeholder="请输入状态"
+          v-model:value="searchForm.status"
         />
       </a-form-item>
-      <a-form-item label="标签">
+      <a-form-item label="内容量">
         <a-input
-          placeholder="请输入..."
-          v-model:value="searchForm.tag"
-        />
-      </a-form-item>
-      <a-form-item label="分类">
-        <a-input
-          placeholder="请输入..."
-          v-model:value="searchForm.calss"
+          placeholder="请输入内容量"
+          v-model:value="searchForm.num"
         />
       </a-form-item>
     </a-form>
@@ -88,25 +103,33 @@
   </SearchBox>
 
   <ProTable
-    :data-source="list"
+    :data-source="tableData"
     :columns="columns"
   >
-    <template #headerCell="{ column }">
+    <template #headerCell="{ column, title }">
       <template v-if="column.key === 'name'">
         <i class="i-carbon-group-security inline-block v-sub" />
-        名称
+        {{ title }}
       </template>
     </template>
 
     <template #bodyCell="{ column, record }">
-      <template v-if="column.key === 'tags'">
-        <a-tag
-          v-for="tag in record.tags"
-          :key="tag"
-          :color="tag === 'loser' ? 'volcano' : tag.length > 5 ? 'geekblue' : 'green'"
-        >
-          {{ tag.toUpperCase() }}
-        </a-tag>
+      <template v-if="column.key === 'type'">
+        <div class="flex items-center">
+          <img
+            :src="record.icon"
+            class="mr4px"
+            alt=""
+          />
+          <span>{{ record.type }}</span>
+        </div>
+      </template>
+
+      <template v-if="column.key === 'status'">
+        <a-badge
+          :color="record.status === '已下线' ? '#cccccc' : 'green'"
+          :text="record.status"
+        />
       </template>
 
       <template v-if="column.key === 'action'">

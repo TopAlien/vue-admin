@@ -25,7 +25,7 @@
 
 <template>
   <div class="search_box">
-    <div class="search_form">
+    <div class="search_form flex-1">
       <slot />
     </div>
 
@@ -80,6 +80,7 @@
   .right_btn {
     height: 80px;
     padding-left: 16px;
+    margin-bottom: 16px;
     border-left: 1px solid rgb(229, 230, 235);
   }
 </style>

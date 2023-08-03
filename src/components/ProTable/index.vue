@@ -14,11 +14,11 @@
     <template
       v-for="(_, key, i) in slots"
       :key="i"
-      v-slot:[key]="{ text, record, index, column, filtered, indent, expanded }"
+      v-slot:[key]="{ text, title, record, index, column, filtered, indent, expanded }"
     >
       <slot
         :name="key"
-        v-bind="{ text, record, index, column, filtered, indent, expanded }"
+        v-bind="{ text, title, record, index, column, filtered, indent, expanded }"
       ></slot>
     </template>
   </a-table>
