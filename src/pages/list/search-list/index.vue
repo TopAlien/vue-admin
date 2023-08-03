@@ -1,6 +1,7 @@
 <script setup>
   import { ref } from 'vue'
   import SearchBox from '@/components/SearchBox/index.vue'
+  import ProTable from '@/components/ProTable/index.vue'
 
   const columns = [
     {
@@ -21,29 +22,14 @@
     { title: '操作', key: 'action', width: '170px' }
   ]
 
-  const list = ref([
-    {
-      key: '1',
-      name: 'John Brown',
-      age: 32,
-      address: 'New York No. 1 Lake Park',
-      tags: ['nice', 'developer']
-    },
-    {
-      key: '2',
-      name: 'Jim Green',
-      age: 42,
-      address: 'London No. 1 Lake Park',
-      tags: ['loser']
-    },
-    {
-      key: '3',
-      name: 'Joe Black',
-      age: 32,
-      address: 'Sidney No. 1 Lake Park',
-      tags: ['cool', 'teacher']
-    }
-  ])
+  const list = ref([])
+  list.value = Array.from({ length: 100 }, (it, index) => ({
+    key: index,
+    name: `John Brown - ${index}`,
+    age: index + 4,
+    address: `New York No. ${index} Lake Park`,
+    tags: index % 2 === 0 ? ['nice', 'developer'] : ['developer']
+  }))
 
   // 必须初始化，否则Form.useForm 无法resetFields
   const searchForm = ref({ name: null, sex: null, age: null, tag: null, class: null })
@@ -101,8 +87,7 @@
     </template>
   </SearchBox>
 
-  <a-table
-    size="middle"
+  <ProTable
     :data-source="list"
     :columns="columns"
   >
@@ -149,5 +134,5 @@
         </span>
       </template>
     </template>
-  </a-table>
+  </ProTable>
 </template>
