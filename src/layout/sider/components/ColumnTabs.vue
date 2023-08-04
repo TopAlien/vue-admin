@@ -10,7 +10,9 @@
 
   const sideMenu = useSideMenuStore()
   const setting = useSettingStore()
-  const handleTab = (it) => {
+  const handleTab = (it, isHighlight) => {
+    if (isHighlight) return
+
     sideMenu.changeSide(it)
     router.push({ path: it.path })
     setting.changeMenu([], [])
@@ -46,7 +48,7 @@
         :class="{ tab_item: true, active_tab: curTabIndex === index }"
         v-for="(it, index) in tabMenu"
         :key="it"
-        @click="handleTab(it)"
+        @click="handleTab(it, curTabIndex === index)"
       >
         <i :class="['block', it.meta.icon]" />
         <span class="pt2px">{{ it.meta.title }}</span>

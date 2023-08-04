@@ -25,7 +25,7 @@
 - unocss - safelist加载动态icon class
 - vueuse
 - ant-design-vue@4.x - zh-cn 组件二次封装slot, attrs透传
-- smooth-scrollbar自定义滚动条（自定义指令)
+- smooth-scrollbar自定义滚动条（自定义指令) 
 
 ### import.meta.env 访问环境变量，自定义 VITE\_ 开头
 ![img_1.png](public/img_1.png)
