@@ -28,4 +28,4 @@
 - smooth-scrollbar自定义滚动条（自定义指令)
 
 ### import.meta.env 访问环境变量，自定义 VITE\_ 开头
-![img.png](public/img.png)
+![img_1.png](public/img_1.png)

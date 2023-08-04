@@ -10,11 +10,11 @@
       <LayoutSide />
     </div>
 
-    <div class="content_wrap">
-      <div
-        v-scrollbar
-        class="scroll_content"
-      >
+    <div
+      class="content_wrap"
+      v-scrollbar
+    >
+      <div class="scroll_content">
         <router-view />
       </div>
     </div>
@@ -26,13 +26,17 @@
     flex: 1;
     height: calc(100vh - @header-height);
     overflow: auto;
+    background: rgb(242, 243, 245);
   }
 
   .scroll_content {
-    height: calc(100vh - @header-height);
-    min-width: @scroll-content-min-width;
+    //height: calc(100vh - @header-height);
+    //min-width: @scroll-content-min-width;
     box-sizing: border-box;
-    padding: 16px;
+    margin: 12px;
+    padding: 12px;
     overflow: auto;
+    background-color: white;
+    border-radius: 6px;
   }
 </style>

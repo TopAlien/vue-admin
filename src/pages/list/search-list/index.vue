@@ -40,7 +40,7 @@
       dataIndex: 'status',
       key: 'status'
     },
-    { title: '操作', key: 'action', width: '170px' }
+    { title: '操作', key: 'action', width: '130px' }
   ]
 
   // 必须初始化，否则Form.useForm 无法resetFields
@@ -73,16 +73,22 @@
         />
       </a-form-item>
       <a-form-item label="筛选方式">
-        <a-input
-          placeholder="请输入筛选方式"
+        <a-select
           v-model:value="searchForm.fs"
-        />
+          placeholder="请选择状态"
+        >
+          <a-select-option value="人工筛选">人工筛选</a-select-option>
+          <a-select-option value="规则筛选">规则筛选</a-select-option>
+        </a-select>
       </a-form-item>
       <a-form-item label="状态">
-        <a-input
-          placeholder="请输入状态"
+        <a-select
           v-model:value="searchForm.status"
-        />
+          placeholder="请选择状态"
+        >
+          <a-select-option value="已上线">已上线</a-select-option>
+          <a-select-option value="已下线">已下线</a-select-option>
+        </a-select>
       </a-form-item>
       <a-form-item label="内容量">
         <a-input
@@ -143,7 +149,6 @@
               class="ant-dropdown-link"
               @click.prevent
             >
-              更多
               <i class="i-carbon-chevron-down inline-block v-sub" />
             </a>
             <template #overlay>

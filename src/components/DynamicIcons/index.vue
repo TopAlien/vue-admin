@@ -12,7 +12,7 @@
     })
   })
 
-  const checkIcons = ref()
+  const checkIcons = ref(1)
 </script>
 
 <template>

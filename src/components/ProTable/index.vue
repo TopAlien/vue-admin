@@ -4,6 +4,7 @@
 
 <template>
   <a-table
+    class="overflow-auto"
     v-bind="$attrs"
     size="middle"
     :pagination="{

@@ -7,6 +7,10 @@
     model: {
       type: Object,
       default: () => {}
+    },
+    title: {
+      type: String,
+      default: '查询表格'
     }
   })
 
@@ -24,6 +28,7 @@
 </script>
 
 <template>
+  <div v-if="title" class="search_title">{{ title }}</div>
   <div class="search_box">
     <div class="search_form flex-1">
       <slot />
@@ -73,8 +78,19 @@
     margin-bottom: 16px;
   }
 
+  .search_title {
+    font-size: 16px;
+    font-weight: 500;
+    color: rgb(29, 33, 41);
+    margin-bottom: 16px;
+  }
+
   .search_box .ant-form-item {
     margin-bottom: 16px;
+  }
+
+  .search_box .ant-select {
+    width: 178px;
   }
 
   .right_btn {
