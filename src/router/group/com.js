@@ -34,7 +34,7 @@ export default [
           {
             path: `${BASE_URL}/list-1/list3-1`,
             name: 'List3-1',
-            component: () => import('@/pages/error-page/404.vue'),
+            component: () => import('@/pages/exception/404-page.vue'),
             meta: {
               title: '列表3-1'
             }

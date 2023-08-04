@@ -4,5 +4,8 @@ export default [
   'i-carbon-ibm-cloud-transit-gateway',
   'i-carbon-list',
   'i-carbon-location-heart',
-  'i-carbon-cloud-monitoring'
+  'i-carbon-cloud-monitoring',
+  'i-carbon-data-check',
+  'i-carbon-ibm-content-services',
+  'i-carbon-encryption'
 ]

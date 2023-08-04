@@ -28,7 +28,7 @@
 </script>
 
 <template>
-  <div v-if="title" class="search_title">{{ title }}</div>
+  <div v-if="title" class="header_title">{{ title }}</div>
   <div class="search_box">
     <div class="search_form flex-1">
       <slot />
@@ -75,13 +75,6 @@
   .search_box {
     display: flex;
     border-bottom: 1px solid rgb(229, 230, 235);
-    margin-bottom: 16px;
-  }
-
-  .search_title {
-    font-size: 16px;
-    font-weight: 500;
-    color: rgb(29, 33, 41);
     margin-bottom: 16px;
   }
 

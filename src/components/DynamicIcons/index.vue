@@ -11,13 +11,11 @@
       icon: icon
     })
   })
-
-  const checkIcons = ref(1)
 </script>
 
 <template>
   <CheckCard
-    v-model="checkIcons"
+    v-bind="$attrs"
     :options="options"
   />
 </template>

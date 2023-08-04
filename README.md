@@ -25,7 +25,43 @@
 - unocss - safelist加载动态icon class
 - vueuse
 - ant-design-vue@4.x - zh-cn 组件二次封装slot, attrs透传
-- smooth-scrollbar自定义滚动条（自定义指令) 
+- smooth-scrollbar自定义滚动条（自定义指令)
 
 ### import.meta.env 访问环境变量，自定义 VITE\_ 开头
+
 ![img_1.png](public/img_1.png)
+
+### 路由配置
+
+```js
+const BASE_URL = '/other'
+
+[
+  {
+    // path必须写完整的路径，要做跳转匹配
+    path: BASE_URL,
+    component: Layout,
+    name: 'Com',
+    redirect: `${BASE_URL}/list-1/list2-1`,
+    // icon 为carbon时在，safelist中添加class
+    // meta: { icon, hideInMenu, title }
+    meta: {
+      title: '组件',
+      // 需要显示到column tab中的分组
+      isGroup: true,
+      icon: 'i-carbon-ibm-cloud-transit-gateway'
+    },
+    children: [
+      {
+        path: `${BASE_URL}/list-1`,
+        redirect: `${BASE_URL}/list-1/list2-1`,
+        name: 'List-1',
+        meta: {
+          title: '列表-1',
+          icon: 'i-carbon-list-boxes'
+        }
+      }
+    ]
+  }
+]
+```

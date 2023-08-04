@@ -7,7 +7,7 @@ export default [
     path: BASE_URL,
     component: Layout,
     name: 'Other',
-    redirect: `${BASE_URL}/list`,
+    redirect: `${BASE_URL}/check`,
     meta: {
       title: '其他',
       isGroup: true,
@@ -15,12 +15,12 @@ export default [
     },
     children: [
       {
-        path: `${BASE_URL}/list`,
+        path: `${BASE_URL}/check`,
         name: 'OtherList',
-        component: () => import('@/pages/other/icons/index.vue'),
+        component: () => import('@/pages/other/check-card/index.vue'),
         meta: {
           title: 'CheckCard',
-          icon: 'i-carbon-list-boxes'
+          icon: 'i-carbon-data-check'
         }
       },
       {
@@ -29,7 +29,7 @@ export default [
         component: () => import('@/pages/other/watermark/index.vue'),
         meta: {
           title: '水印',
-          icon: 'i-carbon-list-boxes'
+          icon: 'i-carbon-encryption'
         }
       },
       {
@@ -47,7 +47,7 @@ export default [
         component: () => import('@/pages/other/icons/index.vue'),
         meta: {
           title: '图标',
-          icon: 'i-carbon-location-heart'
+          icon: 'i-carbon-ibm-content-services'
         }
       }
     ]

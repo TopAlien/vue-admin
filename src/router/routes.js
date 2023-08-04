@@ -18,7 +18,7 @@ const PAGE_NOT_FOUND_ROUTE = [
       {
         path: '/:path(.*)*',
         name: '404-page',
-        component: () => import('@/pages/error-page/404.vue'),
+        component: () => import('@/pages/exception/404-page.vue'),
         meta: {
           title: '404页面找不到'
         }
