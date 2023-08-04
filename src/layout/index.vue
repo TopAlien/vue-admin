@@ -26,7 +26,7 @@
     flex: 1;
     height: calc(100vh - @header-height);
     overflow: auto;
-    background: rgb(242, 243, 245);
+    background: @main-bg;
   }
 
   .scroll_content {

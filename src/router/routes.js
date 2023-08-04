@@ -3,6 +3,7 @@ import HomeGroup from './group/home.js'
 import ComGroup from './group/com.js'
 import OtherGroup from './group/other.js'
 import ListGroup from './group/list.js'
+import ExceptionGroup from './group/exception.js'
 
 // 404 on a page
 const PAGE_NOT_FOUND_ROUTE = [
@@ -31,4 +32,11 @@ const PAGE_NOT_FOUND_ROUTE = [
  *
  * TIP path必须写完整的路径，要做跳转匹配
  */
-export const BASE_ROUTE = [...HomeGroup, ...ComGroup, ...OtherGroup, ...ListGroup, ...PAGE_NOT_FOUND_ROUTE]
+export const BASE_ROUTE = [
+  ...HomeGroup,
+  ...ComGroup,
+  ...OtherGroup,
+  ...ListGroup,
+  ...ExceptionGroup,
+  ...PAGE_NOT_FOUND_ROUTE
+]
