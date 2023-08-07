@@ -29,7 +29,7 @@
 
 ### import.meta.env 访问环境变量，自定义 VITE\_ 开头
 ![img.png](public/img.png)
-![img_1.png](public/img_1.png)
+![img.png](public/img1.png)
 ![img.png](public/img2.png)
 
 ### 路由配置
