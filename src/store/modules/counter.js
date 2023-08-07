@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-const userCounterStore = defineStore('counter', {
+const useCounterStore = defineStore('counter', {
   state: () => ({ count: 0 }),
   getters: {
     double: (state) => state.count * 2
@@ -12,4 +12,4 @@ const userCounterStore = defineStore('counter', {
   }
 })
 
-export default userCounterStore
+export default useCounterStore

@@ -5,6 +5,17 @@ import OtherGroup from './group/other.js'
 import ListGroup from './group/list.js'
 import ExceptionGroup from './group/exception.js'
 
+const WHITE_ROUTE = [
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import('@/pages/login/index.vue'),
+    meta: {
+      title: '登录'
+    }
+  }
+]
+
 // 404 on a page
 const PAGE_NOT_FOUND_ROUTE = [
   {
@@ -33,6 +44,7 @@ const PAGE_NOT_FOUND_ROUTE = [
  * TIP path必须写完整的路径，要做跳转匹配
  */
 export const BASE_ROUTE = [
+  ...WHITE_ROUTE,
   ...HomeGroup,
   ...ComGroup,
   ...OtherGroup,

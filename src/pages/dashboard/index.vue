@@ -1,10 +1,9 @@
 <script setup>
   import { ref } from 'vue'
   import { Watermark } from 'ant-design-vue'
-  import HelloWorld from '@/components/HelloWorld.vue'
-  import { userCounterStore } from '@/store'
+  import { useCounterStore } from '@/store'
 
-  const counterStore = userCounterStore()
+  const counterStore = useCounterStore()
 
   const open = ref(false)
 </script>
@@ -34,7 +33,6 @@
     >
       <div class="h1000px w9000px">1237912379</div>
     </div>
-    <HelloWorld msg="Vite + Vue overlayscrollbars" />
     <a-datePicker />
     <a-modal
       v-model:open="open"
