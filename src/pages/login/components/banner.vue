@@ -130,10 +130,8 @@
 
   // responsive
   @media (max-width: @screen-lg) {
-    .container {
-      .banner {
-        width: 25%;
-      }
+    .banner_inner {
+      width: 25vw;
     }
   }
 

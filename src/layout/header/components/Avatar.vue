@@ -1,3 +1,13 @@
+<script setup>
+  import { useRouter } from 'vue-router'
+  import { message } from 'ant-design-vue'
+
+  const router = useRouter()
+  const handleLogout = () => {
+    message.success('退出成功')
+    router.push({ path: '/login' })
+  }
+</script>
 <template>
   <div class="mr16px cursor-pointer">
     <a-dropdown>
@@ -15,7 +25,7 @@
       </a>
       <template #overlay>
         <a-menu>
-          <a-menu-item>退出登录</a-menu-item>
+          <a-menu-item @click="handleLogout">退出登录</a-menu-item>
         </a-menu>
       </template>
     </a-dropdown>

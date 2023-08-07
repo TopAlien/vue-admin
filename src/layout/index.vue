@@ -32,6 +32,7 @@
   .scroll_content {
     //height: calc(100vh - @header-height);
     //min-width: @scroll-content-min-width;
+    min-height: calc(100vh - 84px);
     box-sizing: border-box;
     margin: 12px;
     padding: 12px;
