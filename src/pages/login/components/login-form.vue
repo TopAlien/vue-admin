@@ -1,12 +1,29 @@
 <script setup>
+  import Footer from '@/components/Footer/index.vue'
+  import { ref } from 'vue'
   import config from '@/config/index.js'
   import { message } from 'ant-design-vue'
   import { useRouter } from 'vue-router'
 
+  const rulesLogin = {
+    username: [{ required: true, message: '请输入用户名！' }],
+    password: [{ required: true, message: '请输入用户密码！' }]
+  }
+
+  const loginRef = ref()
+  const loginForm = ref({ username: '', password: '' })
+
   const router = useRouter()
   const handleLogin = () => {
-    message.success('登录成功')
-    router.push({ path: '/' })
+    loginRef.value.validate().then(({ username, password }) => {
+      if (password !== 'admin' || username !== 'admin') {
+        message.error('账号或密码不正确！')
+        return
+      }
+
+      message.success('登录成功')
+      router.push({ path: '/' })
+    })
   }
 </script>
 
@@ -15,16 +32,26 @@
     <div class="login_form_content">
       <h3 class="login_title">欢迎登录 {{ config.title }}</h3>
       <p class="sub_title">欢迎登录 {{ config.title }}</p>
-      <a-form>
-        <a-form-item>
-          <a-input placeholder="用户名：admin">
+      <a-form
+        ref="loginRef"
+        :model="loginForm"
+        :rules="rulesLogin"
+      >
+        <a-form-item name="username">
+          <a-input
+            v-model:value="loginForm.username"
+            placeholder="用户名：admin"
+          >
             <template #prefix>
               <i class="i-carbon-group-account inline-block" />
             </template>
           </a-input>
         </a-form-item>
-        <a-form-item>
-          <a-input-password placeholder="密码：admin">
+        <a-form-item name="password">
+          <a-input-password
+            v-model:value="loginForm.password"
+            placeholder="密码：admin"
+          >
             <template #prefix>
               <i class="i-carbon-password inline-block" />
             </template>
@@ -38,6 +65,9 @@
       >
         登录
       </a-button>
+    </div>
+    <div class="form_footer">
+      <Footer />
     </div>
   </div>
 </template>
@@ -58,6 +88,13 @@
 
   .sub_title {
     font-size: 16px;
-    color: #ccc;
+    color: #888888;
+  }
+
+  .form_footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
   }
 </style>
