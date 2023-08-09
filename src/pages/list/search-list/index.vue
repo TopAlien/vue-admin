@@ -1,5 +1,5 @@
 <script setup>
-  import { ref } from 'vue'
+  import { computed, reactive, ref } from 'vue'
   import SearchBox from '@/components/SearchBox/index.vue'
   import ProTable from '@/components/ProTable/index.vue'
   import { tableData } from '@/mock/data.js'
@@ -43,11 +43,31 @@
     { title: '操作', key: 'action', width: '130px' }
   ]
 
+  const tableForm = reactive({
+    total: 100,
+    pagination: {
+      current: 1,
+      pageSize: 10
+    }
+  })
+
   // 必须初始化，否则Form.useForm 无法resetFields
   const searchForm = ref({ no: null, name: null, fs: null, status: null, num: null })
 
   const handleSearch = () => {
     console.log(searchForm.value)
+  }
+
+  const list = computed(() => {
+    const { current, pageSize } = tableForm.pagination
+    return tableData.slice(pageSize * (current - 1), pageSize * current)
+  })
+
+  const handleTableChange = ({ current, pageSize }) => {
+    tableForm.pagination = {
+      current,
+      pageSize
+    }
   }
 </script>
 
@@ -109,8 +129,10 @@
   </SearchBox>
 
   <ProTable
-    :data-source="tableData"
+    :data-source="list"
     :columns="columns"
+    :total="tableForm.total"
+    @change="handleTableChange"
   >
     <template #headerCell="{ column, title }">
       <template v-if="column.key === 'name'">

@@ -1,5 +1,12 @@
 <script setup>
   const slots = defineSlots()
+
+  const props = defineProps({
+    total: {
+      type: Number,
+      default: 0
+    }
+  })
 </script>
 
 <template>
@@ -9,6 +16,7 @@
     size="middle"
     :pagination="{
       showQuickJumper: true,
+      total: props.total,
       showTotal: (total) => `共计 ${total} 条`
     }"
   >
