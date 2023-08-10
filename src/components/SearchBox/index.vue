@@ -82,7 +82,8 @@
     margin-bottom: 16px;
   }
 
-  .search_box .ant-select {
+  .search_box .ant-select,
+  .search_box .ant-input {
     width: 178px;
   }
 

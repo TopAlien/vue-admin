@@ -1,7 +1,7 @@
 <script setup>
   import { ref } from 'vue'
   import CheckCard from '@/components/CheckCard/index.vue'
-  import icons from '@/components/DynamicIcons/icons.js'
+  import icons from '@/config/icons.js'
 
   const options = ref([])
   icons.forEach((icon, index) => {

@@ -14,6 +14,7 @@
     "@vueuse/core": "^10.2.1",
     "ant-design-vue": "^4.0.0",
     "dayjs": "^1.11.9",
+    "echarts": "^5.4.3",
     "pinia": "^2.1.4",
     "smooth-scrollbar": "^8.8.4",
     "vue": "^3.3.4",

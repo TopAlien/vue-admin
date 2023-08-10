@@ -7,5 +7,8 @@ export default [
   'i-carbon-cloud-monitoring',
   'i-carbon-data-check',
   'i-carbon-ibm-content-services',
-  'i-carbon-encryption'
+  'i-carbon-encryption',
+  'i-carbon-chart-bar',
+  'i-carbon-chart-line',
+  'i-carbon-chart-combo'
 ]

@@ -43,12 +43,10 @@
     { title: '操作', key: 'action', width: '130px' }
   ]
 
-  const tableForm = reactive({
+  const pagination = reactive({
     total: 100,
-    pagination: {
-      current: 1,
-      pageSize: 10
-    }
+    current: 1,
+    pageSize: 10
   })
 
   // 必须初始化，否则Form.useForm 无法resetFields
@@ -56,18 +54,17 @@
 
   const handleSearch = () => {
     console.log(searchForm.value)
+    pagination.current = 1
   }
 
   const list = computed(() => {
-    const { current, pageSize } = tableForm.pagination
+    const { current, pageSize } = pagination
     return tableData.slice(pageSize * (current - 1), pageSize * current)
   })
 
   const handleTableChange = ({ current, pageSize }) => {
-    tableForm.pagination = {
-      current,
-      pageSize
-    }
+    pagination.current = current
+    pagination.pageSize = pageSize
   }
 </script>
 
@@ -131,7 +128,7 @@
   <ProTable
     :data-source="list"
     :columns="columns"
-    :total="tableForm.total"
+    :pagination="pagination"
     @change="handleTableChange"
   >
     <template #headerCell="{ column, title }">
