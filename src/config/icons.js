@@ -10,5 +10,6 @@ export default [
   'i-carbon-encryption',
   'i-carbon-chart-bar',
   'i-carbon-chart-line',
-  'i-carbon-chart-combo'
+  'i-carbon-chart-combo',
+  'i-carbon-chart-pie'
 ]

@@ -31,6 +31,15 @@ export default [
           title: '折线图',
           icon: 'i-carbon-chart-line'
         }
+      },
+      {
+        path: `${BASE_URL}/pie`,
+        name: 'Chart_Pie',
+        component: () => import('@/pages/charts/pie/index.vue'),
+        meta: {
+          title: '饼图',
+          icon: 'i-carbon-chart-pie'
+        }
       }
     ]
   }
