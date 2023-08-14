@@ -9,7 +9,6 @@
 <template>
   <ConfigProvider>
     <Lock v-if="setting.lockScreen" />
-
     <router-view />
   </ConfigProvider>
 </template>

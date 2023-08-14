@@ -23,6 +23,11 @@
   const onWatch = () => {
     watState.arr = [{ name: 'ealien', age: '123', sex: '1' }]
   }
+
+  const counter = ref(0)
+  watch(counter, (newVal, oldVal) => {
+    console.log('-> newVal, oldVal', newVal, oldVal)
+  })
 </script>
 
 <template>

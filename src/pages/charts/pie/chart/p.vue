@@ -1,5 +1,5 @@
 <script setup>
-  import { ref, onMounted } from 'vue'
+  import { ref, onMounted, onUnmounted } from 'vue'
   import echarts from '@/lib/echarts.js'
 
   const p_chart = ref()
@@ -397,9 +397,14 @@
     myChart.setOption(option, true)
   }
 
+  let timer = null
   onMounted(() => {
     const myChart = echarts.init(p_chart.value, 'walden')
-    setInterval(() => draw(myChart), 200)
+    timer = setInterval(() => draw(myChart), 200)
+  })
+
+  onUnmounted(() => {
+    clearInterval(timer)
   })
 </script>
 

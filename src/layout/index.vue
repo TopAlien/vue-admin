@@ -1,6 +1,9 @@
 <script setup>
   import LayoutSide from './sider/index.vue'
   import Header from '@/layout/header/index.vue'
+
+  import { useSettingStore } from '@/store/index.js'
+  const setting = useSettingStore()
 </script>
 
 <template>
@@ -15,7 +18,9 @@
       v-scrollbar
     >
       <div class="scroll_content">
-        <router-view />
+        <a-spin :spinning="setting.contentSpin">
+          <router-view />
+        </a-spin>
       </div>
     </div>
   </div>
@@ -39,5 +44,9 @@
     overflow: auto;
     background-color: white;
     border-radius: 6px;
+  }
+
+  .scroll_content /deep/ .ant-spin-dot.ant-spin-dot-spin {
+    top: 40vh;
   }
 </style>

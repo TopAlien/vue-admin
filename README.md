@@ -21,6 +21,7 @@
 - pinia
 - vite@4
 - vue@3
+- axios
 - vue-router@4
 - unocss - safelist加载动态icon class
 - vueuse
