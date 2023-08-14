@@ -27,12 +27,17 @@
 - vueuse
 - ant-design-vue@4.x - zh-cn 组件二次封装slot, attrs透传
 - smooth-scrollbar自定义滚动条（自定义指令)
+- 可配置右侧content接口请加载动画（如图7），见service/index.js showLoading配置
 
 ### import.meta.env 访问环境变量，自定义 VITE\_ 开头
 ![img.png](public/img.png)
 ![img.png](public/img1.png)
 ![img.png](public/img2.png)
 ![img.png](public/img3.png)
+![img.png](public/img4.png)
+![img5.png](public/img5.png)
+![img.png](public/img6.png)
+![img7.png](public/img7.png)
 
 ### 路由配置
 
