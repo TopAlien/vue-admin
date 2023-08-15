@@ -30,6 +30,8 @@
 - 可配置右侧content接口请加载动画（如图7），见service/index.js showLoading配置
 
 ### import.meta.env 访问环境变量，自定义 VITE\_ 开头
+
+### 项目截图
 ![img.png](public/img.png)
 ![img.png](public/img1.png)
 ![img.png](public/img2.png)
@@ -73,3 +75,9 @@ const BASE_URL = '/other'
   }
 ]
 ```
+
+### 图表来自 http://ppchart.com/#/ 大赞👍
+
+### 插画 https://undraw.co/illustrations
+
+### 404插画 https://error404.fun/

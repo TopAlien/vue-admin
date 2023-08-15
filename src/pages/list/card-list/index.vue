@@ -12,7 +12,7 @@
 
 <template>
   <div class="mb14px header_title">卡片列表</div>
-  <div class="flex flex-wrap justify-between gap-14px">
+  <div class="flex flex-wrap gap-14px">
     <a-card
       hoverable
       style="width: 240px"
