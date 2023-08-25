@@ -19,10 +19,7 @@
       v-for="photo in photos"
     >
       <template #cover>
-        <img
-          alt="example"
-          :src="photo.thumbnailUrl"
-        />
+        <a-image :src="photo.thumbnailUrl" />
       </template>
       <a-card-meta :title="photo.albumId">
         <template #description>{{ photo.title }}</template>

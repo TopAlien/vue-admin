@@ -28,6 +28,8 @@
 - ant-design-vue@4.x - zh-cn 组件二次封装slot, attrs透传
 - smooth-scrollbar自定义滚动条（自定义指令)
 - 可配置右侧content接口请加载动画（如图7），见service/index.js showLoading配置
+- 图表库 Echarts-v5
+- 图表库 G2-5.0
 
 ### import.meta.env 访问环境变量，自定义 VITE\_ 开头
 

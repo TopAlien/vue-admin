@@ -40,6 +40,15 @@ export default [
           title: '饼图',
           icon: 'i-carbon-chart-pie'
         }
+      },
+      {
+        path: `${BASE_URL}/column`,
+        name: 'Chart2_Pie',
+        component: () => import('@/pages/charts/g2-column/index.vue'),
+        meta: {
+          title: 'G2-堆叠',
+          icon: 'i-carbon-chart-pie'
+        }
       }
     ]
   }

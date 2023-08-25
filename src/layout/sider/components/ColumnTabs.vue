@@ -51,7 +51,7 @@
         @click="handleTab(it, curTabIndex === index)"
       >
         <i :class="['block', it.meta.icon]" />
-        <span class="pt2px">{{ it.meta.title }}</span>
+        <span class="column_title">{{ it.meta.title }}</span>
       </div>
     </div>
     <div
@@ -107,6 +107,15 @@
         border-radius: 5px;
       }
     }
+  }
+
+  .column_title {
+    width: 100%;
+    text-align: center;
+    white-space: nowrap;
+    padding-top: 2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 </style>
 
