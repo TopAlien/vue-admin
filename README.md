@@ -30,6 +30,7 @@
 - 可配置右侧content接口请加载动画（如图7），见service/index.js showLoading配置
 - 图表库 Echarts-v5
 - 图表库 G2-5.0
+- hiprint 或者 vue-plugin-hiprint(npm 包) 打印，局部打印
 
 ### import.meta.env 访问环境变量，自定义 VITE\_ 开头
 

@@ -5,6 +5,7 @@ import OtherGroup from './group/other.js'
 import ListGroup from './group/list.js'
 import ExceptionGroup from './group/exception.js'
 import ChartGroup from './group/chart.js'
+import PrintGroup from './group/print.js'
 
 const WHITE_ROUTE = [
   {
@@ -51,6 +52,7 @@ export const BASE_ROUTE = [
   ...OtherGroup,
   ...ChartGroup,
   ...ListGroup,
+  ...PrintGroup,
   ...ExceptionGroup,
   ...PAGE_NOT_FOUND_ROUTE
 ]

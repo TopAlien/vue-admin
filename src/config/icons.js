@@ -11,5 +11,6 @@ export default [
   'i-carbon-chart-bar',
   'i-carbon-chart-line',
   'i-carbon-chart-combo',
-  'i-carbon-chart-pie'
+  'i-carbon-chart-pie',
+  'i-carbon-printer'
 ]
