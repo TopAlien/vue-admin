@@ -1,12 +1,10 @@
 <script setup>
   import { ref, watch } from 'vue'
-  import Logo from './Logo.vue'
   import { useRouter, useRoute } from 'vue-router'
   import { useSettingStore, useSideMenuStore } from '@/store/index.js'
   import { getTabIndex, getTabMenu } from '@/layout/sider/components/util.js'
 
   const router = useRouter()
-  const route = useRoute()
 
   const sideMenu = useSideMenuStore()
   const setting = useSettingStore()
@@ -25,10 +23,11 @@
   const tabMenu = getTabMenu(router.getRoutes() || [])
   const curTabIndex = ref(0)
 
+  const route = useRoute()
   watch(
-    route,
-    (newRoute) => {
-      curTabIndex.value = getTabIndex(tabMenu, newRoute || {})
+    () => [route.matched, route.path],
+    ([newMatchedArr]) => {
+      curTabIndex.value = getTabIndex(tabMenu, { matched: newMatchedArr })
     },
     { immediate: true }
   )

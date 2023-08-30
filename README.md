@@ -31,10 +31,12 @@
 - 图表库 Echarts-v5
 - 图表库 G2-5.0
 - 简单易用的打印，局部打印 hiprint
+- lodash-es版 方便vite tree shake, 减少包体积；所以我们在选择第三方库时，要尽可能使用 ESM 版本，可以提升不少性能！
 
 ### import.meta.env 访问环境变量，自定义 VITE\_ 开头
 
 ### 项目截图
+
 ![img.png](public/img.png)
 ![img.png](public/img1.png)
 ![img.png](public/img2.png)
@@ -48,9 +50,7 @@
 ### 路由配置
 
 ```js
-const BASE_URL = '/other'
-
-[
+const BASE_URL = '/other'[
   {
     // path必须写完整的路径，要做跳转匹配
     path: BASE_URL,
@@ -86,4 +86,33 @@ const BASE_URL = '/other'
 
 ### [404插画](https://error404.fun/)
 
-### [打印](https://www.npmjs.com/package/vue-plugin-hiprint) 
+### [打印](https://www.npmjs.com/package/vue-plugin-hiprint)
+
+## 开发经验/优化
+
+1. 避免整体监听对象，会隐士触发deep。分清楚watch({}), 和 watch(() => {}) 使用场景
+
+```js
+const watState = reactive({ arr: [], count: 1, str: '123', bo: true })
+
+// watch(watState.str, () => {})
+// 原始值不能直接监听，需要用getter函数
+// 引用可以直接监听，会隐式创建deep，用到getter函数，需显示deep监听，否则需要整体替换才触发watch 例： watState.arr = []
+watch(
+  () => watState.arr,
+  (newVal, oldVal) => {
+    message.success('触发！')
+    console.log('-> newVal, oldVal', newVal, oldVal)
+  }
+)
+
+const onWatch = () => {
+  watState.arr = [{ name: 'ealien', age: '123', sex: '1' }]
+}
+
+const counter = ref(0)
+// 不是原始值不能直接监听吗？啊这...。 别忘了ref访问需要 .value呀。souga
+watch(counter, (newVal, oldVal) => {
+  console.log('-> newVal, oldVal', newVal, oldVal)
+})
+```

@@ -17,9 +17,9 @@
 
   const route = useRoute()
   watch(
-    route,
-    (newRoute) => {
-      setting.changeMenu(Array.from(new Set([...setting.openKeys, newRoute.matched[1]?.path])), [newRoute.fullPath])
+    () => [route.matched, route.fullPath],
+    ([newMatchedArr, newFullPath]) => {
+      setting.changeMenu(Array.from(new Set([...setting.openKeys, newMatchedArr[1]?.path])), [newFullPath])
     },
     { immediate: true }
   )
