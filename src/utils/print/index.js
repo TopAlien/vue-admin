@@ -8,7 +8,7 @@ const templates = {
 }
 
 class Print {
-  constructor(template, printData) {
+  constructor(template) {
     this.hiprintTemplate = new hiprint.PrintTemplate({
       template: templates[template]
     })
@@ -30,7 +30,7 @@ class Print {
     )
   }
 
-  previewHtml(printData) {
+  getPreviewHtml(printData) {
     return this.hiprintTemplate.getHtml(printData)[0].outerHTML
   }
 }

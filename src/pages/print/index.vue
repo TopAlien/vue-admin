@@ -15,7 +15,7 @@
   const previewHtml = ref(null)
   const visible = ref(false)
   const handlePreview = () => {
-    previewHtml.value = tem1Print.previewHtml(printData)
+    previewHtml.value = tem1Print.getPreviewHtml(printData)
     visible.value = true
   }
 </script>
@@ -47,13 +47,12 @@
   <a-modal
     title="预览"
     v-model:open="visible"
+    width="850px"
   >
-    <div style="overflow: auto">
-      <div
-        v-if="previewHtml && visible"
-        v-html="previewHtml"
-      />
-    </div>
+    <div
+      v-if="previewHtml && visible"
+      v-html="previewHtml"
+    />
   </a-modal>
 </template>
 
