@@ -15,7 +15,7 @@
 ... 自定义可以增加 .env.[mode]
 ... package.json scripts 对应 --mode [mode]
 
-### 技术栈
+### 功能/技术栈
 
 - less css预处理器, 变量
 - pinia
@@ -30,7 +30,7 @@
 - 可配置右侧content接口请加载动画（如图7），见service/index.js showLoading配置
 - 图表库 Echarts-v5
 - 图表库 G2-5.0
-- hiprint 或者 vue-plugin-hiprint(npm 包) 打印，局部打印
+- 简单易用的打印，局部打印 hiprint
 
 ### import.meta.env 访问环境变量，自定义 VITE\_ 开头
 
@@ -43,6 +43,7 @@
 ![img5.png](public/img5.png)
 ![img.png](public/img6.png)
 ![img7.png](public/img7.png)
+![img8.png](public/img8.png)
 
 ### 路由配置
 
@@ -79,8 +80,10 @@ const BASE_URL = '/other'
 ]
 ```
 
-### 图表来自 http://ppchart.com/#/ 大赞👍
+### [图表来自](http://ppchart.com/#/) 大赞👍
 
-### 插画 https://undraw.co/illustrations
+### [插画](https://undraw.co/illustrations)
 
-### 404插画 https://error404.fun/
+### [404插画](https://error404.fun/)
+
+### [打印](https://www.npmjs.com/package/vue-plugin-hiprint) 
