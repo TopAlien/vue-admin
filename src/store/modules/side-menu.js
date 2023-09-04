@@ -26,7 +26,7 @@ const emptyMenu = [{ label: '', key: '' }]
 
 const menuMap = new WeakMap()
 const useSideMenuStore = defineStore('sideMenu', {
-  state: () => ({ menus: emptyMenu, menuKey: 0 }),
+  state: () => ({ menus: emptyMenu }),
   getters: {
     onlyMenu() {
       return config.onlyMenu
@@ -40,8 +40,6 @@ const useSideMenuStore = defineStore('sideMenu', {
       if (!hasSide) {
         menuMap.set(side, generator(side.children) || [])
       }
-      // menu 渲染时使用，变化后key更新
-      this.menuKey = Date.now()
       this.menus = menuMap.get(side)
     }
   }

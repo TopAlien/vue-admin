@@ -8,6 +8,6 @@
 <template>
   <div class="flex">
     <ColumnTabs />
-    <Menu v-if="sideMenu.onlyMenu" />
+    <Menu v-show="sideMenu.onlyMenu" />
   </div>
 </template>

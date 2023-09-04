@@ -25,9 +25,12 @@
 
   const route = useRoute()
   watch(
-    () => [route.matched, route.path],
-    ([newMatchedArr]) => {
+    () => [route.matched, route.fullPath],
+    ([newMatchedArr, newFullPath]) => {
       curTabIndex.value = getTabIndex(tabMenu, { matched: newMatchedArr })
+
+      /// 展开menu, 高亮第一个菜单
+      setting.changeMenu(Array.from(new Set([...setting.openKeys, newMatchedArr[1]?.path])), [newFullPath])
     },
     { immediate: true }
   )

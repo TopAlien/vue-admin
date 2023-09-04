@@ -1,6 +1,5 @@
 <script setup>
-  import { watch } from 'vue'
-  import { useRoute, useRouter } from 'vue-router'
+  import { useRouter } from 'vue-router'
   import { useSideMenuStore, useSettingStore } from '@/store/index.js'
 
   const setting = useSettingStore()
@@ -14,22 +13,14 @@
   const openChange = (openKeys) => {
     setting.changeMenu(openKeys, setting.selectedKeys)
   }
-
-  const route = useRoute()
-  watch(
-    () => [route.matched, route.fullPath],
-    ([newMatchedArr, newFullPath]) => {
-      setting.changeMenu(Array.from(new Set([...setting.openKeys, newMatchedArr[1]?.path])), [newFullPath])
-    },
-    { immediate: true }
-  )
 </script>
 
 <template>
-  <div :class="['menu', setting.collapsed ? 'collapsed_menu' : '']">
+  <div
+    v-scrollbar
+    :class="['menu', setting.collapsed ? 'collapsed_menu' : '']"
+  >
     <a-menu
-      :key="sideMenu.menuKey"
-      v-scrollbar
       class="menu_cus"
       mode="inline"
       v-model:selectedKeys="setting.selectedKeys"
@@ -44,10 +35,11 @@
 
 <style scoped lang="less">
   .menu {
+    overflow: auto;
+    height: calc(100vh - @header-height - 4px);
+
     &_cus {
       width: @menu-width;
-      overflow: auto;
-      height: calc(100vh - @header-height - 4px);
 
       // 为了漏出头部阴影
       margin-top: 4px;
