@@ -10,10 +10,10 @@
   const setting = useSettingStore()
   const handleTab = (it, isHighlight) => {
     if (isHighlight) return
-
     sideMenu.changeSide(it)
-    router.push({ path: it.path })
     setting.changeMenu([], [])
+
+    router.push({ path: it.path })
 
     if (setting.collapsed) {
       setting.toggleCollapsed()

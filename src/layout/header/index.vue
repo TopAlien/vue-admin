@@ -1,5 +1,4 @@
 <script setup>
-  import FullScreen from '@/components/FullScreen/index.vue'
   import Avatar from './components/Avatar.vue'
   import Lock from './components/Lock.vue'
 
@@ -24,7 +23,6 @@
 
     <div class="flex items-center gap16px">
       <Lock />
-      <FullScreen />
       <Avatar />
     </div>
   </div>
