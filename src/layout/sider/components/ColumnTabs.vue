@@ -10,7 +10,6 @@
   const setting = useSettingStore()
   const handleTab = (it, isHighlight) => {
     if (isHighlight) return
-    sideMenu.changeSide(it)
     setting.changeMenu([], [])
 
     router.push({ path: it.path })
@@ -31,13 +30,11 @@
 
       /// 展开menu, 高亮第一个菜单
       setting.changeMenu(Array.from(new Set([...setting.openKeys, newMatchedArr[1]?.path])), [newFullPath])
+
+      curTabIndex.value >= 0 && sideMenu.changeSide(tabMenu[curTabIndex.value])
     },
     { immediate: true }
   )
-
-  /// init
-  // fix sideMenu某项被整体隐藏时的错误，hideInMenu: true
-  curTabIndex.value >= 0 && sideMenu.changeSide(tabMenu[curTabIndex.value])
 </script>
 
 <template>

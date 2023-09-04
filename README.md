@@ -32,6 +32,7 @@
 - 图表库 G2-5.0
 - 简单易用的打印，局部打印 hiprint
 - lodash-es版 方便vite tree shake, 减少包体积；所以我们在选择第三方库时，要尽可能使用 ESM 版本，可以提升不少性能！
+- 切换页面回到顶部，区域滚动router无效
 
 ### import.meta.env 访问环境变量，自定义 VITE\_ 开头
 
