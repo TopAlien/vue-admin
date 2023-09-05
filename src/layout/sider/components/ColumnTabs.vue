@@ -11,7 +11,6 @@
   const handleTab = (it, isHighlight) => {
     if (isHighlight) return
     setting.changeMenu([], [])
-
     router.push({ path: it.path })
 
     if (setting.collapsed) {
@@ -26,11 +25,13 @@
   watch(
     () => [route.matched, route.fullPath],
     ([newMatchedArr, newFullPath]) => {
+      // 需要反推，防止回退操作显示错误
       curTabIndex.value = getTabIndex(tabMenu, { matched: newMatchedArr })
 
       /// 展开menu, 高亮第一个菜单
       setting.changeMenu(Array.from(new Set([...setting.openKeys, newMatchedArr[1]?.path])), [newFullPath])
 
+      // fix 浏览器菜单回退时 side数据更新;取缓存
       curTabIndex.value >= 0 && sideMenu.changeSide(tabMenu[curTabIndex.value])
     },
     { immediate: true }

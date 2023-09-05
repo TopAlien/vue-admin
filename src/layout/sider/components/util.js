@@ -10,11 +10,15 @@ export const getTabMenu = (routes) => {
   return tabMenu
 }
 
+const tabMenuMap = new Map()
 export const getTabIndex = (tabMenu, route) => {
-  return (
-    tabMenu.findIndex((it) => {
-      const matchedPath = (route.matched || []).map((item) => item.path)
-      return matchedPath.includes(it.path)
-    }) || 0
-  )
+  const firstRoute = (route.matched || [])[0]?.path
+  if (!tabMenuMap.has(firstRoute)) {
+    tabMenuMap.set(
+      firstRoute,
+      tabMenu.findIndex((it) => (route.matched || []).map((item) => item.path).includes(it.path)) || 0
+    )
+  }
+
+  return tabMenuMap.get(firstRoute)
 }
