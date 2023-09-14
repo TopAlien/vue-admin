@@ -133,7 +133,7 @@
   >
     <template #headerCell="{ column, title }">
       <template v-if="column.key === 'name'">
-        <i class="i-carbon-group-security inline-block v-sub" />
+        <i class="i-carbon-data-collection inline-block v-sub" />
         {{ title }}
       </template>
     </template>

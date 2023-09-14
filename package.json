@@ -22,7 +22,8 @@
     "smooth-scrollbar": "^8.8.4",
     "vue": "^3.3.4",
     "vue-plugin-hiprint": "^0.0.54-fix",
-    "vue-router": "^4.2.4"
+    "vue-router": "^4.2.4",
+    "vue3-tree-org": "^4.2.2"
   },
   "devDependencies": {
     "@iconify-json/carbon": "^1.1.18",

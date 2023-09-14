@@ -49,6 +49,15 @@ export default [
           title: '图标',
           icon: 'i-carbon-ibm-content-services'
         }
+      },
+      {
+        path: `${BASE_URL}/org`,
+        name: 'OrgTree',
+        component: () => import('@/pages/other/org_tree/index.vue'),
+        meta: {
+          title: 'OrgTree',
+          icon: 'i-carbon-decision-tree'
+        }
       }
     ]
   }
