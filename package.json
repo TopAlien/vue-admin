@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@antv/g2": "^5.0.22",
+    "@popperjs/core": "^2.11.8",
     "@vueuse/core": "^10.2.1",
     "ant-design-vue": "^4.0.0",
     "axios": "^1.4.0",
@@ -20,6 +21,7 @@
     "lodash-es": "^4.17.21",
     "pinia": "^2.1.4",
     "smooth-scrollbar": "^8.8.4",
+    "v-calendar": "^3.0.3",
     "vue": "^3.3.4",
     "vue-plugin-hiprint": "^0.0.54-fix",
     "vue-router": "^4.2.4",

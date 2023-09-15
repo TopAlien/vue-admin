@@ -30,9 +30,11 @@
 - 可配置右侧content接口请加载动画（如图7），见service/index.js showLoading配置
 - 图表库 Echarts-v5
 - 图表库 G2-5.0
-- 简单易用的打印，局部打印 hiprint
+- 简单易用的打印，局部打印 hiprint，直接预览，导出pdf
 - lodash-es版 方便vite tree shake, 减少包体积；所以我们在选择第三方库时，要尽可能使用 ESM 版本，可以提升不少性能！
 - 切换页面回到顶部，区域滚动router无效
+- Org Tree
+- Calendar 日历
 
 ### import.meta.env 访问环境变量，自定义 VITE\_ 开头
 
@@ -47,6 +49,8 @@
 ![img.png](public/img6.png)
 ![img7.png](public/img7.png)
 ![img8.png](public/img8.png)
+![img9.png](public/img9.png)
+![img10.png](public/img10.png)
 
 ### 路由配置
 

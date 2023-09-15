@@ -58,6 +58,15 @@ export default [
           title: 'OrgTree',
           icon: 'i-carbon-decision-tree'
         }
+      },
+      {
+        path: `${BASE_URL}/calendar`,
+        name: 'Calendar',
+        component: () => import('@/pages/other/calendar/index.vue'),
+        meta: {
+          title: '日历',
+          icon: 'i-carbon-calendar'
+        }
       }
     ]
   }

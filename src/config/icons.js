@@ -13,5 +13,6 @@ export default [
   'i-carbon-chart-combo',
   'i-carbon-chart-pie',
   'i-carbon-printer',
-  'i-carbon-decision-tree'
+  'i-carbon-decision-tree',
+  'i-carbon-calendar'
 ]

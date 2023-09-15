@@ -9,9 +9,15 @@ import App from './App.vue'
 import vue3TreeOrg from 'vue3-tree-org'
 import 'vue3-tree-org/lib/vue3-tree-org.css'
 
+import { setupCalendar, Calendar, DatePicker } from 'v-calendar'
+import 'v-calendar/style.css'
+
 import './bootstrap.js'
 
 const app = createApp(App)
+app.use(setupCalendar, {})
+app.component('VCalendar', Calendar)
+app.component('VDatePicker', DatePicker)
 app.use(vue3TreeOrg)
 app.use(pinia)
 app.use(directive)
