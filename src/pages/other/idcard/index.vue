@@ -21,15 +21,14 @@
   }
 
   const handleSubmit = () => {
-    formRef.value &&
-      formRef.value.validate().then(() => {
-        const userId = userInfo.value.idcard
-        const info = idCard.info(userId)
-        userInfo.value = {
-          ...info,
-          idcard: userId
-        }
-      })
+    formRef.value && formRef.value.validate()
+
+    const userId = userInfo.value.idcard
+    const info = idCard.info(userId)
+    userInfo.value = {
+      ...info,
+      idcard: userId
+    }
   }
 
   const randomIdCard = () => {
