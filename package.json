@@ -18,6 +18,7 @@
     "axios": "^1.4.0",
     "dayjs": "^1.11.9",
     "echarts": "^5.4.3",
+    "idcard": "^4.1.1",
     "lodash-es": "^4.17.21",
     "pinia": "^2.1.4",
     "smooth-scrollbar": "^8.8.4",

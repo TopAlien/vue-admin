@@ -35,6 +35,7 @@
 - 切换页面回到顶部，区域滚动router无效
 - Org Tree
 - Calendar 日历
+- idcard 校验身份证[第二代]合法性，获取身份证详细信息（可15位转18位）
 
 ### import.meta.env 访问环境变量，自定义 VITE\_ 开头
 
@@ -51,6 +52,7 @@
 ![img8.png](public/img8.png)
 ![img9.png](public/img9.png)
 ![img10.png](public/img10.png)
+![img11.png](public/img11.png)
 
 ### 路由配置
 

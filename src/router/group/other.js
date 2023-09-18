@@ -1,5 +1,4 @@
 import Layout from '@/layout/index.vue'
-
 const BASE_URL = '/other'
 
 export default [
@@ -9,7 +8,7 @@ export default [
     name: 'Other',
     redirect: `${BASE_URL}/check`,
     meta: {
-      title: '其他',
+      title: '插件',
       isGroup: true,
       icon: 'i-carbon-location-heart'
     },
@@ -33,12 +32,12 @@ export default [
         }
       },
       {
-        path: `${BASE_URL}/list1`,
-        name: 'OtherList1',
-        component: () => import('@/pages/test/test2.vue'),
+        path: `${BASE_URL}/idcard`,
+        name: 'IdCard',
+        component: () => import('@/pages/other/idcard/index.vue'),
         meta: {
-          title: '其他-1',
-          icon: 'i-carbon-home'
+          title: 'idcard',
+          icon: 'i-carbon-id-management'
         }
       },
       {

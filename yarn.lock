@@ -1881,6 +1881,11 @@ iconv-lite@0.6, iconv-lite@^0.6.3:
   dependencies:
     safer-buffer ">= 2.1.2 < 3.0.0"
 
+idcard@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.npmmirror.com/idcard/-/idcard-4.1.1.tgz#d1302df4ab868bd2d5646764bfa9199351a57a3d"
+  integrity sha512-IfuWI1bI/IohizSggg8xxXdJ3qID2yW6eUlHf3XEmB0+iBEab8BQky9lU2UVLv7BjmDxYbA8kjXTR3G3l8yj5g==
+
 image-size@~0.5.0:
   version "0.5.5"
   resolved "https://registry.npmmirror.com/image-size/-/image-size-0.5.5.tgz#09dfd4ab9d20e29eb1c3e80b8990378df9e3cb9c"
