@@ -24,6 +24,7 @@
     "smooth-scrollbar": "^8.8.4",
     "v-calendar": "^3.0.3",
     "vue": "^3.3.4",
+    "vue-esign": "^1.1.4",
     "vue-plugin-hiprint": "^0.0.54-fix",
     "vue-router": "^4.2.4",
     "vue3-tree-org": "^4.2.2"

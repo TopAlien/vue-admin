@@ -15,5 +15,6 @@ export default [
   'i-carbon-printer',
   'i-carbon-decision-tree',
   'i-carbon-calendar',
-  'i-carbon-id-management'
+  'i-carbon-id-management',
+  'i-carbon-contour-draw'
 ]

@@ -66,6 +66,15 @@ export default [
           title: '日历',
           icon: 'i-carbon-calendar'
         }
+      },
+      {
+        path: `${BASE_URL}/sign`,
+        name: 'Sign',
+        component: () => import('@/pages/other/sign/index.vue'),
+        meta: {
+          title: '签字板',
+          icon: 'i-carbon-contour-draw'
+        }
       }
     ]
   }
