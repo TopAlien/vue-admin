@@ -75,6 +75,15 @@ export default [
           title: '签字板',
           icon: 'i-carbon-contour-draw'
         }
+      },
+      {
+        path: `${BASE_URL}/day`,
+        name: 'DayJS',
+        component: () => import('@/pages/other/dayjs/index.vue'),
+        meta: {
+          title: 'dayjs',
+          icon: 'i-carbon-event-schedule'
+        }
       }
     ]
   }

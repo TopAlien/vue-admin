@@ -10,12 +10,12 @@
     },
     {
       slogan: '内置了常见问题的解决方案',
-      subSlogan: '国际化，路由配置，状态管理应有尽有',
+      subSlogan: '路由配置，状态管理应有尽有',
       image: bannerImage
     },
     {
-      slogan: '接入可视化增强工具AUX',
-      subSlogan: '实现灵活的区块式开发',
+      slogan: '仿arco-design-pro登录UI',
+      subSlogan: '仿登录UI',
       image: bannerImage
     }
   ]
