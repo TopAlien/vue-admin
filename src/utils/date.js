@@ -89,3 +89,25 @@ export const getUnixTime = (date) => {
 export const getTimeMill = (date) => {
   return _getDayOrigin(date).valueOf()
 }
+
+/**
+ *
+ * @param date date小于当前时间
+ */
+const ONE_HOUR = 60 * 60
+export const fromCurrentTime = (date) => {
+  const dateUnixTime = getUnixTime(date)
+  const currentUnixTime = getUnixTime()
+
+  const spaceTime = Math.abs(currentUnixTime - dateUnixTime)
+
+  if (spaceTime < ONE_HOUR) {
+    return `${parseInt(String(spaceTime / 60))}分钟前`
+  } else if (spaceTime < ONE_HOUR * 24) {
+    return `${parseInt(String(spaceTime / ONE_HOUR))}小时前`
+  } else if (spaceTime < ONE_HOUR * 24 * 2) {
+    return '昨天'
+  } else {
+    return `${parseInt(String(spaceTime / (ONE_HOUR * 24)))}天前`
+  }
+}
