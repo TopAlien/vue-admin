@@ -42,31 +42,13 @@ export default [
         ]
       },
       {
-        path: `${BASE_URL}/list-5`,
-        redirect: `${BASE_URL}/list-5/list2`,
-        name: 'List-4',
+        path: `${BASE_URL}/count-down`,
+        name: 'CountDown',
+        component: () => import('@/pages/com/count-down/index.vue'),
         meta: {
-          title: '列表',
-          icon: 'i-carbon-list'
-        },
-        children: [
-          {
-            path: `${BASE_URL}/list-5/list2`,
-            name: 'List-5',
-            component: () => import('@/pages/test/list.vue'),
-            meta: {
-              title: '列表2'
-            }
-          },
-          {
-            path: `${BASE_URL}/list-5/list3`,
-            name: 'List-6',
-            component: () => import('@/pages/test/test2.vue'),
-            meta: {
-              title: '列表3'
-            }
-          }
-        ]
+          title: '倒计时',
+          icon: 'i-carbon-time'
+        }
       }
     ]
   }

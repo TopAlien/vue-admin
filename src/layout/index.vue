@@ -46,7 +46,7 @@
     border-radius: 6px;
   }
 
-  .scroll_content /deep/ .ant-spin-dot.ant-spin-dot-spin {
+  :deep(.scroll_content .ant-spin-dot.ant-spin-dot-spin) {
     top: 40vh;
   }
 </style>

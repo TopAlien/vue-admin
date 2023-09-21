@@ -1,5 +1,6 @@
 <script setup>
   import { computed, reactive, ref } from 'vue'
+  import { message } from 'ant-design-vue'
   import SearchBox from '@/components/SearchBox/index.vue'
   import ProTable from '@/components/ProTable/index.vue'
   import { tableData } from '@/mock/data.js'
@@ -53,7 +54,7 @@
   const searchForm = ref({ no: null, name: null, fs: null, status: null, num: null })
 
   const handleSearch = () => {
-    console.log(searchForm.value)
+    console.log('🚀 ~ file: index.vue:56 ~ handleSearch ~ searchForm.value:', searchForm.value)
     pagination.current = 1
   }
 

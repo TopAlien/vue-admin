@@ -17,5 +17,6 @@ export default [
   'i-carbon-calendar',
   'i-carbon-id-management',
   'i-carbon-contour-draw',
-  'i-carbon-event-schedule'
+  'i-carbon-event-schedule',
+  'i-carbon-time'
 ]

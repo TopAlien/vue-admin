@@ -1,4 +1,4 @@
-import scrollbar from './scrollbar'
+import scrollbar from './scrollbar.js'
 
 const directives = {
   scrollbar

@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
 import pinia from './store'
-import directive from './directive'
+import directive from './lib/directive'
 import router from '@/router/index.js'
 import 'virtual:uno.css'
 import './styles/global.less'
