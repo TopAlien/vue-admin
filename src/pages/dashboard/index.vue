@@ -1,7 +1,7 @@
 <script setup>
   import { reactive, ref, watch } from 'vue'
   import { message, Watermark } from 'ant-design-vue'
-  import { useCounterStore } from '@/store'
+  import useCounterStore from '@/store/counter.js'
 
   const counterStore = useCounterStore()
 

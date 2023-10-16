@@ -3,5 +3,7 @@ export default {
 
   onlyMenu: true,
 
-  useCustomScrollBar: true
+  useCustomScrollBar: true,
+
+  useDynamicRoute: false
 }

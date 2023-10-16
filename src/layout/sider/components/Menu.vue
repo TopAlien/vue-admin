@@ -1,6 +1,7 @@
 <script setup>
   import { useRouter } from 'vue-router'
-  import { useSideMenuStore, useSettingStore } from '@/store/index.js'
+  import useSettingStore from '@/store/setting.js'
+  import useSideMenuStore from '@/store/side-menu.js'
 
   const setting = useSettingStore()
   const sideMenu = useSideMenuStore()
@@ -17,6 +18,7 @@
 
 <template>
   <div
+    v-show="sideMenu.onlyMenu"
     v-scrollbar
     :class="['menu', setting.collapsed ? 'collapsed_menu' : '']"
   >

@@ -2,7 +2,7 @@
   import LayoutSide from './sider/index.vue'
   import Header from '@/layout/header/index.vue'
 
-  import { useSettingStore } from '@/store/index.js'
+  import useSettingStore from '@/store/setting.js'
   const setting = useSettingStore()
 </script>
 

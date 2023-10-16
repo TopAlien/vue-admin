@@ -18,3 +18,35 @@ export const tableData = Array.from({ length: 100 }, (it, index) => {
     status: index % 2 === 0 ? '已下线' : '已上线'
   }
 })
+
+/// 通过name匹配的
+export const adminRoutes = [
+  {
+    name: 'Chart',
+    path: '/chart',
+    children: [
+      {
+        path: '/chart/bar',
+        name: 'Chart_Bar'
+      },
+      {
+        path: '/chart/line',
+        name: 'Chart_Line'
+      },
+      {
+        path: '/chart/pie',
+        name: 'Chart2_Pie'
+      }
+    ]
+  },
+  {
+    name: 'Print',
+    path: '/print',
+    children: [
+      {
+        name: 'Print-List',
+        path: '/print/list'
+      }
+    ]
+  }
+]

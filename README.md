@@ -37,6 +37,7 @@
 - Calendar 日历
 - idcard 校验身份证[第二代]合法性，获取身份证详细信息（可15位转18位）
 - NProgress 页面切换进度条
+- 后端动态路由匹配
 
 ### import.meta.env 访问环境变量，自定义 VITE\_ 开头
 

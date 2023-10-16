@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { message, Modal } from 'ant-design-vue'
-import { useSettingStore } from '@/store/index.js'
+import useSettingStore from '@/store/setting.js'
 
 const setting = useSettingStore()
 
@@ -19,7 +19,7 @@ service.interceptors.request.use(
     // if (token) {
     //   config.headers['X-Token'] = 'token'
     // }
-    if(config.showLoading) {
+    if (config.showLoading) {
       setting.changeSpin(true)
     }
 

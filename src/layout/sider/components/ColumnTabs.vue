@@ -1,7 +1,8 @@
 <script setup>
   import { ref, watch } from 'vue'
   import { useRouter, useRoute } from 'vue-router'
-  import { useSettingStore, useSideMenuStore } from '@/store/index.js'
+  import useSettingStore from '@/store/setting.js'
+  import useSideMenuStore from '@/store/side-menu.js'
   import { getTabIndex, getTabMenu } from '@/layout/sider/components/util.js'
 
   const router = useRouter()
@@ -23,13 +24,13 @@
 
   const route = useRoute()
   watch(
-    () => [route.matched, route.fullPath],
-    ([newMatchedArr, newFullPath]) => {
+    () => [route.matched, route.path],
+    ([newMatchedArr, newPath]) => {
       // 需要反推，防止回退操作显示错误
       curTabIndex.value = getTabIndex(tabMenu, { matched: newMatchedArr })
 
       /// 展开menu, 高亮第一个菜单
-      setting.changeMenu(Array.from(new Set([...setting.openKeys, newMatchedArr[1]?.path])), [newFullPath])
+      setting.changeMenu(Array.from(new Set([...setting.openKeys, newMatchedArr[1]?.path])), [newPath])
 
       // fix 浏览器菜单回退时 side数据更新;取缓存
       curTabIndex.value >= 0 && sideMenu.changeSide(tabMenu[curTabIndex.value])

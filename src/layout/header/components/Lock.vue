@@ -1,5 +1,5 @@
 <script setup>
-  import { useSettingStore } from '@/store'
+  import useSettingStore from '@/store/setting.js'
   const setting = useSettingStore()
 </script>
 

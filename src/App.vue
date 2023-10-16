@@ -2,7 +2,7 @@
   import ConfigProvider from '@/components/ConfigProvider/index.vue'
   import Lock from '@/components/Lock/index.vue'
 
-  import { useSettingStore } from '@/store'
+  import useSettingStore from '@/store/setting.js'
   const setting = useSettingStore()
 </script>
 

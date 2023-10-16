@@ -4,7 +4,7 @@
 
   import config from '@/config/index.js'
   import Logo from '@/layout/sider/components/Logo.vue'
-  import { useSettingStore } from '@/store/index.js'
+  import useSettingStore from '@/store/setting.js'
 
   const setting = useSettingStore()
 </script>

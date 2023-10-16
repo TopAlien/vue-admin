@@ -43,16 +43,8 @@ const PAGE_NOT_FOUND_ROUTE = [
 /**
  * meta: { icon, hideInMenu, title }
  *
- * TIP path必须写完整的路径，要做跳转匹配
+ * TIP path必须写完整的路径，要做跳转匹配， path必填项-要匹配路由
  */
-export const BASE_ROUTE = [
-  ...WHITE_ROUTE,
-  ...HomeGroup,
-  ...ComGroup,
-  ...OtherGroup,
-  ...ChartGroup,
-  ...ListGroup,
-  ...PrintGroup,
-  ...ExceptionGroup,
-  ...PAGE_NOT_FOUND_ROUTE
-]
+export const DYNAMIC_ROUTE = [...ComGroup, ...OtherGroup, ...ChartGroup, ...ListGroup, ...PrintGroup, ...ExceptionGroup]
+
+export const BASE_ROUTE = [...WHITE_ROUTE, ...HomeGroup, ...PAGE_NOT_FOUND_ROUTE]
