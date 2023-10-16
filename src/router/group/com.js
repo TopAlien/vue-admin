@@ -49,6 +49,15 @@ export default [
           title: '倒计时',
           icon: 'i-carbon-time'
         }
+      },
+      {
+        path: `${BASE_URL}/modal`,
+        name: 'Modal',
+        component: () => import('@/pages/com/modal/index.vue'),
+        meta: {
+          title: 'Modal',
+          icon: 'i-carbon-model-alt'
+        }
       }
     ]
   }

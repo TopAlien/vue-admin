@@ -20,6 +20,7 @@
     "echarts": "^5.4.3",
     "idcard": "^4.1.1",
     "lodash-es": "^4.17.21",
+    "nprogress": "^0.2.0",
     "pinia": "^2.1.4",
     "smooth-scrollbar": "^8.8.4",
     "v-calendar": "^3.0.3",

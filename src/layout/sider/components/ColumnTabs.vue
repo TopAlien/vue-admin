@@ -11,7 +11,7 @@
   const handleTab = (it, isHighlight) => {
     if (isHighlight) return
     setting.changeMenu([], [])
-    router.push({ path: it.path })
+    router.push(it.path)
 
     if (setting.collapsed) {
       setting.toggleCollapsed()

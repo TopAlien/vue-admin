@@ -1,6 +1,5 @@
 <script setup>
   import { computed, reactive, ref } from 'vue'
-  import { message } from 'ant-design-vue'
   import SearchBox from '@/components/SearchBox/index.vue'
   import ProTable from '@/components/ProTable/index.vue'
   import { tableData } from '@/mock/data.js'

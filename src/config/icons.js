@@ -18,5 +18,6 @@ export default [
   'i-carbon-id-management',
   'i-carbon-contour-draw',
   'i-carbon-event-schedule',
-  'i-carbon-time'
+  'i-carbon-time',
+  'i-carbon-model-alt'
 ]
