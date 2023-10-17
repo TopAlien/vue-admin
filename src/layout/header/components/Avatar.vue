@@ -1,11 +1,15 @@
 <script setup>
-  import { useRouter } from 'vue-router'
+  import { useRouter, useRoute } from 'vue-router'
   import { message } from 'ant-design-vue'
+  import useUserInfoStore from '@/store/user-info.js'
 
   const router = useRouter()
+  const route = useRoute()
+  const userInfo = useUserInfoStore()
   const handleLogout = () => {
+    userInfo.logout()
     message.success('退出成功')
-    router.push({ path: '/login' })
+    router.push(`/login?redirect=${route.fullPath}`)
   }
 </script>
 <template>
@@ -19,7 +23,7 @@
           shape="square"
           :style="{ backgroundColor: '#e6f4ff', color: 'black' }"
         >
-          EAlien
+          {{ userInfo.userInfo.name }}
         </a-avatar>
         <i class="i-carbon-chevron-down down_icon" />
       </a>

@@ -8,3 +8,33 @@ export const setLock = (isLock) => {
 export const getLock = () => {
   return JSON.parse(localStorage.getItem(LOCK_KEY) || 'false')
 }
+
+// 用户TOKEN
+const TOKEN_KEY = 'tk'
+
+export const setToken = (token) => {
+  localStorage.setItem(TOKEN_KEY, token)
+}
+
+export const getToken = () => {
+  return localStorage.getItem(TOKEN_KEY)
+}
+
+export const removeToken = () => {
+  localStorage.removeItem(TOKEN_KEY)
+}
+
+// 用户信息
+const USER_INFO_KEY = 'usi'
+
+export const setUserInfo = (userInfo) => {
+  localStorage.setItem(USER_INFO_KEY, JSON.stringify(userInfo || {}))
+}
+
+export const getUserInfo = () => {
+  return JSON.parse(localStorage.getItem(USER_INFO_KEY))
+}
+
+export const removeUserInfo = () => {
+  localStorage.removeItem(USER_INFO_KEY)
+}

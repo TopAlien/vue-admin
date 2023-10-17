@@ -1,9 +1,10 @@
 <script setup>
-  import Footer from '@/components/Footer/index.vue'
   import { ref } from 'vue'
-  import config from '@/config/index.js'
   import { message } from 'ant-design-vue'
+  import Footer from '@/components/Footer/index.vue'
+  import config from '@/config/index.js'
   import { useRouter } from 'vue-router'
+  import useUserInfoStore from '@/store/user-info.js'
 
   const rulesLogin = {
     username: [{ required: true, message: '请输入用户名！' }],
@@ -14,6 +15,7 @@
   const loginForm = ref({ username: '', password: '' })
 
   const router = useRouter()
+  const userInfo = useUserInfoStore()
   const handleLogin = () => {
     loginRef.value.validate().then(({ username, password }) => {
       if (password !== 'admin' || username !== 'admin') {
@@ -21,6 +23,7 @@
         return
       }
 
+      userInfo.login()
       message.success('登录成功')
       router.push({ path: '/' })
     })
