@@ -15,7 +15,7 @@ const handleFormModal = () => {
 }
 ```
 
-### FormMenu 组件props
+### FormMenu 组件props（弹窗组件 + 弹窗组件按钮）
 
 ```js
 const props = defineProps({
@@ -33,12 +33,21 @@ const props = defineProps({
   }
 })
 
-// 函数
 const ok = (val) => {
+  // 校验等。。。
+
+  // 这里固定格式
   props.ok && props.ok(val)
 }
 
 const handleCancel = () => {
+  // 取消函数内部固定格式，暂时无法优化到不用写取消函数
   props.cancel && props.cancel()
 }
+```
+
+### 弹窗组件底部按钮
+
+```vue
+<ModalFooter @confirm="ok" @cancel="() => props.cancel && props.cancel()" />
 ```

@@ -1,11 +1,10 @@
 <script setup>
-  import { reactive, ref, watch } from 'vue'
+  import { reactive, ref } from 'vue'
+  import ModalFooter from '@/components/ModalFooter/index.vue'
   const props = defineProps({
-    id: {
-      type: Number
-    },
-    limit: {
-      type: Number
+    initForm: {
+      type: Object,
+      default: () => {}
     },
     ok: {
       type: Function
@@ -17,25 +16,14 @@
 
   const formRef = ref()
   const formState = reactive({
-    username: '',
-    nickname: '',
-    checkNick: false
+    name: '',
+    title: '',
+    path: '',
+    ...props.initForm
   })
-
-  watch(
-    () => formState.checkNick,
-    () => {
-      formRef.value.validateFields(['nickname'])
-    },
-    { flush: 'post' }
-  )
 
   const ok = (val) => {
     props.ok && props.ok(val)
-  }
-
-  const handleCancel = () => {
-    props.cancel && props.cancel()
   }
 
   const onCheck = async () => {
@@ -46,55 +34,38 @@
       console.log('Failed:', errorInfo)
     }
   }
-
-  const formItemLayout = {
-    labelCol: { span: 4 },
-    wrapperCol: { span: 8 }
-  }
-
-  const formTailLayout = {
-    labelCol: { span: 4 },
-    wrapperCol: { span: 8, offset: 4 }
-  }
 </script>
 
 <template>
   <a-form
     ref="formRef"
     :model="formState"
-    name="dynamic_rule"
-    v-bind="formItemLayout"
+    :label-col="{ style: { width: '90px' } }"
   >
     <a-form-item
-      label="Username"
-      name="username"
-      :rules="[{ required: true, message: 'Please input your username!' }]"
+      label="菜单名称"
+      name="title"
+      :rules="[{ required: true, message: '请输入菜单名称！' }]"
     >
-      <a-input v-model:value="formState.username" />
+      <a-input v-model:value="formState.title" />
     </a-form-item>
-
     <a-form-item
-      label="Nickname"
-      name="nickname"
-      :rules="[{ required: formState.checkNick, message: 'Please input your nickname!' }]"
+      label="路由Name"
+      name="name"
+      :rules="[{ required: true, message: '请输入路由名称!' }]"
     >
-      <a-input v-model:value="formState.nickname" />
+      <a-input v-model:value="formState.name" />
     </a-form-item>
-
     <a-form-item
-      name="checkNick"
-      v-bind="formTailLayout"
+      label="菜单Path"
+      name="path"
+      :rules="[{ required: true, message: '请输入路由Path!' }]"
     >
-      <a-checkbox v-model:checked="formState.checkNick">Nickname is required</a-checkbox>
+      <a-input v-model:value="formState.path" />
     </a-form-item>
   </a-form>
-  <a-space class="use_modal_footer">
-    <a-button @click="handleCancel">取消</a-button>
-    <a-button
-      type="primary"
-      @click="onCheck"
-    >
-      确认
-    </a-button>
-  </a-space>
+  <ModalFooter
+    @confirm="onCheck"
+    @cancel="() => props.cancel && props.cancel()"
+  />
 </template>

@@ -52,14 +52,13 @@
     })
   }
 
-  const modal = useModal({ title: '你好', width: '800px' })
-  const handleFormModal = () => {
+  const modal = useModal({ title: '菜单操作', width: '600px' })
+  const handleFormModal = (record) => {
     modal.open(FormMenu, {
-      id: 1,
-      limit: 10,
+      initForm: record,
       ok: (val) => {
-        console.log("=>(List.vue:61) val", val);
-        console.log('操作了ok')
+        console.log('=>(List.vue:61) val', val)
+        message.success('新增成功')
       }
     })
   }
@@ -86,7 +85,7 @@
         <span>
           <a @click="handleStatus(record, 2)">停用</a>
           <a-divider type="vertical" />
-          <a @click="handleFormModal">编辑</a>
+          <a @click="handleFormModal(record)">编辑</a>
         </span>
       </template>
     </template>

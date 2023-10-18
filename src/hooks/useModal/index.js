@@ -19,7 +19,6 @@ export const useModal = (modalProps) => {
             modal.destroy()
           },
           cancel: () => {
-            props.cancel && props.cancel()
             modal.destroy()
           }
         },
