@@ -15,7 +15,7 @@ const handleFormModal = () => {
 }
 ```
 
-### FormMenu 组件props（弹窗组件 + 弹窗组件按钮）
+### MenuFormModal 组件props（弹窗组件 + 弹窗组件按钮）
 
 ```js
 const props = defineProps({

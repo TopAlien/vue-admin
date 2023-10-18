@@ -2,7 +2,7 @@
   import ProTable from '@/components/ProTable/index.vue'
   import { message, Modal } from 'ant-design-vue'
   import { useModal } from '@/hooks/useModal/index.js'
-  import FormMenu from './FormMenu.vue'
+  import MenuFormModal from './MenuFormModal.vue'
 
   const props = defineProps({
     list: {
@@ -55,7 +55,7 @@
 
   const modal = useModal({ title: '菜单操作', width: '600px' })
   const handleFormModal = (record) => {
-    modal.open(FormMenu, {
+    modal.open(MenuFormModal, {
       initForm: record,
       ok: (val) => {
         console.log('=>(List.vue:61) val', val)

@@ -1,5 +1,7 @@
 <script setup>
   import { message, Modal } from 'ant-design-vue'
+  import RoleFormModal from './components/RoleFormModal.vue'
+  import { useModal } from '@/hooks/useModal/index.js'
 
   const columns = [
     {
@@ -26,9 +28,9 @@
   ]
 
   const list = [
-    { id: 1, name: '超级管理员', cover: '100%', status: 1 },
-    { id: 2, name: '运营人员', cover: '70%', status: 1 },
-    { id: 3, name: '销售人员', cover: '20%', status: 0 }
+    { id: 1, name: '超级管理员', cover: '100%', status: 1, menus: [2] },
+    { id: 2, name: '运营人员', cover: '70%', status: 1, menus: [3] },
+    { id: 3, name: '销售人员', cover: '20%', status: 0, menus: [6] }
   ]
 
   const handleStatus = (record) => {
@@ -43,6 +45,17 @@
       }
     })
   }
+
+  const modal = useModal({ title: '用户角色', width: '750px' })
+  const handleRoleModal = (record) => {
+    modal.open(RoleFormModal, {
+      initForm: record,
+      ok(val) {
+        console.log(val)
+        console.log('ok')
+      }
+    })
+  }
 </script>
 
 <template>
@@ -51,7 +64,12 @@
     :data-source="list"
   >
     <template #extraR>
-      <a-button type="primary">新增角色</a-button>
+      <a-button
+        type="primary"
+        @click="handleRoleModal"
+      >
+        新增角色
+      </a-button>
     </template>
 
     <template #bodyCell="{ column, record }">
@@ -66,7 +84,7 @@
         <span>
           <a @click="handleStatus(record)">{{ record.status === 1 ? '禁用' : '启用' }}</a>
           <a-divider type="vertical" />
-          <a>编辑</a>
+          <a @click="handleRoleModal(record)">编辑</a>
         </span>
       </template>
     </template>
