@@ -6,6 +6,8 @@ import ListGroup from './group/list.js'
 import ExceptionGroup from './group/exception.js'
 import ChartGroup from './group/chart.js'
 import PrintGroup from './group/print.js'
+import UserGroup from './group/user.js'
+import SettingGroup from './group/setting.js'
 
 /**
  * meta: { icon, hideInMenu, title }
@@ -43,4 +45,12 @@ export const BASE_ROUTE = [
   }
 ]
 
-export const DYNAMIC_ROUTE = [...ComGroup, ...OtherGroup, ...ChartGroup, ...ListGroup, ...PrintGroup]
+export const DYNAMIC_ROUTE = [
+  ...ComGroup,
+  ...OtherGroup,
+  ...ChartGroup,
+  ...UserGroup,
+  ...ListGroup,
+  ...PrintGroup,
+  ...SettingGroup
+]

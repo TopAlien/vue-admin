@@ -19,31 +19,49 @@ export const tableData = Array.from({ length: 100 }, (it, index) => {
   }
 })
 
-/// 通过name匹配的
+/// 通过name匹配的, 其他信息可传入后覆盖
 export const adminRoutes = [
   {
+    id: 1,
     name: 'Chart',
     path: '/chart',
+    title: '图标',
+    status: '启用',
     children: [
       {
+        id: 2,
+        title: '柱状图',
         path: '/chart/bar',
-        name: 'Chart_Bar'
+        name: 'Chart_Bar',
+        status: '启用',
       },
       {
+        id: 3,
+        title: '折线图',
         path: '/chart/line',
-        name: 'Chart_Line'
+        name: 'Chart_Line',
+        status: '启用',
       },
       {
+        id: 4,
+        title: '饼图',
         path: '/chart/pie',
-        name: 'Chart2_Pie'
+        name: 'Chart2_Pie',
+        status: '启用',
       }
     ]
   },
   {
+    id: 5,
     name: 'Print',
     path: '/print',
+    title: '打印',
+    status: '启用',
     children: [
       {
+        id: 6,
+        status: '启用',
+        title: '打印列表',
         name: 'Print-List',
         path: '/print/list'
       }

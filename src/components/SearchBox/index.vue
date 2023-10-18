@@ -28,7 +28,12 @@
 </script>
 
 <template>
-  <div v-if="title" class="header_title">{{ title }}</div>
+  <div
+    v-if="title"
+    class="header_title"
+  >
+    {{ title }}
+  </div>
   <div class="search_box">
     <div class="search_form flex-1">
       <slot />
@@ -63,10 +68,10 @@
     class="flex justify-between mb16px"
   >
     <a-space>
-      <slot name="extraL"></slot>
+      <slot name="extraL"><span></span></slot>
     </a-space>
     <a-space>
-      <slot name="extraR"></slot>
+      <slot name="extraR"><span></span></slot>
     </a-space>
   </div>
 </template>

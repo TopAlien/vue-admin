@@ -3,6 +3,7 @@
   import SearchBox from '@/components/SearchBox/index.vue'
   import ProTable from '@/components/ProTable/index.vue'
   import { tableData } from '@/mock/data.js'
+  import { message } from 'ant-design-vue'
 
   const columns = [
     {
@@ -66,6 +67,8 @@
     pagination.current = current
     pagination.pageSize = pageSize
   }
+
+  message.success('已加载！')
 </script>
 
 <template>

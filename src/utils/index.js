@@ -15,3 +15,9 @@ export const scrollToByEl = (options) => {
     scrollDom?.scrollTo(x, y)
   }
 }
+
+export const isVueComponent = (obj) => {
+  if (typeof obj.render === 'function') return true
+
+  return typeof obj.setup === 'function'
+}

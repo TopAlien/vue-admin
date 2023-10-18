@@ -3,7 +3,7 @@
 
   const props = defineProps({
     pagination: {
-      type: Object,
+      type: [Object, Boolean],
       default: () => ({
         total: 0,
         current: 1,
@@ -14,17 +14,33 @@
 </script>
 
 <template>
+  <div
+    v-if="slots.extraL || slots.extraR"
+    class="flex justify-between mb16px"
+  >
+    <a-space>
+      <slot name="extraL"><span></span></slot>
+    </a-space>
+    <a-space>
+      <slot name="extraR"><span></span></slot>
+    </a-space>
+  </div>
+
   <a-table
     class="overflow-auto"
     v-bind="$attrs"
     size="middle"
-    :pagination="{
-      showQuickJumper: true,
-      total: props.pagination.total,
-      current: props.pagination.current,
-      pageSize: props.pagination.pageSize,
-      showTotal: (total) => `共计 ${total} 条`
-    }"
+    :pagination="
+      typeof pagination !== 'boolean'
+        ? {
+            showQuickJumper: true,
+            total: props.pagination.total,
+            current: props.pagination.current,
+            pageSize: props.pagination.pageSize,
+            showTotal: (total) => `共计 ${total} 条`
+          }
+        : false
+    "
   >
     <template
       v-for="(_, key, i) in slots"

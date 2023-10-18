@@ -1,5 +1,5 @@
 <script setup>
-  import { useCountDown } from '@/lib/hooks/useCountDown/index.js'
+  import { useCountDown } from '@/hooks/useCountDown/index.js'
   import { message } from 'ant-design-vue'
 
   const { start, pause, reset, current } = useCountDown({
