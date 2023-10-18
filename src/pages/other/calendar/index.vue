@@ -1,5 +1,7 @@
 <script setup>
   import { ref, computed } from 'vue'
+  import { Calendar, DatePicker } from 'v-calendar'
+  import 'v-calendar/style.css'
 
   const range = ref({
     start: new Date(2020, 0, 6),
@@ -78,14 +80,14 @@
 </script>
 
 <template>
-  <VCalendar
+  <Calendar
     :columns="3"
     :color="selectedColor"
     :attributes="attrs"
   />
   <div class="mt16px" />
 
-  <VDatePicker
+  <DatePicker
     v-model.range="range"
     :select-attribute="selectDragAttribute"
     :drag-attribute="selectDragAttribute"
@@ -98,7 +100,7 @@
         {{ format(dragValue ? dragValue.end : range.end, 'MMM D') }}
       </div>
     </template>
-  </VDatePicker>
+  </DatePicker>
 </template>
 
 <style scoped lang="less"></style>

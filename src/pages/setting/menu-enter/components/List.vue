@@ -40,14 +40,15 @@
     }
   ]
 
-  const handleStatus = (record, type) => {
+  const handleStatus = (record) => {
+    const title = record.status === 1 ? '停用' : '启用'
     Modal.confirm({
       title: '提示',
-      content: '此操作将停用此菜单，是否继续？',
+      content: `此操作将${title}此菜单，是否继续？`,
       okText: '确定',
       centered: true,
       onOk() {
-        message.success('停用成功')
+        message.success(`${title}成功`)
       }
     })
   }
@@ -81,9 +82,16 @@
     </template>
 
     <template #bodyCell="{ column, record }">
+      <template v-if="column.dataIndex === 'status'">
+        <a-badge
+          :color="['red', 'green'][record.status]"
+          :text="record.status ? '启用' : '停用'"
+        />
+      </template>
+
       <template v-if="column.key === 'action'">
         <span>
-          <a @click="handleStatus(record, 2)">停用</a>
+          <a @click="handleStatus(record)">{{ record.status === 1 ? '停用' : '启用' }}</a>
           <a-divider type="vertical" />
           <a @click="handleFormModal(record)">编辑</a>
         </span>
