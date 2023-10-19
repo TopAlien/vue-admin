@@ -103,7 +103,7 @@ const BASE_URL = '/other'[
 
 ## 开发经验/优化
 
-1. 避免整体监听对象，会隐士触发deep。分清楚watch({}), 和 watch(() => {}) 使用场景
+1. 避免整体监听对象，会隐式触发deep。分清楚watch({}), 和 watch(() => {}) 使用场景
 
 ```js
 const watState = reactive({ arr: [], count: 1, str: '123', bo: true })
@@ -128,4 +128,24 @@ const counter = ref(0)
 watch(counter, (newVal, oldVal) => {
   console.log('-> newVal, oldVal', newVal, oldVal)
 })
+```
+
+2. 子组件想知道emit父级到底传没传？
+
+```vue
+<!-- 1、父组件 -->
+<ModalFooter @confirm="() => {}" />
+
+<!-- 2、ModalFooter 组件 -->
+const emit = defineEmits(['confirm', 'cancel'])
+
+<!-- props 在emit前面加on 嘎嘎好使 -->
+const props = defineProps({ 
+    onConfirm: { type: Function }, 
+    onCancel: { type: Function },
+})
+
+<!-- 这不就来了嘛，这里直接用来判断就完事了 -->
+props.onConfirm
+props.onCancel
 ```
