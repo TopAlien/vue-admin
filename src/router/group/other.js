@@ -84,6 +84,15 @@ export default [
           title: 'dayjs',
           icon: 'i-carbon-event-schedule'
         }
+      },
+      {
+        path: `${BASE_URL}/key`,
+        name: 'BRKey',
+        component: () => import('@/pages/other/browser-key/index.vue'),
+        meta: {
+          title: '浏览器唯一标识',
+          icon: 'i-carbon-ibm-cloud-key-protect'
+        }
       }
     ]
   }

@@ -1,19 +1,13 @@
 <script setup>
-  import SearchList from '@/pages/list/search-list/index.vue'
-  import { message, Modal } from 'ant-design-vue'
-  import { h } from 'vue'
+  import { useModal } from '@/hooks/useModal/index.js'
+  import MenuFormModal from '@/pages/setting/menu-enter/components/MenuFormModal.vue'
+  import { message } from 'ant-design-vue'
 
+  const modal = useModal({ title: 'useModal测试', width: '600px' })
   const handleModal = () => {
-    Modal.confirm({
-      icon: h('span'),
-      closable: true,
-      width: '900px',
-      content: h(SearchList),
-      onOk() {
-        message.success('确认')
-      },
-      onCancel() {
-        message.warn('取消')
+    modal.open(MenuFormModal, {
+      ok() {
+        message.success('操作确认')
       }
     })
   }
@@ -24,8 +18,6 @@
     type="primary"
     @click="handleModal"
   >
-    a-modal
+    use-modal
   </a-button>
 </template>
-
-<style scoped lang="less"></style>

@@ -73,5 +73,3 @@
     @cancel="props.cancel && props.cancel()"
   />
 </template>
-
-<style scoped lang="less"></style>

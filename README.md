@@ -39,10 +39,12 @@
 - NProgress 页面切换进度条
 - 后端动态路由匹配 config 开启后查看示例
 - 基于Modal封装useModal函数式调用
+- 浏览器唯一标识，用于游客记录等
+- json美化预览/编辑
 
 ### import.meta.env 访问环境变量，自定义 VITE\_ 开头
 
-### 项目截图
+### 项目部分截图
 
 ![img.png](public/img.png)
 ![img.png](public/img1.png)

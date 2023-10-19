@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@antv/g2": "^5.0.22",
+    "@fingerprintjs/fingerprintjs": "^4.1.0",
     "@popperjs/core": "^2.11.8",
     "@vueuse/core": "^10.5.0",
     "ant-design-vue": "^4.0.6",
@@ -26,6 +27,7 @@
     "v-calendar": "^3.1.2",
     "vue": "^3.3.4",
     "vue-esign": "^1.1.4",
+    "vue-json-pretty": "^2.2.4",
     "vue-plugin-hiprint": "^0.0.54-fix",
     "vue-router": "^4.2.4",
     "vue3-tree-org": "^4.2.2"

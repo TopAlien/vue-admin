@@ -24,5 +24,6 @@ export default [
   'i-carbon-user-multiple',
   'i-carbon-user-role',
   'i-carbon-user-profile',
-  'i-carbon-list'
+  'i-carbon-list',
+  'i-carbon-ibm-cloud-key-protect'
 ]
