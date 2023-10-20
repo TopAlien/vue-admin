@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import path from 'path'
 import vue from '@vitejs/plugin-vue'
+import { warmup } from 'vite-plugin-warmup'
 import UnoCSS from 'unocss/vite'
 import Components from 'unplugin-vue-components/vite'
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
@@ -21,6 +22,9 @@ export default defineConfig({
           importStyle: false // css in js
         })
       ]
+    }),
+    warmup({
+      clientFiles: ['./*.html']
     })
   ],
   css: {

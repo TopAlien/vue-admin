@@ -1733,7 +1733,7 @@ fast-deep-equal@^3.1.3:
   resolved "https://registry.npmmirror.com/fast-deep-equal/-/fast-deep-equal-3.1.3.tgz#3a7d56b559d6cbc3eb512325244e619a65c6c525"
   integrity sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==
 
-fast-glob@^3.3.0, fast-glob@^3.3.1:
+fast-glob@^3.2.12, fast-glob@^3.3.0, fast-glob@^3.3.1:
   version "3.3.1"
   resolved "https://registry.npmmirror.com/fast-glob/-/fast-glob-3.3.1.tgz#784b4e897340f3dbbef17413b3f11acf03c874c4"
   integrity sha512-kNFPyjhh5cKjrUltxs+wFx+ZkbRaxxmZ+X0ZU31SOsxCEtP9VPgtq2teZw1DebupL5GmDaNQ6yKMMVcM41iqDg==
@@ -3192,6 +3192,13 @@ v-calendar@^3.1.2:
     date-fns-tz "^2.0.0"
     lodash "^4.17.20"
     vue-screen-utils "^1.0.0-beta.13"
+
+vite-plugin-warmup@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.npmmirror.com/vite-plugin-warmup/-/vite-plugin-warmup-0.1.0.tgz#3e411a49c7109fd757e6f6747ceedca09d9198ae"
+  integrity sha512-ep4gvoVsWYwWR/YP3BYg534cbgYy5VDxD8YEL9AcgiXUu3zXQQujVVIX+TpnkJHCHPeY6Fxn0ePrN8tQ43UfAg==
+  dependencies:
+    fast-glob "^3.2.12"
 
 vite@^4.5.0:
   version "4.5.0"
