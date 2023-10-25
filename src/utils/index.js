@@ -1,5 +1,6 @@
 import Scrollbar from 'smooth-scrollbar'
 import config from '@/config/index.js'
+import { isFunction } from 'lodash-es'
 
 export const scrollToByEl = (options) => {
   const { x = 0, y = 0, el } = options
@@ -17,7 +18,5 @@ export const scrollToByEl = (options) => {
 }
 
 export const isVueComponent = (obj) => {
-  if (typeof obj.render === 'function') return true
-
-  return typeof obj.setup === 'function'
+  return isFunction(obj.render) || isFunction(obj.setup)
 }

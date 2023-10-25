@@ -6,6 +6,7 @@ import useDynamicRouterStore from '@/store/dynamic-router.js'
 import { scrollToByEl } from '@/utils/index.js'
 import { getToken } from '@/utils/storage.js'
 import { setRouteEmitter } from '@/utils/router-listener.js'
+
 const LOGIN_PATH = '/login'
 
 NProgress.configure({ showSpinner: false })

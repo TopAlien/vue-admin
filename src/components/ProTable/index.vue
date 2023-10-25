@@ -1,4 +1,6 @@
 <script setup>
+  import { isObject } from 'lodash-es'
+
   const slots = defineSlots()
 
   const props = defineProps({
@@ -31,7 +33,7 @@
     v-bind="$attrs"
     size="middle"
     :pagination="
-      typeof pagination !== 'boolean'
+      isObject(pagination)
         ? {
             showQuickJumper: true,
             total: props.pagination.total,

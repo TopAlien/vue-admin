@@ -5,22 +5,22 @@ import mitt from 'mitt'
 
 const emitter = mitt()
 
-const KEY = Symbol('ROUTE_CHANGE')
+const EMIT_KEY = 'ROUTE_CHANGE'
 
 let latestRoute
 
 export function setRouteEmitter(to) {
-  emitter.emit(KEY, to)
+  emitter.emit(EMIT_KEY, to)
   latestRoute = to
 }
 
 export function listenerRouteChange(handler, immediate = true) {
-  emitter.on(KEY, handler)
+  emitter.on(EMIT_KEY, handler)
   if (immediate && latestRoute) {
     handler(latestRoute)
   }
 }
 
 export function removeRouteListener() {
-  emitter.off(KEY)
+  emitter.off(EMIT_KEY)
 }
