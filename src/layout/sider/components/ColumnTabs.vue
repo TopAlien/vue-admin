@@ -4,6 +4,7 @@
   import useSettingStore from '@/store/setting.js'
   import useSideMenuStore from '@/store/side-menu.js'
   import { getTabIndex, getTabMenu } from '@/layout/sider/components/util.js'
+  import { listenerRouteChange } from '@/utils/router-listener.js'
 
   const router = useRouter()
 
@@ -22,21 +23,16 @@
   const tabMenu = getTabMenu(router.getRoutes() || [])
   const curTabIndex = ref(0)
 
-  const route = useRoute()
-  watch(
-    () => [route.matched, route.path],
-    ([newMatchedArr, newPath]) => {
-      // 需要反推，防止回退操作显示错误
-      curTabIndex.value = getTabIndex(tabMenu, { matched: newMatchedArr })
+  listenerRouteChange(({ path, matched }) => {
+    // 需要反推，防止回退操作显示错误
+    curTabIndex.value = getTabIndex(tabMenu, { matched })
 
-      /// 展开menu, 高亮第一个菜单
-      setting.changeMenu(Array.from(new Set([...setting.openKeys, newMatchedArr[1]?.path])), [newPath])
+    /// 展开menu, 高亮第一个菜单
+    setting.changeMenu(Array.from(new Set([...setting.openKeys, matched[1]?.path])), [path])
 
-      // fix 浏览器菜单回退时 side数据更新;取缓存
-      curTabIndex.value >= 0 && sideMenu.changeSide(tabMenu[curTabIndex.value])
-    },
-    { immediate: true }
-  )
+    // fix 浏览器菜单回退时 side数据更新;取缓存
+    curTabIndex.value >= 0 && sideMenu.changeSide(tabMenu[curTabIndex.value])
+  })
 </script>
 
 <template>

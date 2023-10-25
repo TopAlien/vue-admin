@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import useDynamicRouterStore from '@/store/dynamic-router.js'
+import { removeRouteListener } from '@/utils/router-listener.js'
 import { getUserInfo, removeToken, removeUserInfo, setToken, setUserInfo } from '@/utils/storage.js'
 
 const useUserInfoStore = defineStore('userInfo', {
@@ -20,6 +21,7 @@ const useUserInfoStore = defineStore('userInfo', {
       removeToken()
       this.userInfo = {}
       removeUserInfo()
+      removeRouteListener()
       dynamicRouter.syncRoutes = false
     }
   }

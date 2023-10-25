@@ -24,7 +24,7 @@ export default defineConfig({
       ]
     }),
     warmup({
-      clientFiles: ['./*.html']
+      clientFiles: ['./*.html', './src/global.component.js']
     })
   ],
   css: {
