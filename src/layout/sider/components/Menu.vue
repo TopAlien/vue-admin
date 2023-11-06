@@ -3,7 +3,6 @@
   import useSettingStore from '@/store/setting.js'
   import useSideMenuStore from '@/store/side-menu.js'
 
-  const setting = useSettingStore()
   const sideMenu = useSideMenuStore()
 
   const router = useRouter()
@@ -11,6 +10,7 @@
     router.push({ path: key })
   }
 
+  const setting = useSettingStore()
   const openChange = (openKeys) => {
     setting.changeMenu(openKeys, setting.selectedKeys)
   }

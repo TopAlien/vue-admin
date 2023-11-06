@@ -6,6 +6,7 @@
   const router = useRouter()
   const route = useRoute()
   const userInfo = useUserInfoStore()
+
   const handleLogout = () => {
     userInfo.logout()
     message.success('退出成功')

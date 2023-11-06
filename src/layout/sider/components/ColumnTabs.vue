@@ -1,15 +1,14 @@
 <script setup>
-  import { ref, watch } from 'vue'
-  import { useRouter, useRoute } from 'vue-router'
+  import { ref } from 'vue'
+  import { useRouter } from 'vue-router'
   import useSettingStore from '@/store/setting.js'
   import useSideMenuStore from '@/store/side-menu.js'
   import { getTabIndex, getTabMenu } from '@/layout/sider/components/util.js'
   import { listenerRouteChange } from '@/utils/router-listener.js'
 
   const router = useRouter()
-
-  const sideMenu = useSideMenuStore()
   const setting = useSettingStore()
+
   const handleTab = (it, isHighlight) => {
     if (isHighlight) return
     setting.changeMenu([], [])
@@ -20,6 +19,7 @@
     }
   }
 
+  const sideMenu = useSideMenuStore()
   const tabMenu = getTabMenu(router.getRoutes() || [])
   const curTabIndex = ref(0)
 
