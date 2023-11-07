@@ -1,8 +1,11 @@
 import scrollbar from './scrollbar.js'
+import auth from './hasAuth.js'
 
 const directives = {
-  scrollbar
+  scrollbar,
+  auth
 }
+
 export default {
   install(app) {
     Object.keys(directives).forEach((key) => {

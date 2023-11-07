@@ -58,6 +58,15 @@ export default [
           title: 'Modal',
           icon: 'i-carbon-model-alt'
         }
+      },
+      {
+        path: `${BASE_URL}/auto`,
+        name: 'BtnAuth',
+        component: () => import('@/pages/com/auth/index.vue'),
+        meta: {
+          title: '按钮权限',
+          icon: 'i-carbon-model-alt'
+        }
       }
     ]
   }
