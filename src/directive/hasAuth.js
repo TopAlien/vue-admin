@@ -138,7 +138,7 @@ const hasPer = (moduleName, moduleValue) => {
     return keys.includes(moduleValue)
   }
 
-  if (isArray(moduleValue) && value.length > 0) {
+  if (isArray(moduleValue) && moduleValue.length > 0) {
     return hasDuplicates(keys, moduleValue)
   }
 
@@ -147,7 +147,7 @@ const hasPer = (moduleName, moduleValue) => {
 
 const DOM_MARK = 'data-auth'
 const hasMark = (el) => {
-  return el.getAttribute(DOM_MARK) !== 'true'
+  return el.getAttribute(DOM_MARK) === 'true'
 }
 
 const setMark = (el) => {
@@ -169,19 +169,23 @@ export default {
     const routeModules = Object.keys(valueIsPlainObj ? value : modifiers)
 
     if (routeModules.length) {
-      routeModules.forEach((module) => {
-        const curModuleValue = valueIsPlainObj ? value[module] : value
-        if (hasPer(module, curModuleValue)) {
-          setMark(el)
-        }
-      })
+      try {
+        routeModules.forEach((module) => {
+          const curModuleValue = valueIsPlainObj ? value[module] : value
+          if (hasPer(module, curModuleValue)) {
+            setMark(el)
+            throw new Error('找到一个立即跳出')
+          }
+        })
+      } catch {}
     } else {
-      // 没有命名空间之间删除，例：v-auth='api/list'
+      // 没有命名空间直接删除，例：v-auth='"api/list"'
       removeEl(el)
+      return
     }
 
     // 无标记删除
-    if (hasMark(el)) {
+    if (!hasMark(el)) {
       removeEl(el)
     }
   },

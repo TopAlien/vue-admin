@@ -27,7 +27,7 @@
     v-auth.user.setting="['apiAuthAdd', 'api/auth/edit']"
     type="primary"
   >
-   可见3
+    可见3
   </a-button>
 
   <a-button
@@ -43,4 +43,6 @@
   >
     可见4
   </a-button>
+
+  <a-button v-auth="'api/exception/add'">错误示例</a-button>
 </template>
