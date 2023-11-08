@@ -12,7 +12,7 @@
  * 2、按照菜单权限层级返回。类似 mock 中的 adminRoutes，再增加类型区分是否是按钮权限即可。
  * response = [{ key: 'user', children: [{ key: 'user/list', children: [{ type: 'btn', key: 'api/user/list' }] }] }]
  *
- * 使用（.user修饰符用来快速定位查找，也可以起到命名空间的作用）
+ * 使用（.[user]修饰符用来快速定位查找，也可以起到命名空间的作用）
  *
  * 找到命名空间内的
  * v-auth.user="'api/user/list'"
@@ -31,14 +31,6 @@
  */
 
 import { isArray, isString, isPlainObject } from 'lodash-es'
-
-const DOM_MARK = 'data-auth'
-
-const _removeElNotMark = (el) => {
-  if (el.getAttribute(DOM_MARK) !== 'true') {
-    el && el.parentNode && el.parentNode.removeChild(el)
-  }
-}
 
 const _mockResRouteData = [
   {
@@ -86,7 +78,11 @@ const _mockResRouteData = [
     children: [
       {
         key: 'exception/404',
-        name: '404页面'
+        name: '404页面',
+        children: [
+          { type: 'btn', key: 'api/exception/add', name: '新增' },
+          { type: 'btn', key: 'api/exception/edit', name: '编辑' }
+        ]
       },
       {
         key: 'exception/503',
@@ -122,10 +118,12 @@ const btnKeys = (routes) => {
 
 /**
  * 比对是否有相同项，只要找到一个有相同的，就立即返回（或的关系，所以可以提前返回）
+ *
+ * arrModuleValue 必然存在
  */
-const hasDuplicates = (arr1, arr2) => {
-  for (let i = 0, len = arr2.length; i < len; i++) {
-    if (arr1.includes(arr2[i])) {
+const hasDuplicates = (arr1, arrModuleValue) => {
+  for (let i = 0, len = arrModuleValue.length; i < len; i++) {
+    if (arr1.includes(arrModuleValue[i])) {
       return true
     }
   }
@@ -133,39 +131,59 @@ const hasDuplicates = (arr1, arr2) => {
   return false
 }
 
-const hasPer = (moduleName, value) => {
+const hasPer = (moduleName, moduleValue) => {
   const keys = btnKeys(findNamesRoutes(moduleName))
 
-  if (isString(value)) {
-    return keys.includes(value)
+  if (isString(moduleValue)) {
+    return keys.includes(moduleValue)
   }
 
-  if (isArray(value) && value.length > 0) {
-    return hasDuplicates(keys, value)
+  if (isArray(moduleValue) && value.length > 0) {
+    return hasDuplicates(keys, moduleValue)
   }
 
   return false
 }
 
+const DOM_MARK = 'data-auth'
+const hasMark = (el) => {
+  return el.getAttribute(DOM_MARK) !== 'true'
+}
+
+const setMark = (el) => {
+  el.setAttribute(DOM_MARK, true)
+}
+
+const removeEl = (el) => {
+  el && el.parentNode && el.parentNode.removeChild(el)
+}
+
 /**
- * 场景2方式 实现 btnKeys(findNamesRoutes('user'))
+ * 场景2方式实现
  */
 export default {
   mounted(el, binding) {
     const { modifiers, value } = binding
 
-    const routeModules = Object.keys(isPlainObject(value) ? value : modifiers)
+    const valueIsPlainObj = isPlainObject(value)
+    const routeModules = Object.keys(valueIsPlainObj ? value : modifiers)
 
     if (routeModules.length) {
       routeModules.forEach((module) => {
-        if (hasPer(module, isPlainObject(value) ? value[module] : value)) {
-          el.setAttribute(DOM_MARK, true)
+        const curModuleValue = valueIsPlainObj ? value[module] : value
+        if (hasPer(module, curModuleValue)) {
+          setMark(el)
         }
       })
+    } else {
+      // 没有命名空间之间删除，例：v-auth='api/list'
+      removeEl(el)
     }
 
     // 无标记删除
-    _removeElNotMark(el)
+    if (hasMark(el)) {
+      removeEl(el)
+    }
   },
 
   updated() {},

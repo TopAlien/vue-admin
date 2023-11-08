@@ -6,41 +6,41 @@
     v-auth.user="'api/user/detail'"
     type="primary"
   >
-    用户详情
+    可见1
   </a-button>
 
   <a-button
     v-auth.user="['userList', 'apiUserList']"
     type="primary"
   >
-    v-auth.user="['userList', 'apiUserList']"
+    不可见
   </a-button>
 
   <a-button
-    v-auth.user.setting="['apiAuthAdd', 'apiUserList']"
+    v-auth.user.setting.404="['apiAuthAdd', 'apiUserList', 'api/exception/add']"
     type="primary"
   >
-    v-auth.setting="['apiAuthAdd', 'apiUserList']"
+    可见2
   </a-button>
 
   <a-button
     v-auth.user.setting="['apiAuthAdd', 'api/auth/edit']"
     type="primary"
   >
-    显示设置中的edit可以显示 v-auth.user.setting="['apiAuthAdd', 'api/auth/edit']"
+   可见3
   </a-button>
 
   <a-button
     v-auth="{ user: 'apiUserList', setting: 'apiAuthAdd' }"
     type="primary"
   >
-    { user: 'apiUserList', setting: 'apiAuthAdd'}
+    不可见
   </a-button>
 
   <a-button
-    v-auth="{ user: ['api/user/list'], setting: ['apiAuthAdd', 'api/auth/edit123'] }"
+    v-auth="{ user: ['api/user/list1231'], setting: ['apiAuthAdd', 'api/auth/edit123'], 404: 'api/exception/add' }"
     type="primary"
   >
-    显示{ user: ['api/user/list'], setting: ['apiAuthAdd', 'api/auth/edit'] }
+    可见4
   </a-button>
 </template>
