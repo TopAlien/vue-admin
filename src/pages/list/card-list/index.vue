@@ -1,22 +1,34 @@
 <script setup>
   import { ref } from 'vue'
-  import { photosList } from '@/service/posts/index.js'
+  import useFetch from '@/hooks/useFetch'
+  import { API_POSTS } from '@/service/posts/index.js'
 
-  const photos = ref([])
-  const getPhotosList = async () => {
-    const data = await photosList()
-    photos.value = data.slice(0, 40)
-  }
-  getPhotosList()
+  const inputVal = ref({ id: '1', name: null, age: undefined, as: '' })
+
+  const { data, isFetching, execute } = await useFetch(API_POSTS.photos, {
+    query: {
+      ...inputVal
+    }
+  }).json()
 </script>
 
 <template>
   <div class="mb14px header_title">卡片列表</div>
+  <a-form>
+    <a-form-item label="ID">
+      <a-input
+        v-model:value="inputVal.id"
+        placeholder="请输入"
+      />
+    </a-form-item>
+  </a-form>
+  <a-button @click="execute">搜索</a-button>
   <div class="flex flex-wrap gap-14px">
     <a-card
       hoverable
       style="width: 240px"
-      v-for="photo in photos"
+      v-for="photo in (data || []).slice(0, 40)"
+      :loading="isFetching"
     >
       <template #cover>
         <a-image :src="photo.thumbnailUrl" />
@@ -27,5 +39,3 @@
     </a-card>
   </div>
 </template>
-
-<style scoped lang="less"></style>

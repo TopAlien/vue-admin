@@ -7,9 +7,7 @@ const useSettingStore = defineStore('setting', {
     openKeys: [],
     selectedKeys: [],
 
-    lockScreen: getLock(),
-
-    contentSpin: false
+    lockScreen: getLock()
   }),
   actions: {
     toggleCollapsed() {
@@ -24,10 +22,6 @@ const useSettingStore = defineStore('setting', {
     toggleLock() {
       this.lockScreen = !this.lockScreen
       setLock(this.lockScreen)
-    },
-
-    changeSpin(contentSpin) {
-      this.contentSpin = contentSpin
     }
   }
 })
