@@ -2,26 +2,7 @@
   import useFetch from '@/hooks/useFetch'
   import { API_POSTS } from '@/service/posts/index.js'
 
-  // 1、useFetch 使用示例1 query, body 二次封装
-
-  // const inputVal = ref({ id: '1', name: null, age: undefined, as: '' })
-  // const { data, isFetching, execute } = await useFetch(API_POSTS.photos, {
-  //   query: inputVal
-  // }).json()
-
-  // 2、useFetch 使用示例2
-
-  // const state = reactive({
-  //   page_index: 1,
-  //   page_size: 2,
-  //   id: 1
-  // })
-  // const inputVal = ref({ id: '1', name: null, age: undefined, as: '' })
-  // const { data, isFetching, execute } = await useFetch(API_POSTS.photos, {
-  //   query: state
-  // }).json()
-
-  const { data, isFetching } = await useFetch(API_POSTS.photos).json()
+  const { data, isFetching, execute } = await useFetch(API_POSTS.photos).json()
 </script>
 
 <template>
