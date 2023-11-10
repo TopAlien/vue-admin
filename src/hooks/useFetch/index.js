@@ -1,5 +1,5 @@
 import { createFetch } from '@vueuse/core'
-import { isRef } from 'vue'
+import { unref } from 'vue'
 
 // useFetch 没有很方便的query传参
 export const montageUrl = (originUrl, query) => {
@@ -27,16 +27,12 @@ const useFetch = createFetch({
 
       const { method, query, body } = options
       if (method === 'GET' && query) {
-        // 1、只初始化一次传普通对象或者reactive
-        // 2、像列表查询直接传ref，会响应式变化参数。 暴露execute直接调用即可
-        const queryData = isRef(query) ? query._value : query
-
-        ctx.url = montageUrl(ctx.url, queryData || {})
+        ctx.url = montageUrl(ctx.url, unref(query))
       }
 
       // 一般用不到ref的body, 如果遇到post列表查询，这里会用到
       if (method === 'POST' && body && typeof body !== 'string') {
-        options.body = JSON.stringify(isRef(body) ? body._value : body)
+        options.body = JSON.stringify(unref(body))
       }
 
       return ctx

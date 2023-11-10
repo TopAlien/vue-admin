@@ -21,7 +21,7 @@
 - pinia
 - vite@4
 - vue@3
-- axios
+- 请求使用原生支持的fetch（vueuse/useFetch hook）useFetch二次封装, 不再使用axios
 - vue-router@4
 - unocss - safelist加载动态icon class
 - vueuse
