@@ -1,14 +1,18 @@
 <script setup>
-  import { ref } from 'vue'
+  import { ref, reactive } from 'vue'
   import useFetch from '@/hooks/useFetch'
   import { API_POSTS } from '@/service/posts/index.js'
 
   const inputVal = ref({ id: '1', name: null, age: undefined, as: '' })
 
+  const state = reactive({
+    page_index: 1,
+    page_size: 2,
+    id: 1
+  })
+
   const { data, isFetching, execute } = await useFetch(API_POSTS.photos, {
-    query: {
-      ...inputVal
-    }
+    query: state
   }).json()
 </script>
 
@@ -17,7 +21,7 @@
   <a-form>
     <a-form-item label="ID">
       <a-input
-        v-model:value="inputVal.id"
+        v-model:value="state.id"
         placeholder="请输入"
       />
     </a-form-item>

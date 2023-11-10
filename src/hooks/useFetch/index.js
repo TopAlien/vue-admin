@@ -2,7 +2,7 @@ import { createFetch } from '@vueuse/core'
 import { isRef } from 'vue'
 
 // useFetch 没有很方便的query传参
-const montageUrl = (originUrl, query) => {
+export const montageUrl = (originUrl, query) => {
   const params = new URLSearchParams()
   for (let q in query) {
     const val = query[q]
@@ -27,7 +27,7 @@ const useFetch = createFetch({
 
       const { method, query, body } = options
       if (method === 'GET' && query) {
-        // 1、只初始化一次传普通对象
+        // 1、只初始化一次传普通对象或者reactive
         // 2、像列表查询直接传ref，会响应式变化参数。 暴露execute直接调用即可
         const queryData = isRef(query) ? query._value : query
 
@@ -35,8 +35,8 @@ const useFetch = createFetch({
       }
 
       // 一般用不到ref的body, 如果遇到post列表查询，这里会用到
-      if (method === 'POST' && body && typeof body !== 'string' && isRef(body)) {
-        options.body = JSON.stringify(body._value)
+      if (method === 'POST' && body && typeof body !== 'string') {
+        options.body = JSON.stringify(isRef(body) ? body._value : body)
       }
 
       return ctx
