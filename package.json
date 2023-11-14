@@ -14,7 +14,7 @@
     "@antv/g2": "^5.1.6",
     "@fingerprintjs/fingerprintjs": "^4.1.0",
     "@popperjs/core": "^2.11.8",
-    "@vueuse/core": "^10.5.0",
+    "@vueuse/core": "^10.6.0",
     "ant-design-vue": "^4.0.6",
     "dayjs": "^1.11.10",
     "echarts": "^5.4.3",

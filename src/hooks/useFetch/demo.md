@@ -1,3 +1,5 @@
+## 可以不使用await, 这样不会阻塞页面
+
 ### 示例1 响应式查询参数
 ```js
   const inputVal = ref({ id: '1', name: null, age: undefined, as: '' })

@@ -1,3 +1,7 @@
 export const API_POSTS = {
-  photos: 'https://jsonplaceholder.typicode.com/photos'
+  // 列表
+  photoList: 'https://jsonplaceholder.typicode.com/photos',
+
+  // 详情
+  photoDetail: ''
 }

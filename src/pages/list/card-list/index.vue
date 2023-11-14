@@ -1,8 +1,18 @@
 <script setup>
+  import { computed } from 'vue'
   import useFetch from '@/hooks/useFetch'
   import { API_POSTS } from '@/service/posts/index.js'
 
-  const { data, isFetching, execute } = await useFetch(API_POSTS.photos).json()
+  // 不使用await 不阻塞页面
+  const { data, isFetching, execute } = useFetch(API_POSTS.photoList).json()
+
+  const list = computed(() => {
+    if (data.value && data.value.length) {
+      return data.value.slice(0, 10)
+    }
+
+    return []
+  })
 </script>
 
 <template>
@@ -11,7 +21,7 @@
     <a-card
       hoverable
       style="width: 240px"
-      v-for="photo in (data || []).slice(0, 40)"
+      v-for="photo in list"
       :loading="isFetching"
     >
       <template #cover>
