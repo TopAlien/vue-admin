@@ -202,7 +202,7 @@
         cursor: 'pointer',
         showSymbol: false,
         lineStyle: {
-          shadowColor: 'rgba(115,226,226,0.5)',
+          shadowColor: 'rgba(115,226,226, 0.5)',
           shadowBlur: 10
         }
       },
@@ -217,8 +217,8 @@
         cursor: 'pointer',
         showSymbol: false,
         lineStyle: {
-          shadowColor: 'rgba(255,126,133,0.5)',
-          shadowBlur: 10
+          shadowColor: 'rgba(255,126,133,0.7)',
+          shadowBlur: 110
         }
       }
     ]

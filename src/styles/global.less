@@ -54,3 +54,18 @@ input:-webkit-autofill {
 .ant-modal-wrap.use-modal .ant-modal-confirm-title {
   margin-bottom: 10px;
 }
+
+// 覆盖自定义 v-loading
+button:disabled.ant-btn-primary{
+  color: #ffffff;
+  background-color: #1677ff;
+  box-shadow: 0 2px 0 rgba(5, 145, 255, 0.1);
+  opacity: 0.65;
+}
+
+button:disabled.ant-btn-default{
+  color: rgba(0, 0, 0, 0.88);
+  background-color: #ffffff;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.02);
+  opacity: 0.65;
+}

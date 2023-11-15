@@ -92,18 +92,20 @@ const _mockResRouteData = [
   }
 ]
 
+// 模块唯一标识key
+const KEY_NAME = 'key'
 const findNamesRoutes = (moduleName) => {
-  return (_mockResRouteData.find((route) => route.key === moduleName) || {}).children || []
+  return (_mockResRouteData.find((route) => route[KEY_NAME] === moduleName) || {}).children || []
 }
 
-const BTN_TYPE = 'btn'
 const btnKeys = (routes) => {
   const keys = []
 
   function find(arr) {
     arr.forEach((it) => {
-      if (it.type === BTN_TYPE) {
-        keys.push(it.key)
+      // 按钮类型的唯一key
+      if (it.type === 'btn') {
+        keys.push(it[KEY_NAME])
       }
 
       if (it.children && it.children.length) {
@@ -174,7 +176,7 @@ export default {
           const curModuleValue = valueIsPlainObj ? value[module] : value
           if (hasPer(module, curModuleValue)) {
             setMark(el)
-            throw new Error('找到一个立即跳出')
+            throw new Error('当前el已打标可立即跳出')
           }
         })
       } catch {}
@@ -184,7 +186,6 @@ export default {
       return
     }
 
-    // 无标记删除
     if (!hasMark(el)) {
       removeEl(el)
     }
