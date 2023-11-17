@@ -41,6 +41,8 @@
 - 基于Modal封装useModal函数式调用
 - 浏览器唯一标识，用于游客记录等
 - json美化预览/编辑
+- 按钮 v-loading（loading动画）自定义指令 - 节流
+- 按钮级权限指令 v-auth.[moduleName]
 
 ### import.meta.env 访问环境变量，自定义 VITE\_ 开头
 
