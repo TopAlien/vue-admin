@@ -15,9 +15,7 @@
       v-scrollbar
     >
       <div class="scroll_content">
-        <Suspense>
-          <router-view />
-        </Suspense>
+        <router-view />
       </div>
     </div>
   </div>
