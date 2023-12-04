@@ -11,7 +11,7 @@ const LOGIN_PATH = '/login'
 
 NProgress.configure({ showSpinner: false })
 
-router.beforeEach((to, from) => {
+router.beforeEach((to) => {
   setRouteEmitter(to)
 
   NProgress.start()

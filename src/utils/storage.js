@@ -9,6 +9,17 @@ export const getLock = () => {
   return JSON.parse(localStorage.getItem(LOCK_KEY) || 'false')
 }
 
+// 锁屏密码
+const LOCK_PAS_KEY = 'lock_pas'
+
+export const setLockPas = () => {
+  return localStorage.setItem(LOCK_PAS_KEY, '123456')
+}
+
+export const getLockPas = () => {
+  return localStorage.getItem(LOCK_PAS_KEY)
+}
+
 // 用户TOKEN
 const TOKEN_KEY = 'tk'
 
