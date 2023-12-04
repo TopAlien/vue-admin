@@ -30,7 +30,10 @@
         alt=""
       />
       <h4 class="text-center mt140px">屏幕已锁定</h4>
-      <a-input-group compact class="!flex w300px ma">
+      <a-input-group
+        compact
+        class="!flex w300px ma"
+      >
         <a-input-password
           v-model:value="pas"
           placeholder="请输入解锁密码"

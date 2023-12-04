@@ -4,10 +4,15 @@ import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 import useDynamicRouterStore from '@/store/dynamic-router.js'
 import { scrollToByEl } from '@/utils/index.js'
-import { getToken } from '@/utils/storage.js'
+import { getToken, setLockPas, getLockPas } from '@/utils/storage.js'
 import { setRouteEmitter } from '@/utils/router-listener.js'
 
 const LOGIN_PATH = '/login'
+
+/// set default lock screen pas
+if (!getLockPas()) {
+  setLockPas()
+}
 
 NProgress.configure({ showSpinner: false })
 

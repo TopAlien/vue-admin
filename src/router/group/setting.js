@@ -22,6 +22,15 @@ export default [
           title: '菜单列表',
           icon: 'i-carbon-list'
         }
+      },
+      {
+        path: `${BASE_URL}/profile`,
+        name: 'Setting_Profile',
+        component: () => import('@/pages/setting/profile/index.vue'),
+        meta: {
+          title: '个人中心',
+          icon: 'i-carbon-user-data'
+        }
       }
     ]
   }

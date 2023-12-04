@@ -4,7 +4,7 @@
   <div class="flex justify-between items-center">
     <img
       class="h500px"
-      src="https://error404.fun/img/full-preview/1x/7.png"
+      src="https://vue.mtruning.club/static/png/image-404.png"
       alt=""
     />
     <div class="mr40px">

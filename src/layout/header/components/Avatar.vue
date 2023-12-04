@@ -12,6 +12,10 @@
     message.success('退出成功')
     router.push(`/login?redirect=${route.fullPath}`)
   }
+
+  const handleProfile = () => {
+    router.push('/setting/profile')
+  }
 </script>
 <template>
   <div class="mr16px cursor-pointer">
@@ -31,6 +35,7 @@
       <template #overlay>
         <a-menu>
           <a-menu-item @click="handleLogout">退出登录</a-menu-item>
+          <a-menu-item @click="handleProfile">个人中心</a-menu-item>
         </a-menu>
       </template>
     </a-dropdown>

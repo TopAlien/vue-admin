@@ -12,8 +12,8 @@ export const getLock = () => {
 // 锁屏密码
 const LOCK_PAS_KEY = 'lock_pas'
 
-export const setLockPas = () => {
-  return localStorage.setItem(LOCK_PAS_KEY, '123456')
+export const setLockPas = (pas = '123456') => {
+  return localStorage.setItem(LOCK_PAS_KEY, pas)
 }
 
 export const getLockPas = () => {
