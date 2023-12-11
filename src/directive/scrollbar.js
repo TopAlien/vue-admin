@@ -10,6 +10,10 @@ const bestMatch = (extractor) => (possibilities) =>
 const bestEl = bestMatch(extractEl)
 const bestOptions = bestMatch(extractOptions)
 
+/**
+  v-scrollbar
+  v-scrollbar="{ el: "" }"
+*/
 export default {
   mounted(el, binding) {
     if (config.useCustomScrollBar) {

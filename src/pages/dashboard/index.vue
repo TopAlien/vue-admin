@@ -38,11 +38,33 @@
   <Watermark content="哇咔咔">
     <div>
       <a-button loading>原loading</a-button>
-      <a-button loading type="primary">原loading</a-button>
+      <a-button
+        loading
+        type="primary"
+      >
+        原loading
+      </a-button>
 
-      <a-button v-loading type="primary" @click="save">v-loading 点击1</a-button>
-      <a-button v-loading @click="save">v-loading 点击2</a-button>
-      <a-button v-loading="2500" type="primary" @click="save">v-loading 自定义时间</a-button>
+      <a-button
+        v-loading
+        type="primary"
+        @click="save"
+      >
+        v-loading 点击1
+      </a-button>
+      <a-button
+        v-loading
+        @click="save"
+      >
+        v-loading 点击2
+      </a-button>
+      <a-button
+        v-loading="2500"
+        type="primary"
+        @click="save"
+      >
+        v-loading 自定义时间
+      </a-button>
 
       <a-button
         type="primary"
