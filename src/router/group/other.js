@@ -1,4 +1,5 @@
 import Layout from '@/layout/index.vue'
+
 const BASE_URL = '/other'
 
 export default [
@@ -92,6 +93,24 @@ export default [
         meta: {
           title: '浏览器唯一标识',
           icon: 'i-carbon-ibm-cloud-key-protect'
+        }
+      },
+      {
+        path: `${BASE_URL}/lodash`,
+        name: 'Lodash',
+        component: () => import('@/pages/other/lodash/index.vue'),
+        meta: {
+          title: 'LODASH常用',
+          icon: 'i-carbon-ibm-toolchain'
+        }
+      },
+      {
+        path: `${BASE_URL}/mark`,
+        name: 'TextMark',
+        component: () => import('@/pages/other/mark-keyword/index.vue'),
+        meta: {
+          title: '关键词高亮',
+          icon: 'i-carbon-dot-mark'
         }
       }
     ]

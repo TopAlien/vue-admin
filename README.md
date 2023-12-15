@@ -19,7 +19,7 @@
 
 - less css预处理器, 变量
 - pinia
-- vite@4
+- vite@5
 - vue@3
 - 请求使用原生支持的fetch（vueuse/useFetch hook）useFetch二次封装, 不再使用axios
 - vue-router@4
@@ -43,6 +43,7 @@
 - json美化预览/编辑
 - 按钮 v-loading（loading动画）自定义指令 - 节流
 - 按钮级权限指令 v-auth.[moduleName]
+- 关键词高亮组件TextMark组件
 
 ### import.meta.env 访问环境变量，自定义 VITE\_ 开头
 
@@ -61,6 +62,7 @@
 ![img10.png](public/img10.png)
 ![img11.png](public/img11.png)
 ![img12.png](public/img12.png)
+![img13.png](public/img13.png)
 
 ### 路由配置
 
@@ -92,7 +94,7 @@ const BASE_URL = '/other'[
             }
         ]
     }
-    ]
+]
 ```
 
 ### [图表来自](http://ppchart.com/#/) 大赞👍
@@ -156,249 +158,253 @@ props.onCancel
 
 1. v-loading
 
-```
+```js
 const loading = `<span class="ant-btn-loading-icon"><span role="img" aria-label="loading" class="anticon anticon-loading anticon-spin"><svg focusable="false" data-icon="loading" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="0 0 1024 1024"><path d="M988 548c-19.9 0-36-16.1-36-36 0-59.4-11.6-117-34.6-171.3a440.45 440.45 0 00-94.3-139.9 437.71 437.71 0 00-139.9-94.3C629 83.6 571.4 72 512 72c-19.9 0-36-16.1-36-36s16.1-36 36-36c69.1 0 136.2 13.5 199.3 40.3C772.3 66 827 103 874 150c47 47 83.9 101.8 109.7 162.7 26.7 63.1 40.2 130.2 40.2 199.3.1 19.9-16 36-35.9 36z"></path></svg><!----></span></span>`
 
 /**
-* 通过自定义样式(global.less)，对 primary 类型按钮，和官方示例一样。事件只执行一次
-*
-* 默认值1500毫秒
-* v-loading="2000"
-* v-loading == v-loading="1500"
-*/
+ * 通过自定义样式(global.less)，对 primary 类型按钮，和官方示例一样。事件只执行一次
+ *
+ * 默认值1500毫秒
+ * v-loading="2000"
+ * v-loading == v-loading="1500"
+ */
 export default {
-  mounted(el, binding) {
-    const originInnerHtml = el.innerHTML
+    mounted(el, binding) {
+        const originInnerHtml = el.innerHTML
 
-    if (binding.value && typeof binding.value !== 'number') {
-      console.error('自定义时间应为数字 例： v-loading="2000"')
-      return
+        if (binding.value && typeof binding.value !== 'number') {
+            console.error('自定义时间应为数字 例： v-loading="2000"')
+            return
+        }
+
+        el.addEventListener(
+            'click',
+            () => {
+                if (!el.disabled) {
+                    el.disabled = true
+                    el.innerHTML = `${loading}${originInnerHtml}`
+
+                    setTimeout(() => {
+                        el.innerHTML = originInnerHtml
+                        el.disabled = false
+                    }, binding.value || 1500)
+                }
+            },
+            false
+        )
     }
-
-    el.addEventListener(
-    'click',
-    () => {
-      if (!el.disabled) {
-        el.disabled = true
-        el.innerHTML = `${loading}${originInnerHtml}`
-
-        setTimeout(() => {
-          el.innerHTML = originInnerHtml
-          el.disabled = false
-        }, binding.value || 1500)
-      }
-    },
-    false
-    )
-  }
 }
 ```
 
 2. v-auth 按钮权限指令
 
-```
+```js
 /**
-* 设计场景
-*
-* 1、后台新增权限时选择类型是否是按钮，选择按钮类型。登录后调取接口查出所有按钮类型权限：(我使用接口作为唯一标识)
-* response = ['/user/list', '/user/add', '/user/detail/add', '/user/detail/edit']
-*
-* 指令使用格式
-* v-auth="'/user/list'"
-* v-auth="['/user/list', '/user/detail/edit']"
-*
-*
-* 2、按照菜单权限层级返回。类似 mock 中的 adminRoutes，再增加类型区分是否是按钮权限即可。
-* response = [{ key: 'user', children: [{ key: 'user/list', children: [{ type: 'btn', key: 'api/user/list' }] }] }]
-*
-* 使用（.[user]修饰符用来快速定位查找，也可以起到命名空间的作用）
-*
-* 找到命名空间内的
-* v-auth.user="'api/user/list'"
-* v-auth.user="['api/user/list', 'api/user/list']"
-* v-auth="{ user: ["api/user/list", "api/user/add"], setting: [""] }"
-* v-auth="{ user: "", setting: "" }"
-*
-* user和setting模块中任意找到
-* v-auth.user.setting="api/user/list"
-* v-auth.user.setting="['api/user/list', 'api/user/add']"
-*
-* tip：要是有 user下面，或者setting下面有某个权限都可以显示按钮这种场景该怎么办
-*
-* <button v-auth="{ user: "", setting: "" }"></button>
-* <button v-auth="{ user: ["api/user/list", "api/user/add"], setting: [""] }"></button>
-*/
+ * 设计场景
+ *
+ * 1、后台新增权限时选择类型是否是按钮，选择按钮类型。登录后调取接口查出所有按钮类型权限：(我使用接口作为唯一标识)
+ * response = ['/user/list', '/user/add', '/user/detail/add', '/user/detail/edit']
+ *
+ * 指令使用格式
+ * v-auth="'/user/list'"
+ * v-auth="['/user/list', '/user/detail/edit']"
+ *
+ *
+ * 2、按照菜单权限层级返回。类似 mock 中的 adminRoutes，再增加类型区分是否是按钮权限即可。
+ * response = [{ key: 'user', children: [{ key: 'user/list', children: [{ type: 'btn', key: 'api/user/list' }] }] }]
+ *
+ * 使用（.[user]修饰符用来快速定位查找，也可以起到命名空间的作用）
+ *
+ * 找到命名空间内的
+ * v-auth.user="'api/user/list'"
+ * v-auth.user="['api/user/list', 'api/user/list']"
+ * v-auth="{ user: ["api/user/list", "api/user/add"], setting: [""] }"
+ * v-auth="{ user: "", setting: "" }"
+ *
+ * user和setting模块中任意找到
+ * v-auth.user.setting="api/user/list"
+ * v-auth.user.setting="['api/user/list', 'api/user/add']"
+ *
+ * tip：要是有 user下面，或者setting下面有某个权限都可以显示按钮这种场景该怎么办
+ *
+ * <button v-auth="{ user: "", setting: "" }"></button>
+ * <button v-auth="{ user: ["api/user/list", "api/user/add"], setting: [""] }"></button>
+ */
 
 import { isArray, isString, isPlainObject } from 'lodash-es'
 
 const _mockResRouteData = [
-{
-  key: 'user',
-  name: '用户管理',
-  children: [
-  {
-    key: 'user/list',
-    name: '用户列表',
-    children: [
-    { type: 'btn', key: 'api/user/list', name: '用户列表查看' },
-    { type: 'btn', key: 'api/user/detail', name: '用户详情' },
-    { type: 'btn', key: 'api/user/auth-edit', name: '用户权限编辑' }
-    ]
-  },
-  {
-    key: 'user/list1',
-    name: '用户列表1',
-    children: [
-    { type: 'btn', key: 'api/user/list1', name: '用户列表查看1' },
-    { type: 'btn', key: 'api/user/detail1', name: '用户详情1' },
-    { type: 'btn', key: 'api/user/auth-edit1', name: '用户权限编辑1' }
-    ]
-  }
-  ]
-},
-{
-  key: 'setting',
-  name: '设置',
-  children: [
-  {
-    key: 'setting/auth',
-    name: '权限设置',
-    children: [
-    { type: 'btn', key: 'api/auth/add', name: '新增权限' },
-    { type: 'btn', key: 'api/auth/edit', name: '编辑权限' },
-    { type: 'btn', key: 'api/auth/list', name: '权限列表' }
-    ]
-  }
-  ]
-},
-{
-  key: '404',
-  name: '异常页面',
-  children: [
-  {
-    key: 'exception/404',
-    name: '404页面',
-    children: [
-    { type: 'btn', key: 'api/exception/add', name: '新增' },
-    { type: 'btn', key: 'api/exception/edit', name: '编辑' }
-    ]
-  },
-  {
-    key: 'exception/503',
-    name: '503页面'
-  }
-  ]
-}
+    {
+        key: 'user',
+        name: '用户管理',
+        children: [
+            {
+                key: 'user/list',
+                name: '用户列表',
+                children: [
+                    { type: 'btn', key: 'api/user/list', name: '用户列表查看' },
+                    { type: 'btn', key: 'api/user/detail', name: '用户详情' },
+                    { type: 'btn', key: 'api/user/auth-edit', name: '用户权限编辑' }
+                ]
+            },
+            {
+                key: 'user/list1',
+                name: '用户列表1',
+                children: [
+                    { type: 'btn', key: 'api/user/list1', name: '用户列表查看1' },
+                    { type: 'btn', key: 'api/user/detail1', name: '用户详情1' },
+                    { type: 'btn', key: 'api/user/auth-edit1', name: '用户权限编辑1' }
+                ]
+            }
+        ]
+    },
+    {
+        key: 'setting',
+        name: '设置',
+        children: [
+            {
+                key: 'setting/auth',
+                name: '权限设置',
+                children: [
+                    { type: 'btn', key: 'api/auth/add', name: '新增权限' },
+                    { type: 'btn', key: 'api/auth/edit', name: '编辑权限' },
+                    { type: 'btn', key: 'api/auth/list', name: '权限列表' }
+                ]
+            }
+        ]
+    },
+    {
+        key: '404',
+        name: '异常页面',
+        children: [
+            {
+                key: 'exception/404',
+                name: '404页面',
+                children: [
+                    { type: 'btn', key: 'api/exception/add', name: '新增' },
+                    { type: 'btn', key: 'api/exception/edit', name: '编辑' }
+                ]
+            },
+            {
+                key: 'exception/503',
+                name: '503页面'
+            }
+        ]
+    }
 ]
 
 // 模块唯一标识key
 const KEY_NAME = 'key'
 const findNamesRoutes = (moduleName) => {
-  return (_mockResRouteData.find((route) => route[KEY_NAME] === moduleName) || {}).children || []
+    return (_mockResRouteData.find((route) => route[KEY_NAME] === moduleName) || {}).children || []
 }
 
 const btnKeys = (routes) => {
-  const keys = []
+    const keys = []
 
-  function find(arr) {
-    arr.forEach((it) => {
-      // 按钮类型的唯一key
-      if (it.type === 'btn') {
-        keys.push(it[KEY_NAME])
-      }
+    function find(arr) {
+        arr.forEach((it) => {
+            // 按钮类型的唯一key
+            if (it.type === 'btn') {
+                keys.push(it[KEY_NAME])
+            }
 
-      if (it.children && it.children.length) {
-        find(it.children)
-      }
-    })
-  }
-  find(routes)
+            if (it.children && it.children.length) {
+                find(it.children)
+            }
+        })
+    }
 
-  return keys
+    find(routes)
+
+    return keys
 }
 
 /**
-* 比对是否有相同项，只要找到一个有相同的，就立即返回（或的关系，所以可以提前返回）
-*
-* arrModuleValue 必然存在
-*/
+ * 比对是否有相同项，只要找到一个有相同的，就立即返回（或的关系，所以可以提前返回）
+ *
+ * arrModuleValue 必然存在
+ */
 const hasDuplicates = (arr1, arrModuleValue) => {
-  for (let i = 0, len = arrModuleValue.length; i < len; i++) {
-    if (arr1.includes(arrModuleValue[i])) {
-      return true
+    for (let i = 0, len = arrModuleValue.length; i < len; i++) {
+        if (arr1.includes(arrModuleValue[i])) {
+            return true
+        }
     }
-  }
 
-  return false
+    return false
 }
 
 const hasPer = (moduleName, moduleValue) => {
-  const keys = btnKeys(findNamesRoutes(moduleName))
+    const keys = btnKeys(findNamesRoutes(moduleName))
 
-  if (isString(moduleValue)) {
-    return keys.includes(moduleValue)
-  }
+    if (isString(moduleValue)) {
+        return keys.includes(moduleValue)
+    }
 
-  if (isArray(moduleValue) && moduleValue.length > 0) {
-    return hasDuplicates(keys, moduleValue)
-  }
+    if (isArray(moduleValue) && moduleValue.length > 0) {
+        return hasDuplicates(keys, moduleValue)
+    }
 
-  return false
+    return false
 }
 
 const DOM_MARK = 'data-auth'
 const hasMark = (el) => {
-  return el.getAttribute(DOM_MARK) === 'true'
+    return el.getAttribute(DOM_MARK) === 'true'
 }
 
 const setMark = (el) => {
-  el.setAttribute(DOM_MARK, true)
+    el.setAttribute(DOM_MARK, true)
 }
 
 const removeEl = (el) => {
-  el && el.parentNode && el.parentNode.removeChild(el)
+    el && el.parentNode && el.parentNode.removeChild(el)
 }
 
 /**
-* 场景2方式实现
-*/
+ * 场景2方式实现
+ */
 export default {
-  mounted(el, binding) {
-    const { modifiers, value } = binding
+    mounted(el, binding) {
+        const { modifiers, value } = binding
 
-    const valueIsPlainObj = isPlainObject(value)
-    const routeModules = Object.keys(valueIsPlainObj ? value : modifiers)
+        const valueIsPlainObj = isPlainObject(value)
+        const routeModules = Object.keys(valueIsPlainObj ? value : modifiers)
 
-    if (routeModules.length) {
-      try {
-        routeModules.forEach((module) => {
-          const curModuleValue = valueIsPlainObj ? value[module] : value
-          if (hasPer(module, curModuleValue)) {
-            setMark(el)
-            throw new Error('当前el已打标可立即跳出')
-          }
-        })
-      } catch {}
-    } else {
-      // 没有命名空间直接删除，例：v-auth='"api/list"'
-      removeEl(el)
-      return
+        if (routeModules.length) {
+            try {
+                routeModules.forEach((module) => {
+                    const curModuleValue = valueIsPlainObj ? value[module] : value
+                    if (hasPer(module, curModuleValue)) {
+                        setMark(el)
+                        throw new Error('当前el已打标可立即跳出')
+                    }
+                })
+            } catch {
+            }
+        } else {
+            // 没有命名空间直接删除，例：v-auth='"api/list"'
+            removeEl(el)
+            return
+        }
+
+        if (!hasMark(el)) {
+            removeEl(el)
+        }
+    },
+
+    updated() {
+    },
+
+    unmounted() {
     }
-
-    if (!hasMark(el)) {
-      removeEl(el)
-    }
-  },
-
-  updated() {},
-
-  unmounted() {}
 }
 ```
 
 3. v-scrollbar 自定义scrollbar样式，类似mac滚动条
 
-```
+```js
 import Scrollbar from 'smooth-scrollbar'
 import config from '@/config/index.js'
 
@@ -407,35 +413,36 @@ const extractOptions = extractProp('options')
 const extractEl = extractProp('el')
 
 const bestMatch = (extractor) => (possibilities) =>
-extractor(possibilities.find((p) => typeof extractor(p) !== 'undefined'))
+    extractor(possibilities.find((p) => typeof extractor(p) !== 'undefined'))
 const bestEl = bestMatch(extractEl)
 const bestOptions = bestMatch(extractOptions)
 
 /**
-  v-scrollbar
-  v-scrollbar="{ el: "" }"
-*/
+ v-scrollbar
+ v-scrollbar="{ el: "" }"
+ */
 export default {
-  mounted(el, binding) {
-    if (config.useCustomScrollBar) {
-      const possibilities = [binding.value]
-      const targetEl = bestEl(possibilities)
-      const config = bestOptions(possibilities)
+    mounted(el, binding) {
+        if (config.useCustomScrollBar) {
+            const possibilities = [binding.value]
+            const targetEl = bestEl(possibilities)
+            const config = bestOptions(possibilities)
 
-      const scrollY = binding.modifiers.y
-      const scrollX = binding.modifiers.x
-      Scrollbar.init(targetEl ? document.querySelector(targetEl) : el)
+            const scrollY = binding.modifiers.y
+            const scrollX = binding.modifiers.x
+            Scrollbar.init(targetEl ? document.querySelector(targetEl) : el)
+        }
+    },
+
+    updated(el, binding, vnode, prevVnode) {
+    },
+
+    unmounted(el, binding) {
+        if (config.useCustomScrollBar) {
+            const possibilities = [binding.value]
+            const targetEl = bestEl(possibilities)
+            Scrollbar.destroy(targetEl ? document.querySelector(targetEl) : el, {})
+        }
     }
-  },
-
-  updated(el, binding, vnode, prevVnode) {},
-
-  unmounted(el, binding) {
-    if (config.useCustomScrollBar) {
-      const possibilities = [binding.value]
-      const targetEl = bestEl(possibilities)
-      Scrollbar.destroy(targetEl ? document.querySelector(targetEl) : el, {})
-    }
-  }
 }
 ```

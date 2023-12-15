@@ -26,21 +26,21 @@
     "smooth-scrollbar": "^8.8.4",
     "v-calendar": "^3.1.2",
     "vite-plugin-warmup": "^0.1.0",
-    "vue": "^3.3.10",
+    "vue": "^3.3.11",
     "vue-esign": "^1.1.4",
-    "vue-json-pretty": "^2.2.4",
+    "vue-json-pretty": "^2.3.0",
     "vue-plugin-hiprint": "^0.0.56",
     "vue-router": "^4.2.5",
     "vue3-tree-org": "^4.2.2"
   },
   "devDependencies": {
-    "@iconify-json/carbon": "^1.1.24",
+    "@iconify-json/carbon": "^1.1.64",
     "@unocss/preset-icons": "^0.58.0",
-    "@vitejs/plugin-vue": "^4.5.1",
+    "@vitejs/plugin-vue": "^4.5.2",
     "less": "^4.2.0",
-    "prettier": "^3.1.0",
+    "prettier": "^3.1.1",
     "unocss": "^0.58.0",
     "unplugin-vue-components": "^0.26.0",
-    "vite": "^5.0.5"
+    "vite": "^5.0.9"
   }
 }

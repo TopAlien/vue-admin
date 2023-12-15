@@ -26,5 +26,7 @@ export default [
   'i-carbon-user-profile',
   'i-carbon-list',
   'i-carbon-ibm-cloud-key-protect',
-  'i-carbon-user-data'
+  'i-carbon-user-data',
+  'i-carbon-ibm-toolchain',
+  'i-carbon-dot-mark'
 ]
