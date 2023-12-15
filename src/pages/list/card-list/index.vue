@@ -18,11 +18,14 @@
 <template>
   <div class="mb14px header_title">卡片列表</div>
   <div class="flex flex-wrap gap-14px">
+    <a-spin
+      :spinning="isFetching"
+      class="center_spin"
+    />
     <a-card
       hoverable
       style="width: 240px"
       v-for="photo in list"
-      :loading="isFetching"
     >
       <template #cover>
         <a-image :src="photo.thumbnailUrl" />

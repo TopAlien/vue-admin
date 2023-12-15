@@ -1,71 +1,78 @@
 html,
 body {
-  height: 100%;
-  width: 100%;
-  margin: 0;
+    height: 100%;
+    width: 100%;
+    margin: 0;
 
-  // 防止左右滑动返回
-  overscroll-behavior: none;
+    // 防止左右滑动返回
+    overscroll-behavior: none;
 }
 
 #app {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 
 .header_title {
-  font-size: 16px;
-  font-weight: 500;
-  color: rgb(29, 33, 41);
-  margin-bottom: 16px;
+    font-size: 16px;
+    font-weight: 500;
+    color: rgb(29, 33, 41);
+    margin-bottom: 16px;
 }
 
 // reset smooth-scrollbar
 .scrollbar-track {
-  background: transparent !important;
+    background: transparent !important;
 }
 
 .scrollbar-track-y,
 .scrollbar-thumb.scrollbar-thumb-y {
-  width: 6px !important;
+    width: 6px !important;
 }
 
 .scrollbar-track-x,
 .scrollbar-thumb.scrollbar-thumb-x {
-  height: 6px !important;
+    height: 6px !important;
 }
 
 //textarea:-webkit-autofill
 //select:-webkit-autofill
 input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
-  background-color: transparent !important;
-  background-image: none;
-  transition: background-color 50000s ease-in-out 0s;
-  -webkit-text-fill-color: black !important;
+    -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+    background-color: transparent !important;
+    background-image: none;
+    transition: background-color 50000s ease-in-out 0s;
+    -webkit-text-fill-color: black !important;
 }
 
 // 覆盖useModal
 .ant-modal-wrap.use-modal .ant-modal-confirm-content {
-  max-width: 100% !important;
+    max-width: 100% !important;
 }
 
 .ant-modal-wrap.use-modal .ant-modal-confirm-title {
-  margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 // 覆盖自定义 v-loading
-button:disabled.ant-btn-primary{
-  color: #ffffff;
-  background-color: #1677ff;
-  box-shadow: 0 2px 0 rgba(5, 145, 255, 0.1);
-  opacity: 0.65;
+button:disabled.ant-btn-primary {
+    color: #ffffff;
+    background-color: #1677ff;
+    box-shadow: 0 2px 0 rgba(5, 145, 255, 0.1);
+    opacity: 0.65;
 }
 
-button:disabled.ant-btn-default{
-  color: rgba(0, 0, 0, 0.88);
-  background-color: #ffffff;
-  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.02);
-  opacity: 0.65;
+button:disabled.ant-btn-default {
+    color: rgba(0, 0, 0, 0.88);
+    background-color: #ffffff;
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.02);
+    opacity: 0.65;
+}
+
+.center_spin {
+    position: absolute;
+    top: 40%;
+    left: 48%;
+    z-index: 1;
 }

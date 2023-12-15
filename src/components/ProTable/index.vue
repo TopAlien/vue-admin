@@ -30,7 +30,6 @@
 
   <a-table
     class="overflow-auto"
-    v-bind="$attrs"
     size="middle"
     :pagination="
       isObject(pagination)
@@ -43,6 +42,7 @@
           }
         : false
     "
+    v-bind="$attrs"
   >
     <template
       v-for="(_, key, i) in slots"

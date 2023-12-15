@@ -18,7 +18,7 @@
   })
 
   const useBrightenKeyword = (result, keyword) => {
-    if (!result || !keyword) return
+    if (!result || !keyword) return result
 
     const Reg = new RegExp(keyword.replace(/[-[\]/{}()*+?.\\^$|]/g, '\\$&'), 'gi')
     return result.replace(
