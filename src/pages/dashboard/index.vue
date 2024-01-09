@@ -1,6 +1,7 @@
 <script setup>
-  import { reactive, ref, watch } from 'vue'
+  import { reactive, ref, watch, provide } from 'vue'
   import { message, Watermark } from 'ant-design-vue'
+  import Child from './components/child.vue'
   import useCounterStore from '@/store/counter.js'
 
   const counterStore = useCounterStore()
@@ -32,6 +33,13 @@
   const save = () => {
     console.log('save')
   }
+
+  const sex = ref('male')
+  const handleChange = () => {
+    const now = Date.now()
+    sex.value = `修改性别${now}`
+  }
+  provide('sex', sex)
 </script>
 
 <template>
@@ -101,5 +109,17 @@
     >
       asdasd
     </a-modal>
+
+    <div style="border: 1px solid #cccccc">
+      <h1>provide, inject</h1>
+      <h3>provide初始数据 {{ sex }}</h3>
+      <a-button
+        @click="handleChange"
+        type="primary"
+      >
+        顶级修改原数据
+      </a-button>
+      <Child />
+    </div>
   </Watermark>
 </template>

@@ -67,6 +67,24 @@ export default [
           title: '按钮权限',
           icon: 'i-carbon-model-alt'
         }
+      },
+      {
+        path: `${BASE_URL}/mark`,
+        name: 'TextMark',
+        component: () => import('@/pages/com/mark-keyword/index.vue'),
+        meta: {
+          title: '关键词高亮',
+          icon: 'i-carbon-dot-mark'
+        }
+      },
+      {
+        path: `${BASE_URL}/ellipsis`,
+        name: 'TextEllipsis',
+        component: () => import('@/pages/com/text-ellipsis/index.vue'),
+        meta: {
+          title: '文本溢出',
+          icon: 'i-carbon-text-footnote'
+        }
       }
     ]
   }

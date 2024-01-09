@@ -28,5 +28,6 @@ export default [
   'i-carbon-ibm-cloud-key-protect',
   'i-carbon-user-data',
   'i-carbon-ibm-toolchain',
-  'i-carbon-dot-mark'
+  'i-carbon-dot-mark',
+  'i-carbon-text-footnote'
 ]

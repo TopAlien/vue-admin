@@ -103,15 +103,6 @@ export default [
           title: 'LODASH常用',
           icon: 'i-carbon-ibm-toolchain'
         }
-      },
-      {
-        path: `${BASE_URL}/mark`,
-        name: 'TextMark',
-        component: () => import('@/pages/other/mark-keyword/index.vue'),
-        meta: {
-          title: '关键词高亮',
-          icon: 'i-carbon-dot-mark'
-        }
       }
     ]
   }
