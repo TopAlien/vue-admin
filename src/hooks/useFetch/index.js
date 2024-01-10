@@ -43,6 +43,7 @@ const useFetch = createFetch({
       const { options } = ctx
 
       options.headers.Authorization = `Bearer custom`
+      options.headers.apifoxToken = 'IbvbVFA8uGdREezk4bfv9'
 
       const { params } = options
       // 自定义 Query String Parameters 携带请求参数。 一般是get请求
@@ -54,9 +55,17 @@ const useFetch = createFetch({
     },
 
     async afterFetch(ctx) {
-      // if(code !== 200) {
-      //   message.error('服务器错误！')
-      // }
+      const { code, msg } = ctx.data
+
+      if (code === 200) {
+        return ctx.data
+      }
+
+      // 兼容多个api
+      if (code !== 200 && msg) {
+        message.error(msg || '服务器错误！')
+      }
+
       return ctx
     },
 

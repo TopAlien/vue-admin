@@ -17,10 +17,10 @@
 
 ### 功能/技术栈
 
-- less css预处理器, 变量
+- vue@3
 - pinia
 - vite@5
-- vue@3
+- less css预处理器, 变量
 - 请求使用原生支持的fetch（vueuse/useFetch hook）useFetch二次封装, 不再使用axios
 - vue-router@4
 - unocss - safelist加载动态icon class
@@ -44,6 +44,7 @@
 - 按钮 v-loading（loading动画）自定义指令 - 节流
 - 按钮级权限指令 v-auth.[moduleName]
 - 关键词高亮组件TextMark组件
+- 数据使用[Apifox云端Mock](https://apifox.com/help/api-mock/cloud-mock)
 
 ### import.meta.env 访问环境变量，自定义 VITE\_ 开头
 
@@ -97,13 +98,18 @@ const BASE_URL = '/other'[
 ]
 ```
 
-### [图表来自](http://ppchart.com/#/) 大赞👍
+## 真香👍
+
+### [图表来自](http://ppchart.com/#/) 
 
 ### [插画](https://undraw.co/illustrations)
 
 ### [404插画](https://error404.fun/)
 
 ### [打印](https://www.npmjs.com/package/vue-plugin-hiprint)
+
+### [数据mock-Apifox](https://apifox.com/)
+
 
 ## 开发经验/优化
 

@@ -16,7 +16,7 @@ if (!getLockPas()) {
 
 NProgress.configure({ showSpinner: false })
 
-router.beforeEach((to) => {
+router.beforeEach(async (to) => {
   setRouteEmitter(to)
 
   NProgress.start()
@@ -30,7 +30,8 @@ router.beforeEach((to) => {
     } else {
       const dynamicRouter = useDynamicRouterStore()
       if (!dynamicRouter.syncRoutes) {
-        const resultRoute = dynamicRouter.generator()
+        const resultRoute = await dynamicRouter.generator()
+
         resultRoute.forEach((route) => router.addRoute(route))
 
         dynamicRouter.syncRoutes = true

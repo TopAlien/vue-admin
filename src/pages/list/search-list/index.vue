@@ -1,8 +1,10 @@
 <script setup>
-  import { computed, reactive, ref } from 'vue'
+  import { reactive, ref } from 'vue'
   import SearchBox from '@/components/SearchBox/index.vue'
   import ProTable from '@/components/ProTable/index.vue'
-  import { tableData } from '@/mock/data.js'
+  import useFetch from '@/hooks/useFetch/index.js'
+  import { API_LIST } from '@/service/list/index.js'
+  import { typeEnum } from '@/mock/data.js'
 
   const columns = [
     {
@@ -43,8 +45,9 @@
     { title: '操作', key: 'action', width: '130px' }
   ]
 
+  const { data, isFetching, execute } = useFetch(API_LIST.list).json()
+
   const pagination = reactive({
-    total: 100,
     current: 1,
     pageSize: 10
   })
@@ -54,13 +57,9 @@
 
   const handleSearch = () => {
     console.log('🚀 ~ file: index.vue:56 ~ handleSearch ~ searchForm.value:', searchForm.value)
+    execute()
     pagination.current = 1
   }
-
-  const list = computed(() => {
-    const { current, pageSize } = pagination
-    return tableData.slice(pageSize * (current - 1), pageSize * current)
-  })
 
   const handleTableChange = ({ current, pageSize }) => {
     pagination.current = current
@@ -126,10 +125,11 @@
   </SearchBox>
 
   <ProTable
-    :data-source="list"
+    :data-source="data"
     :columns="columns"
     :pagination="pagination"
     @change="handleTableChange"
+    :loading="isFetching"
   >
     <template #headerCell="{ column, title }">
       <template v-if="column.key === 'name'">
@@ -142,9 +142,8 @@
       <template v-if="column.key === 'type'">
         <div class="flex items-center">
           <img
-            :src="record.icon"
+            :src="typeEnum[record.type]"
             class="mr4px"
-            alt=""
           />
           <span>{{ record.type }}</span>
         </div>

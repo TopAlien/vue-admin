@@ -1,13 +1,13 @@
 <script setup>
   import HeaderSearch from './components/HeaderSearch.vue'
   import List from './components/List.vue'
-  import { ref } from 'vue'
-  import { adminRoutes } from '@/mock/data.js'
+  import useFetch from '@/hooks/useFetch/index.js'
+  import { API_USER } from '@/service/user/index.js'
 
-  const list = ref(adminRoutes)
+  const { data } = useFetch(API_USER.roleRoutes).json()
 </script>
 
 <template>
   <HeaderSearch />
-  <List :list="list" />
+  <List :list="data?.routes" />
 </template>

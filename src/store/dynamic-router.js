@@ -1,7 +1,8 @@
 import { defineStore } from 'pinia'
 import config from '@/config/index.js'
-import { adminRoutes } from '@/mock/data.js'
 import { DYNAMIC_ROUTE } from '@/router/routes.js'
+import useFetch from '@/hooks/useFetch/index.js'
+import { API_USER } from '@/service/user/index.js'
 
 const HAS_KEY = 'path'
 const hasPermission = (flattenApiRoutes, route) => {
@@ -50,8 +51,14 @@ const useDynamicRouterStore = defineStore('dynamicRouter', {
     syncRoutes: false
   }),
   actions: {
-    generator() {
-      return config.useDynamicRoute ? filterAsyncRoutes(flattenSystemRoutes(adminRoutes), DYNAMIC_ROUTE) : DYNAMIC_ROUTE
+    async generator() {
+      let roleRoutes = []
+      if (config.useDynamicRoute) {
+        const { data } = await useFetch(API_USER.roleRoutes).json()
+        roleRoutes = data.value.routes
+      }
+
+      return config.useDynamicRoute ? filterAsyncRoutes(flattenSystemRoutes(roleRoutes), DYNAMIC_ROUTE) : DYNAMIC_ROUTE
     }
   }
 })
