@@ -1,7 +1,9 @@
 <script setup>
   import { message, Modal } from 'ant-design-vue'
   import RoleFormModal from './components/RoleFormModal.vue'
+  import useFetch from '@/hooks/useFetch/index.js'
   import { useModal } from '@/hooks/useModal/index.js'
+  import { API_USER } from '@/service/user/index.js'
 
   const columns = [
     {
@@ -27,11 +29,7 @@
     }
   ]
 
-  const list = [
-    { id: 1, name: '超级管理员', cover: '100%', status: 1, menus: [2] },
-    { id: 2, name: '运营人员', cover: '70%', status: 1, menus: [3] },
-    { id: 3, name: '销售人员', cover: '20%', status: 0, menus: [6] }
-  ]
+  const { data, isFetching } = useFetch(API_USER.roleList).json()
 
   const handleStatus = (record) => {
     const title = record.status === 1 ? '禁用' : '启用'
@@ -61,7 +59,8 @@
 <template>
   <ProTable
     :columns="columns"
-    :data-source="list"
+    :data-source="data"
+    :loading="isFetching"
   >
     <template #extraR>
       <a-button

@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
+import useFetch from '@/hooks/useFetch/index.js'
 import config from '@/config/index.js'
 import { DYNAMIC_ROUTE } from '@/router/routes.js'
-import useFetch from '@/hooks/useFetch/index.js'
 import { API_USER } from '@/service/user/index.js'
 
 const HAS_KEY = 'path'
