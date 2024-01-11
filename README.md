@@ -44,7 +44,9 @@
 - 按钮 v-loading（loading动画）自定义指令 - 节流
 - 按钮级权限指令 v-auth.[moduleName]
 - 关键词高亮组件TextMark组件
+- 文本溢出显示...组件
 - 数据使用[Apifox云端Mock](https://apifox.com/help/api-mock/cloud-mock)
+- Tabs反圆角
 
 ### import.meta.env 访问环境变量，自定义 VITE\_ 开头
 

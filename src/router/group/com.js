@@ -85,6 +85,15 @@ export default [
           title: '文本溢出',
           icon: 'i-carbon-text-footnote'
         }
+      },
+      {
+        path: `${BASE_URL}/tabs`,
+        name: 'RadiusTabs',
+        component: () => import('@/pages/com/radius-tabs/index.vue'),
+        meta: {
+          title: '反圆角Tabs',
+          icon: 'i-carbon-text-footnote'
+        }
       }
     ]
   }

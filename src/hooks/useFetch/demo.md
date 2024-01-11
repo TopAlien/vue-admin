@@ -1,5 +1,13 @@
 ## 可以不使用await, 这样不会阻塞页面
 
+## useFetch 没有对get请求参数做很好的处理（query参数只能手动拼接到url中），所以二次封装了
+
+### 原来get请求url拼接示例
+```js
+ useFetch('https://www.baidu.com/asd?name=1&age=18').json()
+```
+
+### 封装后的get请求参数处理
 ### 示例1 响应式查询参数
 ```js
   const inputVal = ref({ id: '1', name: null, age: undefined, as: '' })

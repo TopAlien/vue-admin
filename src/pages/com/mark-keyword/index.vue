@@ -6,6 +6,7 @@
 </script>
 
 <template>
+  <div class="header_title">关键词高亮</div>
   <TextMark
     activeClassName="cus-mark"
     :textToHighlight="text"
