@@ -1,17 +1,13 @@
-<script setup></script>
-
 <template>
-  <div class="flex justify-between items-center">
-    <img
-      class="h500px"
-      src="https://error404.fun/img/full-preview/1x/12.png"
-      alt=""
-    />
-    <div class="mr40px">
-      <p>抱歉，服务器出了点问题～</p>
-      <a-button type="primary">返回首页</a-button>
-    </div>
+  <div class="flex justify-center items-center">
+    <a-result
+      status="500"
+      title="500"
+      sub-title="抱歉，服务器出了点问题～"
+    >
+      <template #extra>
+        <a-button type="primary">返回首页</a-button>
+      </template>
+    </a-result>
   </div>
 </template>
-
-<style scoped lang="less"></style>
