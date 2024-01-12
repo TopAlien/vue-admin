@@ -30,6 +30,8 @@ router.beforeEach(async (to) => {
     } else {
       const dynamicRouter = useDynamicRouterStore()
       if (!dynamicRouter.syncRoutes) {
+        await dynamicRouter.getUserRoutes()
+
         const resultRoute = await dynamicRouter.generator()
 
         resultRoute.forEach((route) => router.addRoute(route))

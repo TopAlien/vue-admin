@@ -49,3 +49,18 @@ export const getUserInfo = () => {
 export const removeUserInfo = () => {
   localStorage.removeItem(USER_INFO_KEY)
 }
+
+// 用户权限菜单
+const USER_ROUTES_KEY = 'urs'
+
+export const setUserRoutes = (routes) => {
+  localStorage.setItem(USER_ROUTES_KEY, JSON.stringify(routes || []))
+}
+
+export const getUserRoutes = () => {
+  return JSON.parse(localStorage.getItem(USER_ROUTES_KEY))
+}
+
+export const removeUserRoutes = () => {
+  localStorage.removeItem(USER_ROUTES_KEY)
+}

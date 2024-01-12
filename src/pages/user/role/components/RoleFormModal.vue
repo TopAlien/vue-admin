@@ -1,9 +1,5 @@
 <script setup>
   import { ref, reactive } from 'vue'
-  import useFetch from '@/hooks/useFetch/index.js'
-  import { API_USER } from '@/service/user/index.js'
-
-  const { data } = useFetch(API_USER.roleRoutes).json()
 
   const props = defineProps({
     ok: {
@@ -28,6 +24,8 @@
       console.log(err)
     }
   }
+
+  const allRoutes = []
 </script>
 
 <template>
@@ -66,7 +64,7 @@
         v-model:checkedKeys="roleForm.menus"
         checkable
         defaultExpandAll
-        :tree-data="data?.routes"
+        :tree-data="allRoutes"
         :fieldNames="{ children: 'children', title: 'title', key: 'id' }"
       />
     </a-form-item>
