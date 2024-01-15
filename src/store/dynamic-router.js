@@ -3,7 +3,6 @@ import useFetch from '@/hooks/useFetch/index.js'
 import config from '@/config/index.js'
 import { DYNAMIC_ROUTE } from '@/router/routes.js'
 import { API_USER } from '@/service/user/index.js'
-import { getUserRoutes, setUserRoutes } from '@/utils/storage.js'
 
 const HAS_KEY = 'path'
 const hasPermission = (flattenApiRoutes, route) => {
@@ -49,13 +48,13 @@ const flattenSystemRoutes = (routes) => {
 
 const useDynamicRouterStore = defineStore('dynamicRouter', {
   state: () => ({
-    syncRoutes: false
+    syncRoutes: false,
+    roleRoutes: []
   }),
   actions: {
     async generator() {
       if (config.useDynamicRoute) {
-        const roleRoutes = getUserRoutes()
-        return filterAsyncRoutes(flattenSystemRoutes(roleRoutes), DYNAMIC_ROUTE)
+        return filterAsyncRoutes(flattenSystemRoutes(this.roleRoutes), DYNAMIC_ROUTE)
       }
 
       return DYNAMIC_ROUTE
@@ -64,7 +63,7 @@ const useDynamicRouterStore = defineStore('dynamicRouter', {
     async getUserRoutes() {
       if (config.useDynamicRoute) {
         const { data } = await useFetch(API_USER.roleRoutes).json()
-        setUserRoutes(data.value.routes)
+        this.roleRoutes = data.value.routes
       }
     }
   }
