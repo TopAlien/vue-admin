@@ -6,7 +6,9 @@
       sub-title="抱歉，服务器出了点问题～"
     >
       <template #extra>
-        <a-button type="primary">返回首页</a-button>
+        <router-link to="/">
+          <a-button type="primary">返回首页</a-button>
+        </router-link>
       </template>
     </a-result>
   </div>

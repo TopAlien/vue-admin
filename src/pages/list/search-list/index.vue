@@ -4,46 +4,19 @@
   import ProTable from '@/components/ProTable/index.vue'
   import useFetch from '@/hooks/useFetch/index.js'
   import { API_LIST } from '@/service/list/index.js'
+  import { setTableColumn } from '@/utils/table.js'
   import { typeEnum } from '@/mock/data.js'
 
-  const columns = [
-    {
-      title: '集合编号',
-      dataIndex: 'no',
-      key: 'no'
-    },
-    {
-      title: '集合名称',
-      dataIndex: 'name',
-      key: 'name'
-    },
-    {
-      title: '内容体裁',
-      dataIndex: 'type',
-      key: 'type'
-    },
-    {
-      title: '筛选方式',
-      dataIndex: 'fs',
-      key: 'fs'
-    },
-    {
-      title: '内容量',
-      dataIndex: 'num',
-      key: 'num'
-    },
-    {
-      title: '创建时间',
-      dataIndex: 'createTime',
-      key: 'createTime'
-    },
-    {
-      title: '状态',
-      dataIndex: 'status',
-      key: 'status'
-    },
-    { title: '操作', key: 'action', width: '130px' }
-  ]
+  const columns = setTableColumn([
+    { no: '集合编号' },
+    { name: '集合名称' },
+    { type: '内容体裁' },
+    { fs: '筛选方式' },
+    { num: '内容量' },
+    { createTime: '创建时间' },
+    { status: '状态' },
+    { action: { title: '操作', width: '130px' } }
+  ])
 
   const { data, isFetching, execute } = useFetch(API_LIST.list).json()
 
