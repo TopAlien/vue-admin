@@ -7,7 +7,6 @@ export default [
     path: BASE_URL,
     component: Layout,
     name: 'User',
-    redirect: `${BASE_URL}/list`,
     meta: {
       title: '用户',
       isGroup: true,

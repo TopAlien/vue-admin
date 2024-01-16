@@ -7,7 +7,6 @@ export default [
     path: BASE_URL,
     component: Layout,
     name: 'Print',
-    redirect: `${BASE_URL}/list`,
     meta: {
       title: '打印',
       isGroup: true,

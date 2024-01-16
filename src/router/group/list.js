@@ -7,7 +7,6 @@ export default [
     path: BASE_URL,
     component: Layout,
     name: 'List',
-    redirect: `${BASE_URL}/search`,
     meta: {
       title: '列表',
       isGroup: true,

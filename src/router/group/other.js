@@ -7,7 +7,6 @@ export default [
     path: BASE_URL,
     component: Layout,
     name: 'Other',
-    redirect: `${BASE_URL}/check`,
     meta: {
       title: '插件',
       isGroup: true,

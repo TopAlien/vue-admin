@@ -7,7 +7,6 @@ export default [
     path: BASE_URL,
     component: Layout,
     name: 'Setting',
-    redirect: `${BASE_URL}/menu`,
     meta: {
       title: '设置',
       isGroup: true,

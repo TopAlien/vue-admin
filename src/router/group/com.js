@@ -7,7 +7,6 @@ export default [
     path: BASE_URL,
     component: Layout,
     name: 'Com',
-    redirect: `${BASE_URL}/list-1/list2-1`,
     meta: {
       title: '组件',
       isGroup: true,
@@ -16,7 +15,6 @@ export default [
     children: [
       {
         path: `${BASE_URL}/list-1`,
-        redirect: `${BASE_URL}/list-1/list2-1`,
         name: 'List-1',
         meta: {
           title: '列表-1',

@@ -22,3 +22,22 @@ export const getTabIndex = (tabMenu, route) => {
 
   return tabMenuMap.get(firstRoute)
 }
+
+export const getRedirectPath = (route) => {
+  if (!route) return ''
+
+  let path = route.path
+  const getPath = (child) => {
+    if (child[0].children && child[0].children.length) {
+      getPath(child[0].children)
+    } else {
+      path = child[0].path
+    }
+  }
+
+  if (route.children && route.children.length) {
+    getPath(route.children)
+  }
+
+  return path
+}

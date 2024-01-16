@@ -3,16 +3,19 @@
   import { useRouter } from 'vue-router'
   import useSettingStore from '@/store/setting.js'
   import useSideMenuStore from '@/store/side-menu.js'
-  import { getTabIndex, getTabMenu } from '@/layout/sider/components/util.js'
+  import { getTabIndex, getTabMenu, getRedirectPath } from '@/layout/sider/components/util.js'
   import { listenerRouteChange } from '@/utils/router-listener.js'
 
   const router = useRouter()
   const setting = useSettingStore()
 
   const handleTab = (it, isHighlight) => {
-    if (isHighlight) return
+    const cPath = getRedirectPath(it)
+
+    if (isHighlight || !cPath) return
+
     setting.changeMenu([], [])
-    router.push(it.path)
+    router.push(cPath)
 
     if (setting.collapsed) {
       setting.toggleCollapsed()

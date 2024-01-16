@@ -7,7 +7,6 @@ export default [
     path: BASE_URL,
     component: Layout,
     name: 'Chart',
-    redirect: `${BASE_URL}/bar`,
     meta: {
       title: '图表',
       isGroup: true,
