@@ -76,7 +76,7 @@ const BASE_URL = '/other'[
         path: BASE_URL,
         component: Layout,
         name: 'Com',
-        redirect: `${BASE_URL}/list-1/list2-1`,
+        redirect: `${BASE_URL}/list-1/list2-1`, // 不再需要，自动重定向第一个
         // icon 为carbon时在，safelist中添加class
         // meta: { icon, hideInMenu, title }
         meta: {

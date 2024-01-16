@@ -3,7 +3,7 @@
   import { useRouter } from 'vue-router'
   import useSettingStore from '@/store/setting.js'
   import useSideMenuStore from '@/store/side-menu.js'
-  import { getTabIndex, getTabMenu, getRedirectPath } from '@/layout/sider/components/util.js'
+  import { getTabMenu, getRedirectPath } from '@/layout/sider/components/util.js'
   import { listenerRouteChange } from '@/utils/router-listener.js'
 
   const router = useRouter()
@@ -15,7 +15,7 @@
     if (isHighlight || !cPath) return
 
     setting.changeMenu([], [])
-    router.push(cPath)
+    router.push({ path: cPath })
 
     if (setting.collapsed) {
       setting.toggleCollapsed()
@@ -24,17 +24,16 @@
 
   const sideMenu = useSideMenuStore()
   const tabMenu = getTabMenu(router.getRoutes() || [])
-  const curTabIndex = ref(0)
+  const curTabPath = ref('')
 
   listenerRouteChange(({ path, matched }) => {
-    // 需要反推，防止回退操作显示错误
-    curTabIndex.value = getTabIndex(tabMenu, { matched })
+    curTabPath.value = matched[0]?.path
 
     /// 展开menu, 高亮第一个菜单
     setting.changeMenu(Array.from(new Set([...setting.openKeys, matched[1]?.path])), [path])
 
     // fix 浏览器菜单回退时 side数据更新;取缓存
-    curTabIndex.value >= 0 && sideMenu.changeSide(tabMenu[curTabIndex.value])
+    curTabPath.value && sideMenu.changeSide(tabMenu.find((it) => it.path === curTabPath.value))
   })
 </script>
 
@@ -45,10 +44,10 @@
       class="column_tabs"
     >
       <div
-        :class="{ tab_item: true, active_tab: curTabIndex === index }"
-        v-for="(it, index) in tabMenu"
+        v-for="it in tabMenu"
+        :class="{ tab_item: true, active_tab: curTabPath === it.path }"
         :key="it"
-        @click="handleTab(it, curTabIndex === index)"
+        @click="handleTab(it, curTabPath === it.path)"
       >
         <i :class="['block', it.meta.icon]" />
         <span class="column_title">{{ it.meta.title }}</span>

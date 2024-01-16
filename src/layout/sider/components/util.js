@@ -10,19 +10,6 @@ export const getTabMenu = (routes) => {
   return tabMenu
 }
 
-const tabMenuMap = new Map()
-export const getTabIndex = (tabMenu, route) => {
-  const firstRoute = (route.matched || [])[0]?.path
-  if (!tabMenuMap.has(firstRoute)) {
-    tabMenuMap.set(
-      firstRoute,
-      tabMenu.findIndex((it) => (route.matched || []).map((item) => item.path).includes(it.path)) || 0
-    )
-  }
-
-  return tabMenuMap.get(firstRoute)
-}
-
 export const getRedirectPath = (route) => {
   if (!route) return ''
 
@@ -34,10 +21,7 @@ export const getRedirectPath = (route) => {
       path = child[0].path
     }
   }
-
-  if (route.children && route.children.length) {
-    getPath(route.children)
-  }
+  getPath([route])
 
   return path
 }
