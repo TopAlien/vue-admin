@@ -9,6 +9,10 @@
  * @param simpleArr
  */
 export const setTableColumn = (simpleArr = []) => {
+  if (!simpleArr || !Array.isArray(simpleArr) || !simpleArr?.length) {
+    return []
+  }
+
   return simpleArr.map((it) => {
     const key = Object.keys(it)[0]
     const val = it[key]

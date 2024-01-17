@@ -4,10 +4,9 @@
   import ProTable from '@/components/ProTable/index.vue'
   import useFetch from '@/hooks/useFetch/index.js'
   import { API_LIST } from '@/service/list/index.js'
-  import { setTableColumn } from '@/utils/table.js'
   import { typeEnum } from '@/mock/data.js'
 
-  const columns = setTableColumn([
+  const columns = [
     { no: '集合编号' },
     { name: '集合名称' },
     { type: '内容体裁' },
@@ -16,7 +15,7 @@
     { createTime: '创建时间' },
     { status: '状态' },
     { action: { title: '操作', width: '130px' } }
-  ])
+  ]
 
   const { data, isFetching, execute } = useFetch(API_LIST.list).json()
 

@@ -1,5 +1,7 @@
 <script setup>
+  import { computed } from 'vue'
   import { isObject } from 'lodash-es'
+  import { setTableColumn } from '@/utils/table.js'
 
   const slots = defineSlots()
 
@@ -11,8 +13,14 @@
         current: 1,
         pageSize: 10
       })
+    },
+    columns: {
+      type: Array,
+      default: () => []
     }
   })
+
+  const columns = computed(() => setTableColumn(props.columns))
 </script>
 
 <template>
@@ -42,6 +50,7 @@
           }
         : false
     "
+    :columns="columns"
     v-bind="$attrs"
   >
     <template
