@@ -1,7 +1,8 @@
 <script setup>
-  import { computed } from 'vue'
+  import { computed, onMounted, ref } from 'vue'
+  import config from '@/config/index.js'
   import { isObject } from 'lodash-es'
-  import { setTableColumn } from '@/utils/table.js'
+  import { setTableColumn, getScrollHeight } from '@/utils/table.js'
 
   const slots = defineSlots()
 
@@ -17,10 +18,29 @@
     columns: {
       type: Array,
       default: () => []
+    },
+    // 同一个页面多表格时设置
+    scrollKey: {
+      type: String,
+      default: 'area_scroll_table'
+    },
+    scrollX: {
+      type: Number
+    },
+    extraBottom: {
+      type: Number,
+      default: 80
     }
   })
 
   const columns = computed(() => setTableColumn(props.columns))
+
+  const scrollHeight = ref()
+  onMounted(() => {
+    if (config.tableAreaScroll) {
+      scrollHeight.value = getScrollHeight(`.${props.scrollKey} .ant-table-tbody`, props.extraBottom)
+    }
+  })
 </script>
 
 <template>
@@ -37,7 +57,8 @@
   </div>
 
   <a-table
-    class="overflow-auto"
+    v-bind="$attrs"
+    :class="['overflow-auto', props.scrollKey]"
     size="middle"
     :pagination="
       isObject(pagination)
@@ -51,7 +72,10 @@
         : false
     "
     :columns="columns"
-    v-bind="$attrs"
+    :scroll="{
+      y: scrollHeight,
+      x: scrollX
+    }"
   >
     <template
       v-for="(_, key, i) in slots"

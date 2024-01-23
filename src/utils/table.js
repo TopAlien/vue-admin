@@ -30,3 +30,12 @@ export const setTableColumn = (simpleArr = []) => {
         }
   })
 }
+
+export const getScrollHeight = (className, extraBottom) => {
+  try {
+    const rect = document.querySelector(className).getBoundingClientRect()
+    return window.innerHeight - rect.top - extraBottom
+  } catch {
+    console.log('滚动区域高度计算失败')
+  }
+}

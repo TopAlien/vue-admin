@@ -3,7 +3,12 @@ export default {
 
   onlyMenu: true,
 
+  /** 自定义滚动条 */
   useCustomScrollBar: false,
 
-  useDynamicRoute: false
+  /** 后台动态路由权限 */
+  useDynamicRoute: false,
+
+  /** 表格区域滚动 */
+  tableAreaScroll: true
 }

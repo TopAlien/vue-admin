@@ -102,6 +102,7 @@
     :pagination="pagination"
     @change="handleTableChange"
     :loading="isFetching"
+    scrollKey="list1"
   >
     <template #headerCell="{ column, title }">
       <template v-if="column.key === 'name'">
