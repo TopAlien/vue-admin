@@ -14,7 +14,7 @@ const useSettingStore = defineStore('setting', {
       this.collapsed = !this.collapsed
     },
 
-    changeMenu(openKeys, selectedKeys) {
+    changeMenuHighlight(openKeys, selectedKeys) {
       this.openKeys = openKeys
       this.selectedKeys = selectedKeys
     },

@@ -8,13 +8,16 @@
 
   const router = useRouter()
   const setting = useSettingStore()
+  const sideMenu = useSideMenuStore()
+
+  const tabMenu = getTabMenu(router.getRoutes() || [])
 
   const handleTab = (it, isHighlight) => {
     const cPath = getRedirectPath(it)
 
     if (isHighlight || !cPath) return
 
-    setting.changeMenu([], [])
+    setting.changeMenuHighlight([], [])
     router.push({ path: cPath })
 
     if (setting.collapsed) {
@@ -22,20 +25,18 @@
     }
   }
 
-  const sideMenu = useSideMenuStore()
-  const tabMenu = getTabMenu(router.getRoutes() || [])
   const curTabPath = ref('')
-
-  const changeSideMenus = () => {
-    curTabPath.value && sideMenu.changeSide(tabMenu.find((it) => it.path === curTabPath.value))
-  }
 
   listenerRouteChange(({ path, matched }) => {
     curTabPath.value = matched[0]?.path
 
     /// 展开menu, 高亮第一个菜单
-    setting.changeMenu(Array.from(new Set([...setting.openKeys, matched[1]?.path])), [path])
+    setting.changeMenuHighlight(Array.from(new Set([...setting.openKeys, matched[1]?.path])), [path])
   })
+
+  const changeSideMenus = () => {
+    curTabPath.value && sideMenu.changeSide(tabMenu.find((it) => it.path === curTabPath.value))
+  }
 
   watch(curTabPath, () => {
     changeSideMenus()
