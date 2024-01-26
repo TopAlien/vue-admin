@@ -24,9 +24,8 @@ const generator = (routerMap) => {
 
 const emptyMenu = [{ label: '', key: '' }]
 
-const menuMap = new Map()
 const useSideMenuStore = defineStore('sideMenu', {
-  state: () => ({ menus: emptyMenu }),
+  state: () => ({ menus: emptyMenu, menuMap: new Map() }),
   getters: {
     onlyMenu() {
       return config.onlyMenu
@@ -36,11 +35,11 @@ const useSideMenuStore = defineStore('sideMenu', {
   },
   actions: {
     changeSide(side) {
-      if (!menuMap.has(side.path)) {
-        menuMap.set(side.path, generator(side.children) || [])
+      if (!this.menuMap.has(side.path)) {
+        this.menuMap.set(side.path, generator(side.children) || [])
       }
 
-      this.menus = menuMap.get(side.path)
+      this.menus = this.menuMap.get(side.path)
     }
   }
 })
