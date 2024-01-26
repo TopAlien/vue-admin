@@ -1,5 +1,5 @@
 <script setup>
-  import { ref } from 'vue'
+  import { ref, watch } from 'vue'
   import { useRouter } from 'vue-router'
   import useSettingStore from '@/store/setting.js'
   import useSideMenuStore from '@/store/side-menu.js'
@@ -25,21 +25,23 @@
   const sideMenu = useSideMenuStore()
   const tabMenu = getTabMenu(router.getRoutes() || [])
   const curTabPath = ref('')
-  const preTabPath = ref('')
+
+  const changeSideMenus = () => {
+    curTabPath.value && sideMenu.changeSide(tabMenu.find((it) => it.path === curTabPath.value))
+  }
 
   listenerRouteChange(({ path, matched }) => {
     curTabPath.value = matched[0]?.path
 
     /// 展开menu, 高亮第一个菜单
     setting.changeMenu(Array.from(new Set([...setting.openKeys, matched[1]?.path])), [path])
-
-    const preTabItem = tabMenu.find((it) => it.path === curTabPath.value)
-    // fix 浏览器菜单回退时 side数据更新;取缓存
-    if (preTabPath.value !== curTabPath.value) {
-      preTabPath.value = preTabItem.path
-      curTabPath.value && sideMenu.changeSide(preTabItem)
-    }
   })
+
+  watch(curTabPath, () => {
+    changeSideMenus()
+  })
+
+  changeSideMenus()
 </script>
 
 <template>
