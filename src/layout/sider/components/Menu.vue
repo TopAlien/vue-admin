@@ -12,7 +12,7 @@
 
   const setting = useSettingStore()
   const openChange = (openKeys) => {
-    setting.changeMenu(openKeys, setting.selectedKeys)
+    setting.changeMenuHighlight(openKeys, setting.selectedKeys)
   }
 </script>
 
