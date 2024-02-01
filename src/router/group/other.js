@@ -102,6 +102,24 @@ export default [
           title: 'LODASH常用',
           icon: 'i-carbon-ibm-toolchain'
         }
+      },
+      {
+        path: `${BASE_URL}/zip`,
+        name: 'ExportZip',
+        component: () => import('@/pages/other/zip/index.vue'),
+        meta: {
+          title: 'Zip',
+          icon: 'i-carbon-zip'
+        }
+      },
+      {
+        path: `${BASE_URL}/excel`,
+        name: 'ExportExcel',
+        component: () => import('@/pages/other/excel/index.vue'),
+        meta: {
+          title: 'Excel',
+          icon: 'i-carbon-document'
+        }
       }
     ]
   }

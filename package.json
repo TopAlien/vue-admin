@@ -18,6 +18,7 @@
     "ant-design-vue": "^4.1.0",
     "dayjs": "^1.11.10",
     "echarts": "^5.4.3",
+    "file-saver": "^2.0.5",
     "idcard": "^4.1.1",
     "lodash-es": "^4.17.21",
     "mitt": "^3.0.1",
@@ -31,7 +32,8 @@
     "vue-json-pretty": "^2.3.0",
     "vue-plugin-hiprint": "^0.0.56",
     "vue-router": "^4.2.5",
-    "vue3-tree-org": "^4.2.2"
+    "vue3-tree-org": "^4.2.2",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@iconify-json/carbon": "^1.1.27",

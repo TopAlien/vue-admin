@@ -29,5 +29,8 @@ export default [
   'i-carbon-user-data',
   'i-carbon-ibm-toolchain',
   'i-carbon-dot-mark',
-  'i-carbon-text-footnote'
+  'i-carbon-text-footnote',
+  'i-carbon-image',
+  'i-carbon-table-alias',
+  'i-carbon-zip'
 ]

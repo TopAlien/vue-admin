@@ -1,5 +1,4 @@
 <script setup>
-  import ProTable from '@/components/ProTable/index.vue'
   import { message, Modal } from 'ant-design-vue'
   import { useModal } from '@/hooks/useModal/index.js'
   import MenuFormModal from './MenuFormModal.vue'
@@ -12,32 +11,12 @@
   })
 
   const columns = [
-    { title: '菜单ID', dataIndex: 'id', key: 'id' },
-    {
-      title: '菜单名称',
-      dataIndex: 'title',
-      key: 'title'
-    },
-    {
-      title: '菜单Name',
-      dataIndex: 'name',
-      key: 'name'
-    },
-    {
-      title: '菜单Path',
-      dataIndex: 'path',
-      key: 'path'
-    },
-    {
-      title: '状态',
-      dataIndex: 'status',
-      key: 'status'
-    },
-    {
-      title: '操作',
-      key: 'action',
-      width: '100px'
-    }
+    { id: '菜单ID' },
+    { title: '菜单名称' },
+    { name: '菜单Name' },
+    { path: '菜单Path' },
+    { status: '状态' },
+    { action: { title: '操作', width: '100px' } }
   ]
 
   const handleStatus = (record) => {

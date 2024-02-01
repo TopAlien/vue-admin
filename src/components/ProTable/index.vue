@@ -84,7 +84,7 @@
       <slot
         :name="key"
         v-bind="{ text, title, record, index, column, filtered, indent, expanded }"
-      ></slot>
+      />
     </template>
   </a-table>
 </template>

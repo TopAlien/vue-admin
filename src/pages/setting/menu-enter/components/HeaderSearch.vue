@@ -1,6 +1,5 @@
 <script setup>
   import { ref } from 'vue'
-  import SearchBox from '@/components/SearchBox/index.vue'
 
   const model = ref({})
 </script>

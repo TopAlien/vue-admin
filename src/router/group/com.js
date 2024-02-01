@@ -90,7 +90,7 @@ export default [
         component: () => import('@/pages/com/radius-tabs/index.vue'),
         meta: {
           title: '反圆角Tabs',
-          icon: 'i-carbon-text-footnote'
+          icon: 'i-carbon-table-alias'
         }
       },
       {
@@ -99,7 +99,7 @@ export default [
         component: () => import('@/pages/com/lazy/index.vue'),
         meta: {
           title: '图片懒加载',
-          icon: 'i-carbon-text-footnote'
+          icon: 'i-carbon-image'
         }
       }
     ]

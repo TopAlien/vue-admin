@@ -1,7 +1,5 @@
 <script setup>
   import { reactive, ref } from 'vue'
-  import SearchBox from '@/components/SearchBox/index.vue'
-  import ProTable from '@/components/ProTable/index.vue'
   import useFetch from '@/hooks/useFetch/index.js'
   import { API_LIST } from '@/service/list/index.js'
   import { typeEnum } from '@/mock/data.js'
@@ -102,7 +100,6 @@
     :pagination="pagination"
     @change="handleTableChange"
     :loading="isFetching"
-    scrollKey="list1"
   >
     <template #headerCell="{ column, title }">
       <template v-if="column.key === 'name'">
