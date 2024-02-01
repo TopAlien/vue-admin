@@ -48,6 +48,7 @@
 - 数据使用[Apifox云端Mock](https://apifox.com/help/api-mock/cloud-mock)
 - Tabs反圆角
 - Table区域滚动（自动计算）
+- 图片懒加载指令
 
 ### import.meta.env 访问环境变量，自定义 VITE\_ 开头
 
@@ -455,5 +456,29 @@ export default {
             Scrollbar.destroy(targetEl ? document.querySelector(targetEl) : el, {})
         }
     }
+}
+```
+
+4. v-lazyImg 图片懒加载
+```
+import { useIntersectionObserver } from '@vueuse/core'
+
+/**
+ v-lazyImg="'https://via.placeholder.com/250'"
+ */
+export default {
+  mounted(el, binding) {
+    const { stop } = useIntersectionObserver(
+      el,
+      ([{ isIntersecting }], observerElement) => {
+        if (isIntersecting) {
+          stop()
+
+          el.src = binding.value
+        }
+      },
+      { threshold: 0 }
+    )
+  }
 }
 ```

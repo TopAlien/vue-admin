@@ -1,11 +1,13 @@
 import scrollbar from './scrollbar.js'
 import auth from './hasAuth.js'
 import loading from './loading.js'
+import lazyImg from './lazyImg.js'
 
 const directives = {
   scrollbar,
   auth,
-  loading
+  loading,
+  lazyImg
 }
 
 export default {

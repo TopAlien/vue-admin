@@ -92,6 +92,15 @@ export default [
           title: '反圆角Tabs',
           icon: 'i-carbon-text-footnote'
         }
+      },
+      {
+        path: `${BASE_URL}/lazy`,
+        name: 'LazyImage',
+        component: () => import('@/pages/com/lazy/index.vue'),
+        meta: {
+          title: '图片懒加载',
+          icon: 'i-carbon-text-footnote'
+        }
       }
     ]
   }
