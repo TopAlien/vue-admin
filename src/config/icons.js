@@ -32,5 +32,6 @@ export default [
   'i-carbon-text-footnote',
   'i-carbon-image',
   'i-carbon-table-alias',
-  'i-carbon-zip'
+  'i-carbon-zip',
+  'i-carbon-document'
 ]

@@ -1,5 +1,6 @@
 import { saveAs } from 'file-saver'
 import { writeXLSX, utils, SSF } from 'xlsx'
+import { isObject } from 'lodash-es'
 
 function generateArray(table) {
   let out = []
@@ -237,16 +238,48 @@ export function export_json_to_excel({
   { id: 6, name: '1838', age: 99 }
   ]
 
- @return [
- [1, 'ealien', 18],
- [2, '哇咔咔', 99],
- [3, '124', 18],
- [4, '1', 99],
- [5, 'nihao', 18],
- [6, '1838', 99]
- ]
 
+  const tHeader = ['ID', '姓名', '年龄']
+ @return [
+   [1, 'ealien', 18],
+   [2, '哇咔咔', 99],
+   [3, '124', 18],
+   [4, '1', 99],
+   [5, 'nihao', 18],
+   [6, '1838', 99]
+ ]
  */
 export const formatJson = (filterVal, jsonData) => {
   return jsonData.map((v) => filterVal.map((j) => v[j]))
+}
+
+/**
+ const columns = [{ id: 'ID' }, { name: '姓名' }, { age: '年龄' }]
+
+ OR
+
+ const columns = [{ id: 'ID' }, { name: '姓名' }, { action: { title: '操作’, width: '120px' } }]
+
+ return [['ID', '姓名', '年龄'], ['id', 'name', 'age']]
+
+ getFormatDataByColumns(columns)
+
+ getFormatDataByColumns(columns, ['name'])
+
+ */
+export const getFormatDataByColumns = (columns, excludeKeys = []) => {
+  let header = []
+  let keys = []
+  columns.forEach((it) => {
+    const key = Object.keys(it)[0]
+    const value = Object.values(it)[0]
+
+    if (!excludeKeys.includes(key)) {
+      header.push(isObject(value) ? value.title : value)
+      keys.push(key)
+    }
+  })
+
+  console.log(header, keys)
+  return [header, keys]
 }
