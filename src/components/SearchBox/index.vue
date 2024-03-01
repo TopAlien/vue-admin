@@ -29,10 +29,10 @@
 
 <template>
   <div
-    v-if="title"
+    v-if="props.title"
     class="header_title"
   >
-    {{ title }}
+    {{ props.title }}
   </div>
   <div class="search_box">
     <div class="search_form flex-1">

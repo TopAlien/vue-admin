@@ -2,6 +2,7 @@
   import { reactive, ref, watch, provide } from 'vue'
   import { message, Watermark } from 'ant-design-vue'
   import Child from './components/child.vue'
+  import SlotProp from './components/slot_prop.vue'
   import useCounterStore from '@/store/counter.js'
 
   const counterStore = useCounterStore()
@@ -45,6 +46,19 @@
 <template>
   <Watermark content="哇咔咔">
     <div>
+      <a-card
+        title="作用域插槽 - 应用示例"
+        :bordered="false"
+      >
+        <SlotProp>
+          <template v-slot="{ user, age, userInfo }">
+            <a-button type="primary">{{ age }} - {{ user }} - {{ userInfo }}</a-button>
+          </template>
+        </SlotProp>
+      </a-card>
+
+      <a-divider />
+
       <a-button loading>原loading</a-button>
       <a-button
         loading
