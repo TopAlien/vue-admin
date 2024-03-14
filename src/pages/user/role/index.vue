@@ -6,26 +6,17 @@
   import { API_USER } from '@/service/user/index.js'
 
   const columns = [
+    { id: 'ID' },
+    { name: '角色名称' },
     {
-      title: 'ID',
-      dataIndex: 'id'
+      cover: '权限覆盖率'
     },
+    { status: '角色状态' },
     {
-      title: '角色名称',
-      dataIndex: 'name'
-    },
-    {
-      title: '权限覆盖率',
-      dataIndex: 'cover'
-    },
-    {
-      title: '角色状态',
-      dataIndex: 'status'
-    },
-    {
-      title: '操作',
-      dataIndex: 'action',
-      width: '90px'
+      action: {
+        title: '操作',
+        width: '90px'
+      }
     }
   ]
 
