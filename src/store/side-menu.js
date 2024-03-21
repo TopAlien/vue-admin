@@ -35,6 +35,8 @@ const useSideMenuStore = defineStore('sideMenu', {
   },
   actions: {
     changeSide(side) {
+      if(!side) return
+      
       if (!this.menuMap.has(side.path)) {
         this.menuMap.set(side.path, generator(side.children) || [])
       }

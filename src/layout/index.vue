@@ -10,14 +10,14 @@
       <LayoutSide />
     </div>
 
-    <div
-      class="content_wrap"
-      v-scrollbar
-    >
-      <div class="scroll_content">
-        <router-view />
+      <div
+        class="content_wrap"
+        v-scrollbar
+      >
+        <div class="scroll_content">
+          <router-view />
+        </div>
       </div>
-    </div>
   </div>
 </template>
 

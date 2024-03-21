@@ -20,6 +20,12 @@ dependencies:
   ant-design-vue:
     specifier: ^4.1.2
     version: 4.1.2(vue@3.4.21)
+  codemirror:
+    specifier: ^5.65.16
+    version: 5.65.16
+  codemirror-editor-vue3:
+    specifier: ^2.4.1
+    version: 2.4.1(codemirror@5.65.16)(diff-match-patch@1.0.5)(vue@3.4.21)
   dayjs:
     specifier: ^1.11.10
     version: 1.11.10
@@ -1756,6 +1762,22 @@ packages:
       wordwrap: 0.0.2
     dev: false
 
+  /codemirror-editor-vue3@2.4.1(codemirror@5.65.16)(diff-match-patch@1.0.5)(vue@3.4.21):
+    resolution: {integrity: sha512-XcyLUShIq22D05ySLfXGwLZqYt/HDJk11z1aAc3N/J76dEcXPd1xrUrw+v3pl+fjc8QfTjBzMSU8nKTVccJnUQ==}
+    peerDependencies:
+      codemirror: ^5.x
+      diff-match-patch: ^1.0.5
+      vue: ^3.x
+    dependencies:
+      codemirror: 5.65.16
+      diff-match-patch: 1.0.5
+      vue: 3.4.21
+    dev: false
+
+  /codemirror@5.65.16:
+    resolution: {integrity: sha512-br21LjYmSlVL0vFCPWPfhzUCT34FM/pAdK7rRIZwa0rrtrIdotvP4Oh4GUHsu2E3IrQMCfRkL/fN3ytMNxVQvg==}
+    dev: false
+
   /codepage@1.15.0:
     resolution: {integrity: sha512-3g6NUTPd/YtuuGrhMnOMRjFc+LJw/bnMp3+0r/Wcz3IXUuCosKRJvMphm5+Q+bvTVGcJJuRvVLuYba+WojaFaA==}
     engines: {node: '>=0.8'}
@@ -2033,6 +2055,10 @@ packages:
   /destr@2.0.2:
     resolution: {integrity: sha512-65AlobnZMiCET00KaFFjUefxDX0khFA/E4myqZ7a6Sq1yZtR8+FVIvilVX66vF2uobSumxooYZChiRPCKNqhmg==}
     dev: true
+
+  /diff-match-patch@1.0.5:
+    resolution: {integrity: sha512-IayShXAgj/QMXgB0IWmKx+rOPuGMhqm5w6jvFxmVenXKIzRqTAAsbBPT3kWQeGANj3jGgvcvv4yK6SxqYmikgw==}
+    dev: false
 
   /dom-align@1.12.4:
     resolution: {integrity: sha512-R8LUSEay/68zE5c8/3BDxiTEvgb4xZTF0RKmAHfiEVN3klfIpXfi2/QCoiWPccVQ0J/ZGdz9OjzL4uJEP/MRAw==}

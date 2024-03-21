@@ -16,6 +16,8 @@
     "@popperjs/core": "^2.11.8",
     "@vueuse/core": "^10.9.0",
     "ant-design-vue": "^4.1.2",
+    "codemirror": "^5.65.16",
+    "codemirror-editor-vue3": "^2.4.1",
     "dayjs": "^1.11.10",
     "echarts": "^5.4.3",
     "file-saver": "^2.0.5",

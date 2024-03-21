@@ -1,7 +1,8 @@
 import Layout from '@/layout/index.vue'
 import HomeGroup from './group/home.js'
 import ComGroup from './group/com.js'
-import OtherGroup from './group/other.js'
+import PluginGroup from './group/plugin.js'
+import CaseGroup from './group/case.js'
 import ListGroup from './group/list.js'
 import ExceptionGroup from './group/exception.js'
 import ChartGroup from './group/chart.js'
@@ -47,7 +48,8 @@ export const BASE_ROUTE = [
 
 export const DYNAMIC_ROUTE = [
   ...ComGroup,
-  ...OtherGroup,
+  ...PluginGroup,
+  ...CaseGroup,
   ...ChartGroup,
   ...UserGroup,
   ...ListGroup,

@@ -4,7 +4,7 @@ export default {
   onlyMenu: true,
 
   /** 自定义滚动条 */
-  useCustomScrollBar: false,
+  useCustomScrollBar: true,
 
   /** 后台动态路由权限 */
   useDynamicRoute: false

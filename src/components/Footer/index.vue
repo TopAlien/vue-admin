@@ -1,7 +1,3 @@
-<script setup>
-
-</script>
-
 <template>
   <div class="footer">
     哇咔咔·出品
