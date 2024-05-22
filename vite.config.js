@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import path from 'path'
 import vue from '@vitejs/plugin-vue'
+import { envParse } from 'vite-plugin-env-parse'
 import UnoCSS from 'unocss/vite'
 import Components from 'unplugin-vue-components/vite'
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
@@ -14,6 +15,7 @@ export default defineConfig({
   },
   plugins: [
     vue(),
+    envParse(),
     UnoCSS(),
     Components({
       resolvers: [

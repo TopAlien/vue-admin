@@ -7,7 +7,13 @@
 </script>
 
 <template>
-  <ConfigProvider>
+  <ConfigProvider
+    :theme="{
+      token: {
+        colorPrimary: '#2546f0'
+      }
+    }"
+  >
     <Lock v-if="setting.lockScreen" />
     <router-view />
   </ConfigProvider>

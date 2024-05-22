@@ -1,7 +1,8 @@
 <script setup></script>
 
 <template>
-  <h2>test2-page</h2>
+  <h1>
+    test2 - page
+    <a-button>跳转一下</a-button>
+  </h1>
 </template>
-
-<style scoped lang="less"></style>
