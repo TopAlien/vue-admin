@@ -70,7 +70,7 @@ const useFetch = createFetch({
     },
 
     async onFetchError({ response }) {
-      message.error(codeMessage[response.status] || '服务器错误，请联系管理员！')
+      message.error(codeMessage[response?.status] || '服务器错误，请联系管理员！')
     }
   },
   fetchOptions: {

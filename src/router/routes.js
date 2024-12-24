@@ -36,7 +36,7 @@ export const BASE_ROUTE = [
     children: [
       {
         path: '/:path(.*)*',
-        name: '404-page',
+        name: '404-child-page',
         component: () => import('@/pages/exception/404-page.vue'),
         meta: {
           title: '404页面找不到'
