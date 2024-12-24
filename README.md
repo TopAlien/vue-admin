@@ -24,7 +24,7 @@
 
 - vue@3
 - pinia
-- vite@5
+- vite@6
 - less css预处理器, 变量
 - 请求使用原生支持的fetch（vueuse/useFetch hook）useFetch二次封装, 不再使用axios
 - vue-router@4
